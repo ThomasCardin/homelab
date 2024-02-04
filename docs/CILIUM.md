@@ -14,5 +14,6 @@ helm template cilium cilium/cilium \
   --set hubble.ui.enabled=true \
   --set k8sServiceHost=localhost \
   --set k8sServicePort=7445 \
+  --set l2announcements.enabled=true \
   --set gatewayAPI.enabled=true > cilium.yaml
 ```
