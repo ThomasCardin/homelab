@@ -4,10 +4,10 @@ persist: true
 # Provides machine specific configuration options.
 machine:
     type: worker # Defines the role of the machine within the cluster.
-    token: lo502j.0a8e6s2a5ckz6zyh # The `token` is used by a machine to join the PKI of the cluster.
+    token: aw195e.321pgw9ygqvp745w # The `token` is used by a machine to join the PKI of the cluster.
     # The root certificate authority of the PKI.
     ca:
-        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQakNCOGFBREFnRUNBaEI3N1RVOElMcHBqL3JHK2ptMGJKZGZNQVVHQXl0bGNEQVFNUTR3REFZRFZRUUsKRXdWMFlXeHZjekFlRncweU5EQXlNRE14TnpNek16TmFGdzB6TkRBeE16RXhOek16TXpOYU1CQXhEakFNQmdOVgpCQW9UQlhSaGJHOXpNQ293QlFZREsyVndBeUVBNTgrK1RTMERpUXZQMVR1Ylo2MTZnWWlCRWR0RXNPZDBXTit0CmE4ZmF6RWVqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDaERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUkKS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVUnJiSCtkeDBDekhwQzRCVQp1ZWdTRWFGTGZ4b3dCUVlESzJWd0EwRUFrUmR5dkJoSmM4ZUNtMDFycXViemE0ODZ0d2VXNUcxZVJENE13VGoyCi8xQyttZlpuQURqMWV3SHFneDhvdndRV3VjeDJxVFBDb0t3bk1lMXU0UHZBQkE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQekNCOHFBREFnRUNBaEVBMlpYeFdkRTF0OWNtUUZvY2V6Z2lRREFGQmdNclpYQXdFREVPTUF3R0ExVUUKQ2hNRmRHRnNiM013SGhjTk1qUXdNakEwTURFME9UUTFXaGNOTXpRd01qQXhNREUwT1RRMVdqQVFNUTR3REFZRApWUVFLRXdWMFlXeHZjekFxTUFVR0F5dGxjQU1oQUhBNFJLRGNNelVTcG1TZlo2N05DUzVQODMyZGloZzF1bm0xCk5kaWQvMXVSbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3RUcKQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkg2d1pCem5QVjBGdjdMQgpPd25yYUVJd1pUd1VNQVVHQXl0bGNBTkJBSStnYWpYZkFFTkpjSDhOWmR1amw3dW5ZRXBianZLNlNhK1M3cnBnCnY4dUg2U2lnQXJTemdlSHFGTVpDWWRrVFY4OFhMNzlhZ3VyVm5iVWNuRnYyK1FBPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ""
     # Extra certificate subject alternative names for the machine's certificate.
     certSANs: []
@@ -197,33 +197,6 @@ machine:
         # # Allows for supplying additional system extension images to install on top of base Talos image.
         # extensions:
         #     - image: ghcr.io/siderolabs/gvisor:20220117.0-v1.0.0 # System extension image.
-    # Used to configure the machine's container image registry mirrors.
-    registries: {}
-    # # Specifies mirror configuration for each registry host namespace.
-    # mirrors:
-    #     ghcr.io:
-    #         # List of endpoints (URLs) for registry mirrors to use.
-    #         endpoints:
-    #             - https://registry.insecure
-    #             - https://ghcr.io/v2/
-
-    # # Specifies TLS & auth configuration for HTTPS image registries.
-    # config:
-    #     registry.insecure:
-    #         # The TLS configuration for the registry.
-    #         tls:
-    #             insecureSkipVerify: true # Skip TLS server certificate verification (not recommended).
-    #             
-    #             # # Enable mutual TLS authentication with the registry.
-    #             # clientIdentity:
-    #             #     crt: LS0tIEVYQU1QTEUgQ0VSVElGSUNBVEUgLS0t
-    #             #     key: LS0tIEVYQU1QTEUgS0VZIC0tLQ==
-    #         
-    #         # # The auth configuration for this registry.
-    #         # auth:
-    #         #     username: username # Optional registry authentication.
-    #         #     password: password # Optional registry authentication.
-
     # Features describe individual Talos features that can be switched on or off.
     features:
         rbac: true # Enable role-based access control (RBAC).
@@ -331,6 +304,32 @@ machine:
     # sysfs:
     #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
 
+    # # Used to configure the machine's container image registry mirrors.
+    # registries:
+    #     # Specifies mirror configuration for each registry host namespace.
+    #     mirrors:
+    #         ghcr.io:
+    #             # List of endpoints (URLs) for registry mirrors to use.
+    #             endpoints:
+    #                 - https://registry.insecure
+    #                 - https://ghcr.io/v2/
+    #     # Specifies TLS & auth configuration for HTTPS image registries.
+    #     config:
+    #         registry.insecure:
+    #             # The TLS configuration for the registry.
+    #             tls:
+    #                 insecureSkipVerify: true # Skip TLS server certificate verification (not recommended).
+    #                 
+    #                 # # Enable mutual TLS authentication with the registry.
+    #                 # clientIdentity:
+    #                 #     crt: LS0tIEVYQU1QTEUgQ0VSVElGSUNBVEUgLS0t
+    #                 #     key: LS0tIEVYQU1QTEUgS0VZIC0tLQ==
+    #             
+    #             # # The auth configuration for this registry.
+    #             # auth:
+    #             #     username: username # Optional registry authentication.
+    #             #     password: password # Optional registry authentication.
+
     # # Machine system disk encryption configuration.
     # systemDiskEncryption:
     #     # Ephemeral partition encryption.
@@ -396,13 +395,16 @@ machine:
     #     exampleTaint: exampleTaintValue:NoSchedule
 # Provides cluster specific configuration options.
 cluster:
-    id: IibDE9IBk6-ez8IG6e4jMuabhij4PL1gUWR1lX9xExc= # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
-    secret: dFDAYPSP0fPajCUh0f7dvCOsvJNBj33ghT6P7mOenLE= # Shared secret of cluster (base64 encoded random 32 bytes).
+    id: WDdHMbY9EwsMzZoCUOAv1wMK_YjzrKRjAQPXpv8JKNE= # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
+    secret: zVxZV52JzzggghnZsGfhE490vOnNYTqVqTuHGKctpzs= # Shared secret of cluster (base64 encoded random 32 bytes).
     # Provides control plane specific configuration options.
     controlPlane:
         endpoint: https://192.168.2.231:6443 # Endpoint is the canonical controlplane endpoint, which can be an IP address or a DNS hostname.
     # Provides cluster specific network configuration options.
     network:
+        # The CNI used.
+        cni:
+            name: none # Name of CNI to use.
         dnsDomain: cluster.local # The domain used by Kubernetes DNS.
         # The pod subnet CIDR.
         podSubnets:
@@ -410,18 +412,17 @@ cluster:
         # The service subnet CIDR.
         serviceSubnets:
             - 10.96.0.0/12
-        
-        # # The CNI used.
-        # cni:
-        #     name: custom # Name of CNI to use.
-        #     # URLs containing manifests to apply for the CNI.
-        #     urls:
-        #         - https://docs.projectcalico.org/archive/v3.20/manifests/canal.yaml
-    token: d27arv.7yunhdwl5484eta1 # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
+    token: hckrgw.waoreis7zs3wg7bp # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
     # The base64 encoded root certificate authority used by Kubernetes.
     ca:
-        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpRENDQVMrZ0F3SUJBZ0lRVmxaK0taRXFqUGM2YXB1UlVqcVNLREFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSTBNREl3TXpFM016TXpNMW9YRFRNME1ERXpNVEUzTXpNegpNMW93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCR1A4dms2Znk1QVNXQUZqQ3ZpL0lsczl4bnhrUlNzbWQxc2tNdzNWSDRRWW0zZHFVTEFBNk1TWEl3eUwKZS9JYVNBeDN3aXdtZFdKNTJGZkVZRXZmb25DallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVVGclpQVnphU3ZkRW1YZVlLeEtEeXhUUDRxVDB3Q2dZSUtvWkl6ajBFQXdJRFJ3QXdSQUlnUzBpSHIzYk4KdTM2cEFSRjkzYVE5SE9iK21jWFNhRThwWnU4WFhKTTI2WWNDSUJKei80TzFUOUxpK2dYVzFBVWJzd2dEbXQrYwpFenV5azB1VW5SMU01dFNUCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpVENDQVMrZ0F3SUJBZ0lRRG5qUHpreklQVlhDZTlkVlFEK296ekFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSTBNREl3TkRBeE5EazBOVm9YRFRNME1ESXdNVEF4TkRrMApOVm93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCQS96RHRvYnFJU3locFZDRkFCakkrbWk5VWpmUHF0dWJLc29JRHkxNDVld01jZ0hOQUlxY1dCdTYvbUcKNGJ4aHJuN0NYdk54WCsyLzlkME82cEtDOGhxallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVVQMDVHenJSckRXUUlScWlTU1l1RXlmT0czY013Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnWWtTb3Vhc0kKdnB4d2VtZENMODdSTUJYbWdwNENXSkJLK0ZYRm8yZTZxVjhDSVFEYUN6RFJSRHQraWpmSnloU0MrMmUvUU9uYwozRERTZ0JtUXRud0NOMU1uT1E9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ""
+    # Kube-proxy server-specific configuration options
+    proxy:
+        disabled: true # Disable kube-proxy deployment on cluster bootstrap.
+        
+        # # The container image used in the kube-proxy manifest.
+        # image: registry.k8s.io/kube-proxy:v1.29.1
     # Configures cluster member discovery.
     discovery:
         enabled: true # Enable the cluster membership discovery feature.
@@ -501,15 +502,6 @@ cluster:
     #     # Extra arguments to supply to the controller manager.
     #     extraArgs:
     #         feature-gates: ServerSideApply=true
-
-    # # Kube-proxy server-specific configuration options
-    # proxy:
-    #     disabled: false # Disable kube-proxy deployment on cluster bootstrap.
-    #     image: registry.k8s.io/kube-proxy:v1.29.1 # The container image used in the kube-proxy manifest.
-    #     mode: ipvs # proxy mode of kube-proxy.
-    #     # Extra arguments to supply to kube-proxy.
-    #     extraArgs:
-    #         proxy-mode: iptables
 
     # # Scheduler server specific configuration options.
     # scheduler:
