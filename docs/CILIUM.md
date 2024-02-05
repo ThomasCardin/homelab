@@ -2,7 +2,7 @@
 
 ```bash
 helm template cilium cilium/cilium \
-  --version 1.14.0 \
+  --version 1.15.0 \
   --namespace kube-system \
   --set ipam.mode=kubernetes \
   --set kubeProxyReplacement=strict \
