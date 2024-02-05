@@ -44,51 +44,35 @@ spec:
 
 ---
 apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
+kind: HTTPRoute
 metadata:
-  name: demo-gateway
+  name: http-external-nginx
   namespace: nginx
-  labels:
-    app: cilium-gateway-demo-gateway
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  gatewayClassName: cilium
-  listeners:
-  # Test locally with the external port and control-plane IP adresse
-  # Or modify the /etc/hosts and set the nginx.ninebasetwo.net to the LB IP
-  - name: nginx-http
-    port: 80
-    protocol: HTTP
-    hostname: "*.ninebasetwo.net"
-    allowedRoutes:
-      namespaces:
-        from: All
-  - name: nginx-https
-    hostname: "*.ninebasetwo.net"
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls: 
-      mode: Terminate 
-      certificateRefs:
-        - name: demo-gateway-tls 
-          kind: Secret  
-          group: core 
+  parentRefs:
+  - name: external-gateway
+    namespace: networking
+  hostnames:
+    - "nginx.ninebasetwo.net"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: nginx
+      port: 80
+
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: http-nginx-1
+  name: http-nginx-internal
   namespace: nginx
 spec:
   parentRefs:
-  - name: demo-gateway
-    namespace: nginx
-  hostnames:
-    - "nginx.ninebasetwo.net"
+  - name: internal-gateway
+    namespace: networking
   rules:
   - matches:
     - path:
