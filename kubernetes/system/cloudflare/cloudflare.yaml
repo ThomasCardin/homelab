@@ -76,9 +76,15 @@ data:
     tunnel: example-tunnel
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
+
+    originRequest:
+      http2Origin: true
+
     no-autoupdate: true
    
     ingress:
     - hostname: nginx.ninebasetwo.net
       service: http://cilium-gateway-external-gateway.networking.svc.cluster.local:80
+      originRequest:
+        originServerName: ingress.ninebasetwo.net
     - service: http_status:404
