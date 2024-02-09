@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
-  namespace: cloudflare
+  namespace: cloudflared
 spec:
   selector:
     matchLabels:
@@ -70,10 +70,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared
-  namespace: cloudflare
+  namespace: cloudflared
 data:
   config.yaml: |
-    tunnel: example-tunnel
+    tunnel: ninebasetwo-tpi-cluster
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
 
