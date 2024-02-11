@@ -15,5 +15,9 @@ helm template cilium cilium/cilium \
   --set k8sServiceHost=localhost \
   --set k8sServicePort=7445 \
   --set l2announcements.enabled=true \
+  --set k8sClientRateLimit.qps=100 \
+  --set k8sClientRateLimit.burst=200 \
+  --set rollOutCiliumPods=true \
+  --set operator.rollOutPods=true \
   --set gatewayAPI.enabled=true > cilium.yaml
 ```
