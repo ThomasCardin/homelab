@@ -246,17 +246,17 @@ machine:
 
     # # MachineDisks list example.
     # disks:
-    #     - device: /dev/sdb # The name of the disk to use.
-    #       # A list of partitions to create on the disk.
+    #     - device: /dev/nvme0n1 # The name of the disk to use.
     #       partitions:
-    #         - mountpoint: /var/mnt/extra # Where to mount the partition.
-    #           
-    #           # # The size of partition: either bytes or human readable representation. If `size:` is omitted, the partition is sized to occupy the full disk.
+    #         - mountpoint: /var/lib/rook # Where to mount the partition.
+    #           size: 750 GB
+              
+              # # The size of partition: either bytes or human readable representation. If `size:` is omitted, the partition is sized to occupy the full disk.
 
-    #           # # Human readable representation.
-    #           # size: 100 MB
-    #           # # Precise value in bytes.
-    #           # size: 1073741824
+              # # Human readable representation.
+              # size: 100 MB
+              # # Precise value in bytes.
+              # size: 1073741824
 
     # # Allows the addition of user specified files.
 

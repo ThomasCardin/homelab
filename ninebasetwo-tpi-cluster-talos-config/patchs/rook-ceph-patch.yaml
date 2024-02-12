@@ -1,0 +1,9 @@
+# talosctl patch machineconfig -n <node-ip> --patch @rook-ceph-patch.yaml
+# talosctl usage -n <node-ip>
+- op: add
+  path: /machine/disks
+  value:
+      - device: /dev/nvme0n1
+        partitions:
+          - mountpoint: /var/rook
+            size: 750 GB
