@@ -1,4 +1,11 @@
-# Enabling the hubble and gatewayAPI feature
+# Cilium configuration
+
+## This includes
+
+- Hubble
+- Ingress
+- Gateway API 
+- The cilium way of metallb
 
 ```bash
 helm template cilium cilium/cilium \
@@ -19,5 +26,7 @@ helm template cilium cilium/cilium \
   --set k8sClientRateLimit.burst=200 \
   --set rollOutCiliumPods=true \
   --set operator.rollOutPods=true \
+  --set ingressController.enabled=true \
+  --set ingressController.loadbalancerMode=dedicated \
   --set gatewayAPI.enabled=true > cilium.yaml
 ```
