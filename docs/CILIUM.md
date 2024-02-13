@@ -4,7 +4,7 @@
 
 - Hubble
 - Ingress
-- Gateway API 
+- Gateway API
 - The cilium way of metallb
 
 ```bash
