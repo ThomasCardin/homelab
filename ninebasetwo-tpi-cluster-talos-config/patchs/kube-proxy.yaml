@@ -1,0 +1,3 @@
+- op: add
+  path: /cluster/proxy/disabled
+  value: false
