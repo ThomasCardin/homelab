@@ -42,7 +42,7 @@ metadata:
   namespace: nginx
 spec:
   parentRefs:
-  - name: external-gateway
+  - name: external-gateway-https
     namespace: networking
   hostnames:
     - "nginx.ninebasetwo.net"
@@ -69,7 +69,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /
+        value: /nginx
     backendRefs:
     - name: nginx
       port: 80

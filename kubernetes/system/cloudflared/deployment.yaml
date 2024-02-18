@@ -84,7 +84,7 @@ data:
    
     ingress:
     - hostname: nginx.ninebasetwo.net
-      service: http://cilium-gateway-external-gateway.networking.svc.cluster.local:80
+      service: https://cilium-gateway-external-gateway.networking.svc.cluster.local:443
       originRequest:
         originServerName: ingress.ninebasetwo.net
     - service: http_status:404
