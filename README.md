@@ -1,7 +1,7 @@
 # Homelab (private version) - Bleeding edge, some features might not work
 
-## Documentation
+## Tools and installation documentation
 
-Talos Os [installation and configuration](docs/TALOS-OS.md) for cilium
-
-Cilium [installation and configuration](docs/CILIUM.md) for Talos OS
+- [Talos os](docs/talos-os.md)
+- [Cilium](docs/cilium.md)
+- [Rook ceph](docs/rook-ceph.md)
