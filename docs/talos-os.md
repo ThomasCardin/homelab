@@ -53,3 +53,9 @@ talosctl bootstrap --nodes 192.168.2.231 --endpoints 192.168.2.231 \
 ```bash
 talosctl kubeconfig --nodes 192.168.2.231 --endpoints 192.168.2.231
 ```
+
+# Patch a node
+
+```bash
+talosctl patch --mode=no-reboot machineconfig -n <NODE-IP> --patch @<file-name>.yaml
+```
