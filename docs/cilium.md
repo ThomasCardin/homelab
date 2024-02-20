@@ -26,7 +26,7 @@ helm template cilium cilium/cilium \
   --set k8sClientRateLimit.burst=200 \
   --set rollOutCiliumPods=true \
   --set operator.rollOutPods=true \
-  --set ingressController.enabled=true \
-  --set ingressController.loadbalancerMode=dedicated \
+  # --set ingressController.enabled=true \
+  # --set ingressController.loadbalancerMode=dedicated \
   --set gatewayAPI.enabled=true > cilium.yaml
 ```
