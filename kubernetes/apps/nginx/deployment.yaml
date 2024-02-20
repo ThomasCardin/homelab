@@ -51,21 +51,21 @@ spec:
         ports:
         - name: http
           containerPort: 80
-        - name: https
-          containerPort: 443
-        volumeMounts:
-        - name: nginx-tls-volume
-          mountPath: "/etc/ssl/certs"
-        - name: nginx-conf
-          mountPath: "/etc/nginx/conf.d"
-      volumes:
-      - name: nginx-tls-volume
-        secret:
-          secretName: nginx-tls
-          defaultMode: 440
-      - name: nginx-conf
-        configMap:
-          name: nginx-conf
+        # - name: https
+        #   containerPort: 443
+      #   volumeMounts:
+      #   - name: nginx-tls-volume
+      #     mountPath: "/etc/ssl/certs"
+      #   - name: nginx-conf
+      #     mountPath: "/etc/nginx/conf.d"
+      # volumes:
+      # - name: nginx-tls-volume
+      #   secret:
+      #     secretName: nginx-tls
+      #     defaultMode: 440
+      # - name: nginx-conf
+      #   configMap:
+      #     name: nginx-conf
 ---
 apiVersion: v1
 kind: Service
@@ -79,9 +79,6 @@ spec:
   - name: http
     port: 80
     targetPort: 80
-  - name: https
-    port: 443
-    targetPort: 443
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
