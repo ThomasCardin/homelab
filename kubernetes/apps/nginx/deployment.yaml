@@ -80,7 +80,7 @@ spec:
     port: 80
     targetPort: 80
 ---
-apiVersion: gateway.networking.k8s.io/v1
+apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
   name: httproute-external-nginx
@@ -101,7 +101,7 @@ spec:
       port: 80
 
 ---
-apiVersion: gateway.networking.k8s.io/v1
+apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
   name: http-nginx-internal

@@ -32,3 +32,6 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+## External DNS configuration
+kubernetes/system/external-dns/external-dns.yaml
