@@ -18,9 +18,9 @@ spec:
       namespaces:
         from: All
   - name: external-gateway-https
-    hostname: "*.ninebasetwo.net"
     port: 443
     protocol: HTTPS
+    hostname: "*.ninebasetwo.net"
     allowedRoutes:
       namespaces:
         from: All

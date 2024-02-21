@@ -83,7 +83,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: http-external-nginx
+  name: httproute-external-nginx
   namespace: nginx
 spec:
   parentRefs:
