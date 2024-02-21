@@ -34,4 +34,4 @@ override.tf.json
 terraform.rc
 
 ## External DNS configuration
-kubernetes/system/external-dns/external-dns.yaml
+kubernetes/system/external-dns/*
