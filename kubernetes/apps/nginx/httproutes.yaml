@@ -1,0 +1,38 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: httproute-external-nginx
+  namespace: nginx
+spec:
+  parentRefs:
+  - name: external-gateway
+    namespace: networking
+  hostnames:
+    - "nginx.ninebasetwo.net"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: nginx
+      port: 80
+
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: http-nginx-internal
+  namespace: nginx
+spec:
+  parentRefs:
+  - name: internal-gateway
+    namespace: networking
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: nginx
+      port: 80
