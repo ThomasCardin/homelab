@@ -12,8 +12,8 @@ spec:
     namespace: nginx
   source:
     repoURL: https://github.com/ThomasCardin/homelab
-    path: kubernetes/apps/nginx
-    targetRevision: HEAD 
+    path: kubernetes/apps/nginx/base
+    targetRevision: HEAD
   syncPolicy:
     automated:
         selfHeal: true
