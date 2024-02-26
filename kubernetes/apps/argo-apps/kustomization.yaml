@@ -7,10 +7,12 @@ resources:
 
   # System applications
   - ../../system/cert-manager
+  - ../../system/cilium
+  - ../../system/networking
+
 
 
 patches:
-
 - patch: |-
     apiVersion: argoproj.io/v1alpha1
     kind: Application
