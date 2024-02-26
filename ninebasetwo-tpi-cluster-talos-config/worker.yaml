@@ -369,11 +369,9 @@ machine:
     #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
     #           format: json_lines # Logs format.
 
-    # # Configures the kernel.
-    # kernel:
-    #     # Kernel modules to load.
-    #     modules:
-    #         - name: brtfs # Module name.
+    kernel:
+      modules:
+        - name: rockchip-cpufreq
 
     # # Configures the seccomp profiles for the machine.
     # seccompProfiles:
