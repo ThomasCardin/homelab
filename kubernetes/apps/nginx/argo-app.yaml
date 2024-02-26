@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: nginx
   source:
-    repoURL: https://github.com/ThomasCardin/homelab
+    repoURL: https://github.com/ThomasCardin/homelab.git
     path: kubernetes/apps/nginx/base
     targetRevision: HEAD
   syncPolicy:
