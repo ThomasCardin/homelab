@@ -9,7 +9,7 @@ resources:
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/networking
-
+  - ../../system/argocd
 
 
 patches:
@@ -19,7 +19,7 @@ patches:
     metadata:
       name: not-used
       finalizers:
-      - resources-finalizer.argocd.argoproj.io
+        - resources-finalizer.argocd.argoproj.io
     spec:
       syncPolicy:
         automated:
