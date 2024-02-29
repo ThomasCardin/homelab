@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   # User applications
   - ../nginx/
+  - ../ddns/
 
   # System applications
   - ../../system/cert-manager
