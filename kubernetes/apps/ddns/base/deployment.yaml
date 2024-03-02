@@ -42,4 +42,3 @@ spec:
               secretKeyRef:
                 name: ddns-secrets
                 key: CLOUDFLARE_ZONE_ID 
-          
