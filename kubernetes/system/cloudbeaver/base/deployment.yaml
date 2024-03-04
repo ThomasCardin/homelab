@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudbeaver
+  namespace: cloudbeaver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudbeaver
+  template:
+    metadata:
+      labels:
+        app: cloudbeaver
+    spec:
+      containers:
+        - name: cloudbeaver
+          image: dbeaver/cloudbeaver:24.0.0@sha256:37510c9f5f722f01f68c77c33128721681283c2991f401fcacc145ca9e3fcc31
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8978
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8978
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8978
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          envFrom:
+            - secretRef:
+                name: dbeaver-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudbeaver-svc
+  namespace: cloudbeaver
+spec:
+  clusterIP: None
+  selector:
+    app: cloudbeaver
+  ports:
+    - protocol: TCP
+      port: 8978
