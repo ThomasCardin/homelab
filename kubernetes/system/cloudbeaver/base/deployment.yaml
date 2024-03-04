@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cloudbeaver
-          image: dbeaver/cloudbeaver:24.0.0@sha256:37510c9f5f722f01f68c77c33128721681283c2991f401fcacc145ca9e3fcc31
+          image: dbeaver/cloudbeaver:24.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8978
