@@ -34,7 +34,7 @@ spec:
             periodSeconds: 10
           envFrom:
           - secretRef:
-              name: dbeaver-secret
+              name: dbeaver-secret-b8bmc6h476
           volumeMounts:
             - name: dbeaver-product
               mountPath: /opt/cloudbeaver/conf/product.conf
@@ -45,10 +45,10 @@ spec:
       volumes:
         - name: dbeaver-product
           configMap:
-            name: dbeaver-product-configmap
+            name: dbeaver-product-configmap-c2h85hctg4
         - name: dbeaver-server
           configMap:
-            name: dbeaver-server-configmap
+            name: dbeaver-server-configmap-b7t5656876 
 
 ---
 apiVersion: v1
