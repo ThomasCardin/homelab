@@ -16,4 +16,4 @@ spec:
         value: /
     backendRefs:
     - name: cloudbeaver-svc
-      port: 8978
+      port: 80
