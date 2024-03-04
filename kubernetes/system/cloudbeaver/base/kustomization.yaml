@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+ - deployment.yaml
+ - httproutes.yaml
+ - namespace.yaml
+
+configMapGenerator:
+  - name: dbeaver-product-configmap
+    files:
+      - config/product.conf
+  - name: dbeaver-server-configmap
+    files:
+      - config/cloudbeaver.conf
+
+secretGenerator:
+- name: dbeaver-secret
+  literals:
+    - CB_SERVER_NAME=CloudBeaver Test Server
+    - CB_ADMIN_NAME=admin.dbeaver
+    - CB_ADMIN_PASSWORD=Password123

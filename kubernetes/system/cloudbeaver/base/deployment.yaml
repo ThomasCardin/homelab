@@ -32,6 +32,23 @@ spec:
               port: 8978
             initialDelaySeconds: 40
             periodSeconds: 10
+          envFrom:
+          - secretRef:
+              name: dbeaver-secret
+          volumeMounts:
+            - name: dbeaver-product
+              mountPath: /opt/cloudbeaver/conf/product.conf
+              subPath: product.conf
+            - name: dbeaver-server
+              mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
+              subPath: cloudbeaver.conf
+      volumes:
+        - name: dbeaver-product
+          configMap:
+            name: dbeaver-product-configmap
+        - name: dbeaver-server
+          configMap:
+            name: dbeaver-server-configmap
 
 ---
 apiVersion: v1
