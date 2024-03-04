@@ -51,7 +51,7 @@ spec:
       volumes:
         - name: dbeaver-product
           configMap:
-            name: dbeaver-product-configmap
+            name: dbeaver-product-configmap-c2h85hctg4
         - name: dbeaver-sources-user
           configMap:
             name: dbeaver-sources-user-configmap-dd46257bt9
@@ -60,7 +60,7 @@ spec:
             name: dbeaver-sources-global-configmap-dd46257bt9
         - name: dbeaver-server
           configMap:
-            name: dbeaver-server-configmap 
+            name: dbeaver-server-configmap-b7t5656876
 
 ---
 apiVersion: v1
