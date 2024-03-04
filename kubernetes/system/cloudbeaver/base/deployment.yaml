@@ -39,16 +39,28 @@ spec:
             - name: dbeaver-product
               mountPath: /opt/cloudbeaver/conf/product.conf
               subPath: product.conf
+            - name: dbeaver-sources-user
+              mountPath: /opt/cloudbeaver/workspace/user-projects/admin.dbeaver/.dbeaver/data-sources.json
+              subPath: data-sources.json
+            - name: dbeaver-sources-global
+              mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
+              subPath: data-sources.json
             - name: dbeaver-server
               mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
               subPath: cloudbeaver.conf
       volumes:
         - name: dbeaver-product
           configMap:
-            name: dbeaver-product-configmap-c2h85hctg4
+            name: dbeaver-product-configmap
+        - name: dbeaver-sources-user
+          configMap:
+            name: dbeaver-sources-user-configmap
+        - name: dbeaver-sources-global
+          configMap:
+            name: dbeaver-sources-global-configmap
         - name: dbeaver-server
           configMap:
-            name: dbeaver-server-configmap-b7t5656876 
+            name: dbeaver-server-configmap
 
 ---
 apiVersion: v1

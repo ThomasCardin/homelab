@@ -10,6 +10,12 @@ configMapGenerator:
   - name: dbeaver-product-configmap
     files:
       - config/product.conf
+  - name: dbeaver-sources-user-configmap
+    files:
+      - config/data-sources.json
+  - name: dbeaver-sources-global-configmap
+    files:
+      - config/data-sources.json
   - name: dbeaver-server-configmap
     files:
       - config/cloudbeaver.conf
