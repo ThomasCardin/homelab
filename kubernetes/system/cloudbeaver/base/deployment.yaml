@@ -54,13 +54,13 @@ spec:
             name: dbeaver-product-configmap
         - name: dbeaver-sources-user
           configMap:
-            name: dbeaver-sources-user-configmap
+            name: dbeaver-sources-user-configmap-dd46257bt9
         - name: dbeaver-sources-global
           configMap:
-            name: dbeaver-sources-global-configmap
+            name: dbeaver-sources-global-configmap-dd46257bt9
         - name: dbeaver-server
           configMap:
-            name: dbeaver-server-configmap
+            name: dbeaver-server-configmap 
 
 ---
 apiVersion: v1
