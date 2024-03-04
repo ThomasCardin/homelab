@@ -74,4 +74,4 @@ spec:
     app: cloudbeaver
   ports:
     - protocol: TCP
-      port: 80
+      port: 8978
