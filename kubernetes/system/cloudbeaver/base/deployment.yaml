@@ -32,9 +32,6 @@ spec:
               port: 8978
             initialDelaySeconds: 40
             periodSeconds: 10
-          envFrom:
-            - secretRef:
-                name: dbeaver-secret
 
 ---
 apiVersion: v1
