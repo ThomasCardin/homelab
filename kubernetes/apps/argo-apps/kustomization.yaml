@@ -11,6 +11,7 @@ resources:
   - ../../system/cilium
   - ../../system/networking
   - ../../system/argocd
+  - ../../system/cloudbeaver
 
 
 patches:
