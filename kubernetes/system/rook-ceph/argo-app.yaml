@@ -23,6 +23,9 @@ spec:
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab
+      path: kubernetes/system/rook-ceph/base
+      targetRevision: HEAD
   syncPolicy:
     automated:
       selfHeal: true
