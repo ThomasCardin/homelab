@@ -1,0 +1,8 @@
+---
+- name: Setup k3s worker node
+  hosts: worker
+  become: true
+
+  tasks:
+    - name: Include variables (variables.yml)
+      ansible.builtin.include_vars: ../variables.yml

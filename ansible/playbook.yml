@@ -1,0 +1,5 @@
+- name: Execute control plane playbook
+  ansible.builtin.import_playbook: playbooks/playbook-controlplane.yml
+
+- name: Execute worker playbook
+  ansible.builtin.import_playbook: playbooks/playbook-worker.yml
