@@ -1,4 +1,4 @@
-# Cilium configuration
+# Cilium configuration for talos os
 
 ## This includes
 
@@ -28,5 +28,23 @@ helm template cilium cilium/cilium \
   --set operator.rollOutPods=true \
   # --set ingressController.enabled=true \
   # --set ingressController.loadbalancerMode=dedicated \
+  --set gatewayAPI.enabled=true > cilium.yaml
+```
+
+# K3S
+
+```bash
+helm template cilium cilium/cilium \
+  --version 1.15.0 \
+  --namespace kube-system \
+  --set ipam.mode=kubernetes \
+  --set hubble.relay.enabled=true \
+  --set hubble.ui.enabled=true \
+  --set l2announcements.enabled=true \
+  --set k8sClientRateLimit.qps=100 \
+  --set k8sClientRateLimit.burst=200 \
+  --set rollOutCiliumPods=true \
+  --set operator.rollOutPods=true \
+  --set kubeProxyReplacement=true \
   --set gatewayAPI.enabled=true > cilium.yaml
 ```
