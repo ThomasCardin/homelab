@@ -6,7 +6,7 @@ metadata:
 spec:
   parentRefs:
   - name: external-gateway
-    namespace: networking
+    namespace: kube-system
   hostnames:
     - "argocd.ninebasetwo.net"
   rules:
@@ -27,7 +27,7 @@ metadata:
 spec:
   parentRefs:
   - name: internal-gateway
-    namespace: networking
+    namespace: kube-system
   rules:
   - matches:
     - path:
