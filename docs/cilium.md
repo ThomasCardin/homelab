@@ -26,9 +26,7 @@ helm template cilium cilium/cilium \
   --set k8sClientRateLimit.burst=200 \
   --set rollOutCiliumPods=true \
   --set operator.rollOutPods=true \
-  # --set ingressController.enabled=true \
-  # --set ingressController.loadbalancerMode=dedicated \
-  --set gatewayAPI.enabled=true > cilium.yaml
+  --set gatewayAPI.enabled=true > values.yaml
 ```
 
 # K3S
@@ -37,7 +35,6 @@ helm template cilium cilium/cilium \
 helm template cilium cilium/cilium \
   --version 1.15.0 \
   --namespace kube-system \
-  --set ipam.mode=kubernetes \
   --set hubble.relay.enabled=true \
   --set hubble.ui.enabled=true \
   --set l2announcements.enabled=true \
@@ -46,5 +43,7 @@ helm template cilium cilium/cilium \
   --set rollOutCiliumPods=true \
   --set operator.rollOutPods=true \
   --set kubeProxyReplacement=true \
-  --set gatewayAPI.enabled=true > cilium.yaml
+  --set ingressController.enabled=true \
+  --set ingressController.loadbalancerMode=dedicated \
+  --set gatewayAPI.enabled=true > values.yaml
 ```
