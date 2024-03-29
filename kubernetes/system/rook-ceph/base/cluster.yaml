@@ -256,17 +256,17 @@ spec:
     nodes:
       - name: "192.168.2.232"
         devices: # specific devices to use for storage can be specified for each node
-          - name: "nvme0n1p1" # multiple osds can be created on high performance devices
+          - name: "nvme0n1" # multiple osds can be created on high performance devices
             config:
               osdsPerDevice: "2"
       - name: "192.168.2.233"
         devices: # specific devices to use for storage can be specified for each node
-          - name: "nvme0n1p1" # multiple osds can be created on high performance devices
+          - name: "nvme0n1" # multiple osds can be created on high performance devices
             config:
               osdsPerDevice: "2"
       - name: "192.168.2.234"
         devices: # specific devices to use for storage can be specified for each node
-          - name: "nvme0n1p1" # multiple osds can be created on high performance devices
+          - name: "nvme0n1" # multiple osds can be created on high performance devices
             config:
               osdsPerDevice: "2"
     # when onlyApplyOSDPlacement is false, will merge both placement.All() and placement.osd
