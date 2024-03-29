@@ -1,14 +1,21 @@
 # Homelab (private version) - Bleeding edge, some features might not work
 
-## Tools and installation documentation
+## K3S
 
-- [Talos os](docs/talos-os.md)
-- [Cilium](docs/cilium.md)
-- [Rook ceph](docs/rook-ceph.md)
-- [K3S](docs/k3s.md)
+### Ansible
 
-## Run ansible playbooks
+Create a K3s cluster using ansible.
+
+1. Change the host and workers IP addresses inside the `ansible/inventory` file
+2. Run this command:
 
 ```bash
 ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --ask-pass -v
 ```
+
+## Talos OS
+
+### Documentation
+
+- [Talos os](docs/talos/talos-os.md)
+- [Cilium](docs/talos/cilium.md)
