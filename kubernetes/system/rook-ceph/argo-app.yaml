@@ -20,6 +20,9 @@ spec:
           - $values/kubernetes/system/rook-ceph/helm/values.yaml
       repoURL: https://charts.rook.io/release
       targetRevision: 1.13.7
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     automated:
       selfHeal: true
