@@ -259,7 +259,6 @@ spec:
           - name: "nvme0n1p1" # multiple osds can be created on high performance devices
             config:
               osdsPerDevice: "2"
-        config: # configuration can be specified at the node level which overrides the cluster level config
       - name: "192.168.2.233"
         devices: # specific devices to use for storage can be specified for each node
           - name: "nvme0n1p1" # multiple osds can be created on high performance devices
