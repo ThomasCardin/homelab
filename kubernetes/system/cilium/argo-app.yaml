@@ -21,7 +21,7 @@ spec:
       repoURL: https://helm.cilium.io/
       targetRevision: 1.15.1
     - repoURL: https://github.com/ThomasCardin/homelab
-      targetRevision: master
+      targetRevision: HEAD
       ref: values
     - repoURL: https://github.com/ThomasCardin/homelab
       path: kubernetes/system/cilium/base
