@@ -5,7 +5,7 @@ metadata:
   namespace: cert-manager
 type: Opaque
 stringData:
-  api-token: b60eNNM_Uv8oFeoPGOluZT_qvw6uiMwaOjOUCmnm
+  api-token: ce2277909a5917bc9655fbe1b84180efedceb
 
 ---
 apiVersion: cert-manager.io/v1
