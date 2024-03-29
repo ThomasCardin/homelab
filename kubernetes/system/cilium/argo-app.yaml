@@ -18,7 +18,7 @@ spec:
         releaseName: cilium
         valueFiles:
         - $values/kubernetes/system/cilium/helm/values.yaml
-      repoURL: https://grafana.github.io/helm-charts
+      repoURL: https://helm.cilium.io/
       targetRevision: 1.15.1
     - repoURL: 'https://github.com/ThomasCardin/homelab'
       targetRevision: master
