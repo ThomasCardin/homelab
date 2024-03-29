@@ -20,10 +20,10 @@ spec:
         - $values/kubernetes/system/cilium/helm/values.yaml
       repoURL: https://helm.cilium.io/
       targetRevision: 1.15.1
-    - repoURL: 'https://github.com/ThomasCardin/homelab'
+    - repoURL: https://github.com/ThomasCardin/homelab
       targetRevision: master
       ref: values
-    - repoURL: 'https://github.com/ThomasCardin/homelab'
+    - repoURL: https://github.com/ThomasCardin/homelab
       path: kubernetes/system/cilium/base
       targetRevision: HEAD
   syncPolicy:
