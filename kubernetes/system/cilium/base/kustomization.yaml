@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - gateways/cilium-gatewayclass.yaml
+  - gateways/gateways.yaml
+  - networking/ip-pool.yaml
+  - networking/l2announcement.yaml
