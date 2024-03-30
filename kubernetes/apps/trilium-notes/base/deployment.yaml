@@ -13,6 +13,15 @@ spec:
       labels:
         app: trilium-notes
     spec:
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        runAsNonRoot: true
+        runAsUser: 10000
+        allowPrivilegeEscalation: false
+      podSecurityContext:
+        fsGroup: 10000
       containers:
       - name: trilium
         image: zadam/trilium:latest@sha256:93cb2cd4a6709858c154bab7cba0a7d397969685f507daecb6bbdc409d81304b
@@ -21,10 +30,6 @@ spec:
           value: "8080"
         - name: TRILIUM_DATA_DIR
           value: "/srv/trilium-data"
-        - name: USER_UID
-          value: "1000"
-        - name: USER_GID
-          value: "1000"
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -34,9 +39,6 @@ spec:
       - name: trilium-data
         persistentVolumeClaim:
           claimName: trilium-notes-pv-claim
-      securityContext:
-        runAsUser: 1000 # based on trilium documentation
-        runAsGroup: 1000 # based on trilium documentation
 
 ---
 apiVersion: v1
