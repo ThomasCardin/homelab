@@ -60,7 +60,7 @@ metadata:
   labels:
     app: trilium-notes
 spec:
-  storageClassName: rook-ceph-block
+  storageClassName: tpi-ceph-block
   accessModes:
     - ReadWriteOnce
   resources:
