@@ -14,14 +14,6 @@ spec:
         app: trilium-notes
     spec:
       securityContext:
-        capabilities:
-          drop:
-            - ALL
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        allowPrivilegeEscalation: false
-      podSecurityContext:
         fsGroup: 1000
       containers:
       - name: trilium
@@ -36,6 +28,11 @@ spec:
         volumeMounts:
         - name: trilium-data
           mountPath: /srv/trilium-data
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
       volumes:
       - name: trilium-data
         persistentVolumeClaim:
