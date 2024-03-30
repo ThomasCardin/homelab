@@ -2,6 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
- - cluster.yaml
+ - cluster/cluster.yaml
+ - cluster/rook-ceph-default-sa.yaml
+
+ - blocks/rook-ceph-block.yaml
+
  - httproutes.yaml
- - rook-ceph-default-sa.yaml
