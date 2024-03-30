@@ -22,9 +22,9 @@ spec:
         - name: TRILIUM_DATA_DIR
           value: "/srv/trilium-data"
         - name: "USER_GID"
-          value: "1000"
+          value: "1001"
         - name: "USER_UID"
-          value: "1000"
+          value: "1001"
         ports:
         - containerPort: 8080
         volumeMounts:
