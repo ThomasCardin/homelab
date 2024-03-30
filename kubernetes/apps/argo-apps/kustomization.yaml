@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   # User applications
   - ../ddns/
-  - ../trilium-notes/
+  # - ../trilium-notes/
 
   # System applications
   - ../../system/cert-manager
