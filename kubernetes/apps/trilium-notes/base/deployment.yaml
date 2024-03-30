@@ -18,10 +18,11 @@ spec:
           drop:
             - ALL
         runAsNonRoot: true
-        runAsUser: 10000
+        runAsUser: 1000
+        runAsGroup: 1000
         allowPrivilegeEscalation: false
       podSecurityContext:
-        fsGroup: 10000
+        fsGroup: 1000
       containers:
       - name: trilium
         image: zadam/trilium:latest@sha256:93cb2cd4a6709858c154bab7cba0a7d397969685f507daecb6bbdc409d81304b
