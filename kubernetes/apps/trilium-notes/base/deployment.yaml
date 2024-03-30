@@ -21,6 +21,8 @@ spec:
           value: "8080"
         - name: TRILIUM_DATA_DIR
           value: "/srv/trilium-data"
+        - name: "USER_GID"
+          value: "1000"
         ports:
         - containerPort: 8080
         volumeMounts:
