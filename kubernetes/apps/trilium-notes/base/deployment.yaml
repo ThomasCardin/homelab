@@ -21,6 +21,10 @@ spec:
           value: "8080"
         - name: TRILIUM_DATA_DIR
           value: "/srv/trilium-data"
+        - name: USER_UID
+          value: "1000"
+        - name: USER_GID
+          value: "1000"
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -31,8 +35,8 @@ spec:
         persistentVolumeClaim:
           claimName: trilium-notes-pv-claim
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
+        runAsUser: 1000 # based on trilium documentation
+        runAsGroup: 1000 # based on trilium documentation
 
 ---
 apiVersion: v1
