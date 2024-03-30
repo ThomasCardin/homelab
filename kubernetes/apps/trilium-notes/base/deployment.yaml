@@ -13,8 +13,6 @@ spec:
       labels:
         app: trilium-notes
     spec:
-      securityContext:
-        fsGroup: 1000
       initContainers:
       - name: fix-permissions
         image: busybox:latest
@@ -35,11 +33,6 @@ spec:
         volumeMounts:
         - name: trilium-data
           mountPath: /srv/trilium-data
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 1000
-          runAsGroup: 1000
-          allowPrivilegeEscalation: false
       volumes:
       - name: trilium-data
         persistentVolumeClaim:
