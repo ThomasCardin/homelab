@@ -15,6 +15,13 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+      initContainers:
+      - name: fix-permissions
+        image: busybox:latest
+        command: ["sh", "-c", "chown -R 1000:1000 /srv/trilium-data && chmod -R 755 /srv/trilium-data"]
+        volumeMounts:
+        - name: trilium-data
+          mountPath: /srv/trilium-data
       containers:
       - name: trilium
         image: zadam/trilium:latest@sha256:93cb2cd4a6709858c154bab7cba0a7d397969685f507daecb6bbdc409d81304b
