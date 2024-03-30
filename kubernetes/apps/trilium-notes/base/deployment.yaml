@@ -14,7 +14,7 @@ spec:
         app: trilium-notes
     spec:
       initContainers:
-      - name: fix-permissions
+      - name: fix-permissions # default user of trilium notes is 1000
         image: busybox:latest
         command: ["sh", "-c", "chown -R 1000:1000 /srv/trilium-data && chmod -R 755 /srv/trilium-data"]
         volumeMounts:
