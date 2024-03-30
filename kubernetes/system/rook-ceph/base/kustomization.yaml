@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
  - cluster/cluster.yaml
  - cluster/rook-ceph-default-sa.yaml
- - blocks/rook-ceph-block.yaml
+ - blocks/tpi-ceph-block.yaml
  - httproutes.yaml
