@@ -766,6 +766,7 @@ grafana.ini:
     url: https://grafana.net
   server:
     domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
+    root_url: https://grafana.ninebasetwo.net
   auth.github:
     enabled: true
     allow_sign_up: true
