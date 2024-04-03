@@ -1033,9 +1033,10 @@ hubble:
       # -- Create ServiceMonitor resources for Prometheus Operator.
       # This requires the prometheus CRDs to be available.
       # ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
-      enabled: false
+      enabled: true
       # -- Labels to add to ServiceMonitor hubble
-      labels: {}
+      labels:
+        release: kube-prometheus-stack
       # -- Annotations to add to ServiceMonitor hubble
       annotations: {}
       # -- jobLabel to add for ServiceMonitor hubble
@@ -1057,7 +1058,7 @@ hubble:
     # grafana can import dashboards based on the label and value
     # ref: https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
     dashboards:
-      enabled: false
+      enabled: true
       label: grafana_dashboard
       # @schema
       # type: [null, string]
@@ -1375,21 +1376,22 @@ hubble:
     # -- Enable prometheus metrics for hubble-relay on the configured port at
     # /metrics
     prometheus:
-      enabled: false
+      enabled: true
       port: 9966
       serviceMonitor:
         # -- Enable service monitors.
         # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
-        enabled: false
+        enabled: true
         # -- Labels to add to ServiceMonitor hubble-relay
-        labels: {}
+        labels:
+          release: kube-prometheus-stack
         # -- Annotations to add to ServiceMonitor hubble-relay
         annotations: {}
         # -- Interval for scrape metrics.
         interval: "10s"
         # -- Specify the Kubernetes namespace where Prometheus expects to find
         # service monitors configured.
-        # namespace: ""
+        namespace: "monitoring"
         # @schema
         # type: [null, array]
         # @schema
@@ -1944,14 +1946,15 @@ pprof:
   port: 6060
 # -- Configure prometheus metrics on the configured port at /metrics
 prometheus:
-  enabled: false
+  enabled: true
   port: 9962
   serviceMonitor:
     # -- Enable service monitors.
     # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
-    enabled: false
+    enabled: true
     # -- Labels to add to ServiceMonitor cilium-agent
-    labels: {}
+    labels:
+      release: kube-prometheus-stack
     # -- Annotations to add to ServiceMonitor cilium-agent
     annotations: {}
     # -- jobLabel to add for ServiceMonitor cilium-agent
@@ -1960,7 +1963,7 @@ prometheus:
     interval: "10s"
     # -- Specify the Kubernetes namespace where Prometheus expects to find
     # service monitors configured.
-    # namespace: ""
+    namespace: "monitoring"
     # -- Relabeling configs for the ServiceMonitor cilium-agent
     relabelings:
       - sourceLabels:
@@ -1994,7 +1997,7 @@ prometheus:
 # grafana can import dashboards based on the label and value
 # ref: https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
 dashboards:
-  enabled: false
+  enabled: true
   label: grafana_dashboard
   # @schema
   # type: [null, string]
@@ -2193,14 +2196,15 @@ envoy:
       # with Envoy enabled.
       enabled: false
       # -- Labels to add to ServiceMonitor cilium-envoy
-      labels: {}
+      labels:
+        release: kube-prometheus-stack
       # -- Annotations to add to ServiceMonitor cilium-envoy
       annotations: {}
       # -- Interval for scrape metrics.
       interval: "10s"
       # -- Specify the Kubernetes namespace where Prometheus expects to find
       # service monitors configured.
-      # namespace: ""
+      namespace: "monitoring"
       # -- Relabeling configs for the ServiceMonitor cilium-envoy
       # or for cilium-agent with Envoy configured.
       relabelings:
@@ -2567,7 +2571,8 @@ operator:
       # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
       enabled: false
       # -- Labels to add to ServiceMonitor cilium-operator
-      labels: {}
+      labels:
+        release: kube-prometheus-stack
       # -- Annotations to add to ServiceMonitor cilium-operator
       annotations: {}
       # -- jobLabel to add for ServiceMonitor cilium-operator
@@ -2588,7 +2593,7 @@ operator:
   # grafana can import dashboards based on the label and value
   # ref: https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
   dashboards:
-    enabled: false
+    enabled: true
     label: grafana_dashboard
     # @schema
     # type: [null, string]
@@ -3144,12 +3149,13 @@ clustermesh:
         # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
         enabled: false
         # -- Labels to add to ServiceMonitor clustermesh-apiserver
-        labels: {}
+        labels:
+          release: kube-prometheus-stack
         # -- Annotations to add to ServiceMonitor clustermesh-apiserver
         annotations: {}
         # -- Specify the Kubernetes namespace where Prometheus expects to find
         # service monitors configured.
-        # namespace: ""
+        namespace: "monitoring"
 
         # -- Interval for scrape metrics (apiserver metrics)
         interval: "10s"
