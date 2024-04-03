@@ -1416,7 +1416,7 @@ hubble:
       port: 6062
   ui:
     # -- Whether to enable the Hubble UI.
-    enabled: false
+    enabled: true
     standalone:
       # -- When true, it will allow installing the Hubble UI only, without checking dependencies.
       # It is useful if a cluster already has cilium and Hubble relay installed and you just
@@ -2194,7 +2194,7 @@ envoy:
       # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
       # Note that this setting applies to both cilium-envoy _and_ cilium-agent
       # with Envoy enabled.
-      enabled: false
+      enabled: true
       # -- Labels to add to ServiceMonitor cilium-envoy
       labels:
         release: kube-prometheus-stack
@@ -2569,7 +2569,7 @@ operator:
     serviceMonitor:
       # -- Enable service monitors.
       # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
-      enabled: false
+      enabled: true
       # -- Labels to add to ServiceMonitor cilium-operator
       labels:
         release: kube-prometheus-stack
@@ -3147,7 +3147,7 @@ clustermesh:
       serviceMonitor:
         # -- Enable service monitor.
         # This requires the prometheus CRDs to be available (see https://github.com/prometheus-operator/prometheus-operator/blob/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml)
-        enabled: false
+        enabled: true
         # -- Labels to add to ServiceMonitor clustermesh-apiserver
         labels:
           release: kube-prometheus-stack
