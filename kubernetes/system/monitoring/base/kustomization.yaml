@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
  - httproutes.yaml
  - namespace.yaml
- - crds/kustomization.yaml
