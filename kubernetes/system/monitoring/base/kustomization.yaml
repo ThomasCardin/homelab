@@ -3,4 +3,5 @@ kind: Kustomization
 
 resources:
  - httproutes.yaml
- - kube-prometheus-stack-crds.yaml
+ - namespace.yaml
+ - crds/kustomization.yaml
