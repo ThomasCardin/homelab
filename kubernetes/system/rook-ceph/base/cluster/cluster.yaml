@@ -192,7 +192,6 @@ spec:
   # If no mgr annotations are set, prometheus scrape annotations will be set by default.
   #   mgr:
   labels:
-    release: kube-prometheus-stack
   #   all:
   #   mon:
   #   osd:
