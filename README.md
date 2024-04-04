@@ -10,7 +10,7 @@ Create a K3s cluster using ansible.
 2. Run this command:
 
 ```bash
-ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --ask-pass -v
+ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --ask-pass -vvv
 ```
 
 ## Talos OS
