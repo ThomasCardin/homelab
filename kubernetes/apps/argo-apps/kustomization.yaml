@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   # User applications
   - ../ddns/
-  - ../trilium-notes/
+  # - ../trilium-notes/
 
   # System applications
   - ../../system/cert-manager
@@ -12,7 +12,7 @@ resources:
   - ../../system/argocd
   - ../../system/external-dns
   # - ../../system/rook-ceph
-  - ../../system/monitoring
+  # - ../../system/monitoring
 
 patches:
 - patch: |-
