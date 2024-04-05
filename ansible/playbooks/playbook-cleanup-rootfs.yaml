@@ -1,0 +1,12 @@
+---
+- name: Clean up Root FS
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Run crictl rmi --prune
+      ansible.builtin.shell:
+        cmd: >
+          sudo crictl rmi --prune
+      register: k3s_env_output
+      changed_when: k3s_env_output.rc != 0
