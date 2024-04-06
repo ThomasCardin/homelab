@@ -5,7 +5,7 @@
 
   tasks:
     - name: Include variables (variables.yml)
-      ansible.builtin.include_vars: ../variables.yml
+      ansible.builtin.include_vars: ../../variables.yml
 
     - name: Update the apt cache
       ansible.builtin.apt:
@@ -33,7 +33,7 @@
       ansible.builtin.shell:
         cmd: >
           /tmp/k3s_install_script.sh agent
-          --server https://192.168.2.231:6443
+          --server https://192.168.2.203:6443
           --token {{ k3s_token }}
       register: k3s_install_output
       changed_when: k3s_install_output.rc != 0

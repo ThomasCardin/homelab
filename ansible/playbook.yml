@@ -1,5 +1,8 @@
 - name: Execute control plane playbook
-  ansible.builtin.import_playbook: playbooks/playbook-controlplane.yml
+  ansible.builtin.import_playbook: playbooks/k3s/playbook-controlplane.yml
 
 - name: Execute worker playbook
-  ansible.builtin.import_playbook: playbooks/playbook-worker.yml
+  ansible.builtin.import_playbook: playbooks/k3s/playbook-worker.yml
+
+- name: Execute name nodes playbook
+  ansible.builtin.import_playbook: playbooks/k3s/playbook-name-nodes.yml
