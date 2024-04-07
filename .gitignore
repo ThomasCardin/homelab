@@ -35,3 +35,5 @@ terraform.rc
 
 ## External DNS configuration
 kubernetes/secrets
+
+htpc/
