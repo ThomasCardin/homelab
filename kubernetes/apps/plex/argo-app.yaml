@@ -17,7 +17,7 @@ spec:
         valueFiles:
           - $values/kubernetes/apps/plex/helm/values.yaml
       repoURL: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
-      targetRevision: 6.4.0
+      targetRevision: 0.3.0
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
