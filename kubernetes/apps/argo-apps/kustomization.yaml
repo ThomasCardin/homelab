@@ -5,6 +5,7 @@ resources:
   # User applications
   - ../ddns/
   - ../trilium-notes/
+  - ../plex/
 
   # System applications
   - ../../system/cert-manager
