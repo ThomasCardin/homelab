@@ -17,22 +17,3 @@ spec:
     backendRefs:
     - name: argocd-server
       port: 443
-
----
-apiVersion: gateway.networking.k8s.io/v1beta1
-kind: HTTPRoute
-metadata:
-  name: http-nginx-argocd
-  namespace: argocd
-spec:
-  parentRefs:
-  - name: internal-gateway
-    namespace: kube-system
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: argocd-server
-      port: 443
