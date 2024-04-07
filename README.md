@@ -13,9 +13,10 @@ Create a K3s cluster using ansible.
 ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --ask-pass -vvv
 ```
 
-## Talos OS
+## Hardware and information
 
-### Documentation
+controlplane: 192.168.2.203
 
-- [Talos os](docs/talos/talos-os.md)
-- [Cilium](docs/talos/cilium.md)
+worker1: 192.168.2.201
+worker2: 192.168.2.204
+worker3: 192.168.2.206 -> have access to the HDD

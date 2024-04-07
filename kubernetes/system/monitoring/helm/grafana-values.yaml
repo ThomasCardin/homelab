@@ -356,7 +356,7 @@ extraContainerVolumes: []
 persistence:
   type: pvc
   enabled: true
-  storageClassName: tpi-ceph-block
+  storageClassName: hdd-ceph-block
   accessModes:
     - ReadWriteOnce
   size: 10Gi

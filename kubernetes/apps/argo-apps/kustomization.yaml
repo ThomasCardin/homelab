@@ -11,8 +11,8 @@ resources:
   - ../../system/cilium
   - ../../system/argocd
   - ../../system/external-dns
-  # - ../../system/rook-ceph
-  # - ../../system/monitoring
+  - ../../system/rook-ceph
+  - ../../system/monitoring
 
 patches:
 - patch: |-
