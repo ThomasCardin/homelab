@@ -6,3 +6,4 @@ resources:
  - cluster/rook-ceph-default-sa.yaml
  - blocks/hdd-ceph-block.yaml
  - httproutes.yaml
+ - cephfs/hdd-ceph-cephfs.yaml
