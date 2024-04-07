@@ -249,8 +249,6 @@ spec:
       - name: "worker3"
         devices:
           - name: "/dev/sda"
-      - name: "worker3"
-        devices:
           - name: "/dev/sdb"
     # when onlyApplyOSDPlacement is false, will merge both placement.All() and placement.osd
     onlyApplyOSDPlacement: false
