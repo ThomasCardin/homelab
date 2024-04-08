@@ -2026,7 +2026,7 @@ envoy:
     # -- Path to a separate Envoy log file, if any. Defaults to /dev/stdout.
     path: ""
   # -- Time in seconds after which a TCP connection attempt times out
-  connectTimeoutSeconds: 2
+  connectTimeoutSeconds: 30
   # -- ProxyMaxRequestsPerConnection specifies the max_requests_per_connection setting for Envoy
   maxRequestsPerConnection: 0
   # -- Set Envoy HTTP option max_connection_duration seconds. Default 0 (disable)
