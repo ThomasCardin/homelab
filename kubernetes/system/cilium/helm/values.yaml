@@ -885,7 +885,7 @@ endpointRoutes:
   # @schema
   # -- Enable use of per endpoint routes instead of routing via
   # the cilium_host interface.
-  enabled: false
+  enabled: true
 k8sNetworkPolicy:
   # -- Enable support for K8s NetworkPolicy
   enabled: true
