@@ -14,4 +14,8 @@ do
     echo "===================="
 done
 
+echo "========= PID ==========="
+ps aux | grep 'kubectl port-forward'
+echo "========= END OF PID ==========="
+
 sleep 2
