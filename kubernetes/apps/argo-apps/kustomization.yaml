@@ -5,7 +5,7 @@ resources:
   # User applications
   - ../ddns/
   - ../trilium-notes/
-  - ../open-webui/
+  - ../ollama/
 
   # System applications
   - ../../system/cert-manager

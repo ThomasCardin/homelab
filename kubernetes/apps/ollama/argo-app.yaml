@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: open-webui
+  name: ollama
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,10 +9,10 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: open-webui
+    namespace: ollama
   source:
     repoURL: https://github.com/ThomasCardin/homelab.git
-    path: kubernetes/apps/open-webui/base
+    path: kubernetes/apps/ollama/base
     targetRevision: HEAD
   syncPolicy:
     automated:
