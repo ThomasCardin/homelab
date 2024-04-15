@@ -26,7 +26,6 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: ollama-volume
-        namespace: ollama
       spec:
         storageClassName: hdd-ceph-block
         accessModes: [ "ReadWriteOnce" ]
