@@ -19,14 +19,6 @@ spec:
           image: ollama/ollama:latest
           ports:
             - containerPort: 11434
-          resources:
-            requests:
-              cpu: "2000m"
-              memory: "2Gi"
-            limits:
-              cpu: "2000m"
-              memory: "2Gi"
-              nvidia.com/gpu: "0"
           volumeMounts:
             - name: ollama-volume
               mountPath: /root/.ollama
