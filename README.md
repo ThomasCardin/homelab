@@ -18,5 +18,7 @@ ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --
 controlplane: 192.168.2.203
 
 worker1: 192.168.2.201
+
 worker2: 192.168.2.204
+
 worker3: 192.168.2.206 -> have access to the HDD
