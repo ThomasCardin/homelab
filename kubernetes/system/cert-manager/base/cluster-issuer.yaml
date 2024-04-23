@@ -4,7 +4,7 @@ metadata:
   name: cloudflare-api-token-secret
   namespace: cert-manager
 type: Opaque
-stringData:
+data:
   api-token: T0hfZGhOVG5pTWppVzI1cENKQklKSTJhUEdXYjg5WGRSVDFsVmJaTw==
 
 ---
