@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack
+  name: kubeshark
   namespace: argocd
   finalizers:
       - resources-finalizer.argocd.argoproj.io
@@ -11,13 +11,13 @@ spec:
     namespace: monitoring
     server: https://kubernetes.default.svc
   sources:
-    - chart: kube-prometheus-stack
+    - chart: kubeshark
       helm:
-        releaseName: kube-prometheus-stack
+        releaseName: kubeshark
         valueFiles:
-          - $values/kubernetes/system/monitoring/helm/kube-prometheus-stack.values.yaml
-      repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 56.13.1
+          - $values/kubernetes/system/monitoring/helm/kubeshark.values.yaml
+      repoURL: https://helm.kubeshark.co
+      targetRevision: 7.3.3
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
