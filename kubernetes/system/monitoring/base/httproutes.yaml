@@ -17,24 +17,3 @@ spec:
     backendRefs:
     - name: grafana
       port: 80
-
----
-apiVersion: gateway.networking.k8s.io/v1beta1
-kind: HTTPRoute
-metadata:
-  name: httproute-external-kubeshark
-  namespace: monitoring
-spec:
-  parentRefs:
-  - name: external-gateway
-    namespace: kube-system
-  hostnames:
-    - "kubeshark.ninebasetwo.net"
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: kubeshark-front
-      port: 8899
