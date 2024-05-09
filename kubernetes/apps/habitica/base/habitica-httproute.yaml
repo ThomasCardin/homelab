@@ -15,5 +15,5 @@ spec:
         type: PathPrefix
         value: /
     backendRefs:
-    - name: habitica
+    - name: habiticaweb
       port: 3000
