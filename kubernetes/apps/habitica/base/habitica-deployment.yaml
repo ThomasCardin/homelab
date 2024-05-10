@@ -48,3 +48,28 @@ spec:
       - name: mongo-storage
         persistentVolumeClaim:
           claimName: mongo-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: habtica-server
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: habitica
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: habitica-client
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: habitica
+  type: ClusterIP
