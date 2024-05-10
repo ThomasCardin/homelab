@@ -29,7 +29,7 @@ spec:
         - containerPort: 3000
         env:
         - name: NODE_DB_URI
-          value: "mongodb://habitica-mongo.habitica.svc.cluster.local:27017/habitrpg"
+          value: "mongodb://habitica-mongo:27017/habitrpg"
         command: ["/bin/sh", "-c"]
         args: ["npm start"]
 
@@ -40,7 +40,7 @@ spec:
         - containerPort: 8080
         env:
         - name: BASE_URL
-          value: "http://habtica-server.habitica.svc.cluster.local:3000"
+          value: "http://habtica-server:3000"
         command: ["/bin/sh", "-c"]
         args: ["npm run client:dev"]
 
