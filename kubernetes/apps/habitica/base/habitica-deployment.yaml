@@ -15,13 +15,13 @@ spec:
       containers:
       - name: server
         image: ghcr.io/thomascardin/habitica:5.24.2
-        workingDir: /usr/src/habitica
         ports:
         - containerPort: 3000
         env:
         - name: NODE_DB_URI
           value: "mongodb://mongo-service:27017/habitrpg"
-        command: ["npm", "start"]
+        command: ["/bin/sh", "-c"]
+        args: ["ls -lah /usr/src/habitica && npm start"]
         volumeMounts:
         - name: habitica-src
           mountPath: /usr/src/habitica
@@ -48,13 +48,13 @@ spec:
       containers:
       - name: client
         image: ghcr.io/thomascardin/habitica:5.24.2
-        workingDir: /usr/src/habitica
         ports:
         - containerPort: 8080
         env:
         - name: BASE_URL
           value: "http://server-service:3000"
-        command: ["npm", "run", "client:dev"]
+        command: ["/bin/sh", "-c"]
+        args: ["ls -lah /usr/src/habitica && npm run client:dev"]
         volumeMounts:
         - name: habitica-src
           mountPath: /usr/src/habitica
