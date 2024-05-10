@@ -22,13 +22,6 @@ spec:
           value: "mongodb://mongo-service:27017/habitrpg"
         command: ["/bin/sh", "-c"]
         args: ["cd .. &&  ls -lah /usr/src/habitica && npm start"]
-        volumeMounts:
-        - name: habitica-src
-          mountPath: /usr/src/habitica
-      volumes:
-      - name: habitica-src
-        persistentVolumeClaim:
-          claimName: habitica-src-pvc
 
 ---
 apiVersion: apps/v1
@@ -55,26 +48,6 @@ spec:
           value: "http://server-service:3000"
         command: ["/bin/sh", "-c"]
         args: ["cd .. && ls -lah /usr/src/habitica && npm run client:dev"]
-        volumeMounts:
-        - name: habitica-src
-          mountPath: /usr/src/habitica
-      volumes:
-      - name: habitica-src
-        persistentVolumeClaim:
-          claimName: habitica-src-pvc
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: habitica-src-pvc
-spec:
-  storageClassName: hdd-ceph-block
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
 
 ---
 apiVersion: v1
