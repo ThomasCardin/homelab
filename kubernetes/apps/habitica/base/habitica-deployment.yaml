@@ -67,6 +67,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: habitica-src-pvc
 spec:
+  storageClassName: hdd-ceph-block
   accessModes:
     - ReadWriteOnce
   resources:
