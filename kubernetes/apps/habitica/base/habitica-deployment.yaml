@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: habitica
-        image: ksonney/habitrpg:latest
+        image: ghcr.io/thomascardin/habitica:5.24.2
         env:
         - name: NODE_DB_URI
           value: "mongodb://mongosvc:27017/habitrpg"
