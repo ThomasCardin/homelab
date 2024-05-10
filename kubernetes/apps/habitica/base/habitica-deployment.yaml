@@ -20,7 +20,9 @@ spec:
         - containerPort: 3000
         env:
         - name: NODE_DB_URI
-          value: "mongodb://mongodb/habitrpg"
+          value: "mongodb://mongodb:27017/habitrpg"
+        - name: NODE_ENV
+          value: "production"
         command: ["/bin/sh", "-c"]
         args: ["npm start"]
 
@@ -32,6 +34,8 @@ spec:
         env:
         - name: BASE_URL
           value: "http://habitica-server:3000"
+        - name: NODE_ENV
+          value: "production"
         command: ["/bin/sh", "-c"]
         args: ["npm run client:dev"]
 
