@@ -1,38 +1,99 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: habitica
-  labels:
-    app: habitica
+  name: server-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: habitica
+      app: server
   template:
     metadata:
       labels:
-        app: habitica
+        app: server
     spec:
       containers:
-      - name: habitica
+      - name: server
         image: ghcr.io/thomascardin/habitica:5.24.2
-        env:
-        - name: NODE_DB_URI
-          value: "mongodb://mongosvc:27017/habitrpg"
         ports:
         - containerPort: 3000
+        env:
+        - name: NODE_DB_URI
+          value: "mongodb://mongo-service:27017/habitrpg"
+        command: ["npm", "start"]
+        volumeMounts:
+        - name: habitica-src
+          mountPath: /usr/src/habitica
+      volumes:
+      - name: habitica-src
+        persistentVolumeClaim:
+          claimName: habitica-src-pvc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: ghcr.io/thomascardin/habitica:5.24.2
+        ports:
+        - containerPort: 8080
+        env:
+        - name: BASE_URL
+          value: "http://server-service:3000"
+        command: ["npm", "run", "client:dev"]
+        volumeMounts:
+        - name: habitica-src
+          mountPath: /usr/src/habitica
+      volumes:
+      - name: habitica-src
+        persistentVolumeClaim:
+          claimName: habitica-src-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: habitica-src-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
 ---
 apiVersion: v1
 kind: Service
-metadata: 
-  name: habiticaweb
-  labels: 
-    app: habiticaweb
-spec: 
+metadata:
+  name: server-service
+spec:
   ports:
   - port: 3000
     targetPort: 3000
-  selector: 
-    app: habitica
+  selector:
+    app: server
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: client
   type: ClusterIP
