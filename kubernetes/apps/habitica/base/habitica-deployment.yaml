@@ -1,77 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server-deployment
+  name: habitica
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: server
+      app: habitica
   template:
     metadata:
       labels:
-        app: server
+        app: habitica
     spec:
       containers:
-      - name: server
+      - name: habitica-server
         image: ghcr.io/thomascardin/habitica:5.24.2
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
         env:
         - name: NODE_DB_URI
-          value: "mongodb://mongo-service:27017/habitrpg"
+          value: "mongodb://habitica-mongo.habitica.svc.cluster.local:27017/habitrpg"
         command: ["/bin/sh", "-c"]
         args: ["npm start"]
 
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: client-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: client
-  template:
-    metadata:
-      labels:
-        app: client
-    spec:
-      containers:
-      - name: client
+      - name: habitica-client
         image: ghcr.io/thomascardin/habitica:5.24.2
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
         - name: BASE_URL
-          value: "http://server-service:3000"
+          value: "http://habtica-server.habitica.svc.cluster.local:3000"
         command: ["/bin/sh", "-c"]
         args: ["npm run client:dev"]
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: server-service
-spec:
-  ports:
-  - port: 3000
-    targetPort: 3000
-  selector:
-    app: server
+      - name: mongo
+        image: mongo:3.6
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-storage
+          mountPath: /data/db
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: client-service
-spec:
-  ports:
-  - port: 8080
-    targetPort: 8080
-  selector:
-    app: client
-  type: ClusterIP
+      volumes:
+      - name: mongo-storage
+        persistentVolumeClaim:
+          claimName: mongo-pvc
