@@ -15,5 +15,5 @@ spec:
         type: PathPrefix
         value: /
     backendRefs:
-    - name: client-service
+    - name: habitica-client
       port: 8080
