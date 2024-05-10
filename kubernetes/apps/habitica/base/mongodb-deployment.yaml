@@ -30,13 +30,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: habitica-mongo
+  name: mongodb
 spec:
   ports:
   - port: 27017
     targetPort: 27017
   selector:
-    app: habitica
+    app: mongodb
   type: ClusterIP
 
 ---

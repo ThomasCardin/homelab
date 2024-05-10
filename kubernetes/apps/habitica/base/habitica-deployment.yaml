@@ -12,16 +12,7 @@ spec:
       labels:
         app: habitica
     spec:
-      containers:
-      - name: mongo
-        image: mongo:3.6
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 27017
-        volumeMounts:
-        - name: mongo-storage
-          mountPath: /data/db
-        
+      containers:        
       - name: habitica-server
         image: ghcr.io/thomascardin/habitica:5.24.2
         imagePullPolicy: Always
@@ -29,7 +20,7 @@ spec:
         - containerPort: 3000
         env:
         - name: NODE_DB_URI
-          value: "mongodb://habitica-mongo:27017/habitrpg"
+          value: "mongodb://mongodb:27017/habitrpg"
         command: ["/bin/sh", "-c"]
         args: ["npm start"]
 
@@ -40,20 +31,15 @@ spec:
         - containerPort: 8080
         env:
         - name: BASE_URL
-          value: "http://habtica-server:3000"
+          value: "http://habitica-server:3000"
         command: ["/bin/sh", "-c"]
         args: ["npm run client:dev"]
-
-      volumes:
-      - name: mongo-storage
-        persistentVolumeClaim:
-          claimName: mongo-pvc
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: habtica-server
+  name: habitica-server
 spec:
   ports:
   - port: 3000
