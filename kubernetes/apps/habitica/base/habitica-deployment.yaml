@@ -21,7 +21,7 @@ spec:
         - name: NODE_DB_URI
           value: "mongodb://mongo-service:27017/habitrpg"
         command: ["/bin/sh", "-c"]
-        args: ["ls -lah /usr/src/habitica && npm start"]
+        args: ["npm start"]
 
 ---
 apiVersion: apps/v1
@@ -47,7 +47,7 @@ spec:
         - name: BASE_URL
           value: "http://server-service:3000"
         command: ["/bin/sh", "-c"]
-        args: ["ls -lah /usr/src/habitica && npm run client:dev"]
+        args: ["npm run client:dev"]
 
 ---
 apiVersion: v1
