@@ -20,7 +20,7 @@ spec:
         - containerPort: 3000
         env:
         - name: NODE_DB_URI
-          value: "mongodb://mongodb:27017/habitrpg"
+          value: "mongodb://mongodb/habitrpg"
         command: ["/bin/sh", "-c"]
         args: ["npm start"]
 
