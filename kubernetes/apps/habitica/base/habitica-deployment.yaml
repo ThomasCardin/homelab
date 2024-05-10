@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habitica
+  labels:
+    app: habitica
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habitica
+  template:
+    metadata:
+      labels:
+        app: habitica
+    spec:
+      containers:
+      - name: habitica
+        image: ksonney/habitrpg:latest
+        env:
+        - name: NODE_DB_URI
+          value: "mongodb://mongosvc:27017/habitrpg"
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: habiticaweb
+  labels: 
+    app: habiticaweb
+spec: 
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector: 
+    app: habitica
+  type: ClusterIP
