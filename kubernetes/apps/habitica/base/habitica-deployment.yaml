@@ -22,7 +22,7 @@ spec:
         - name: NODE_DB_URI
           value: "mongodb://mongodb:27017/habitrpg"
         - name: NODE_ENV
-          value: "production"
+          value: "development"
         command: ["/bin/sh", "-c"]
         args: ["npm start"]
 
@@ -35,7 +35,7 @@ spec:
         - name: BASE_URL
           value: "http://habitica-server:3000"
         - name: NODE_ENV
-          value: "production"
+          value: "development"
         command: ["/bin/sh", "-c"]
         args: ["npm run client:dev"]
 
