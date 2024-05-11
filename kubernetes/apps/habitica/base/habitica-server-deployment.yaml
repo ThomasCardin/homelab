@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habitica-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habitica-server
+  template:
+    metadata:
+      labels:
+        app: habitica-server
+    spec:
+      containers:        
+      - name: habitica-server
+        image: ghcr.io/thomascardin/habitica:5.24.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_DB_URI
+          value: "mongodb://mongodb:27017/habitrpg"
+        - name: NODE_ENV
+          value: "development"
+        command: ["/bin/sh", "-c"]
+        args: ["npm start"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: habitica-server
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: habitica-server
