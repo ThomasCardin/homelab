@@ -22,7 +22,7 @@ spec:
         - name: NODE_DB_URI
           value: "mongodb://mongodb:27017/habitrpg"
         - name: NODE_ENV
-          value: "development"
+          value: "production"
         command: ["/bin/sh", "-c"]
         args: ["node ./website/server/index.js"]
 
@@ -35,7 +35,7 @@ spec:
         - name: BASE_URL
           value: "http://10.43.161.96:3000"
         - name: NODE_ENV
-          value: "development"
+          value: "production"
         command: ["/bin/sh", "-c"]
         args: ["npm run client:dev"]
 
