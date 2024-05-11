@@ -33,7 +33,7 @@ spec:
         - containerPort: 8080
         env:
         - name: BASE_URL
-          value: "http://habitica-server:3000"
+          value: "http://10.43.161.96:3000"
         - name: NODE_ENV
           value: "development"
         command: ["/bin/sh", "-c"]
