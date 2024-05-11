@@ -24,7 +24,7 @@ spec:
         - name: NODE_ENV
           value: "development"
         command: ["/bin/sh", "-c"]
-        args: ["node ./website/server/index.js"]
+        args: ["npm start"]
 
       - name: habitica-client
         image: ghcr.io/thomascardin/habitica:5.24.2
