@@ -6,7 +6,7 @@ resources:
   - ../ddns/
   - ../trilium-notes/
   - ../ollama/
-  - ../habitica/
+  # - ../habitica/
 
   # System applications
   - ../../system/cert-manager
