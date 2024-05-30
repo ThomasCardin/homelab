@@ -4,9 +4,11 @@
 
 # Homelab kubernetes cluster
 
-My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/)
+####  My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/)
 
 </div>
+
+![CI](https://github.com/ThomasCardin/homelab/actions/workflows/main.yml/badge.svg)
 
 ## Setup
 
