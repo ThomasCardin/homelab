@@ -8,9 +8,7 @@
 
 </div>
 
-## Setup
-
-### Ansible
+## Nodes setup using Ansible
 
 Create the cluster using Ansible:
 
@@ -25,7 +23,7 @@ This command runs the k3s installation script with specific options to disable s
 ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --ask-pass -vvv
 ```
 
-### Hardware
+## Hardware specification
 
 | Hardware    | Item Count | Link |
 | -------- | ------- | ------- |
@@ -38,6 +36,6 @@ ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --
 | MikroTik hAP ax2 US Version | x1 | [Link](https://mikrotik.com/product/hap_ax2) |
 | MATX 2U Rackmount Server Chassis with 1x5.25 Front Bay / mATX/Mitx Support | x1 | [Link](https://www.amazon.ca/dp/B0B5CBW962?psc=1&ref=ppx_yo2ov_dt_b_product_details) |
 
-## Dependencies
+## Software dependencies within the kubernetes cluster
 
 See [this link](https://github.com/ThomasCardin/homelab/issues/1)
