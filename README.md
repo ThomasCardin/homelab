@@ -4,11 +4,9 @@
 
 # Homelab kubernetes cluster
 
-####  My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/)
+#### My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/)
 
 </div>
-
-![CI](https://github.com/ThomasCardin/homelab/actions/workflows/main.yml/badge.svg)
 
 ## Setup
 
@@ -39,3 +37,7 @@ ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --
 | Samsung Series 980 - 1 To PCIe Gen3. X4 NVMe 1.4 - Internal SSD M.2 | x3 | [Link](https://www.amazon.ca/dp/B08V83JZH4?ref=ppx_yo2ov_dt_b_product_details&th=1) |
 | MikroTik hAP ax2 US Version | x1 | [Link](https://mikrotik.com/product/hap_ax2) |
 | MATX 2U Rackmount Server Chassis with 1x5.25 Front Bay / mATX/Mitx Support | x1 | [Link](https://www.amazon.ca/dp/B0B5CBW962?psc=1&ref=ppx_yo2ov_dt_b_product_details) |
+
+## Dependencies
+
+See [this link](https://github.com/ThomasCardin/homelab/issues/1)
