@@ -2,9 +2,9 @@
 
 <img src="docs/pictures/k8s_logo.png" style="background-color: transparent; display: block; margin: 0 auto;" alt="kubernetes"/>
 
-# Homelab kubernetes cluster
+# Homelab Kubernetes Cluster
 
-#### My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/)
+#### My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/).
 
 </div>
 
@@ -15,7 +15,7 @@
 Create the cluster using Ansible:
 
 1. Go to `ansible/inventory` and change the controlplane and workers IP addresses.
-2. Go to `ansible/playbooks/playbook-worker.yml` and change the controlplane IP (line 36)
+2. Go to `ansible/playbooks/playbook-worker.yml` and change the controlplane IP (line 36).
 3. Go to `ansible/variables.yml` and add your k3s token.
 4. Run this command at the root folder:
 
@@ -40,4 +40,4 @@ ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --
 
 ## Dependencies
 
-See [this link](https://github.com/ThomasCardin/homelab/issues/1)
+See [this link](https://github.com/ThomasCardin/homelab/issues/1).
