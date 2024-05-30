@@ -4,7 +4,7 @@
 
 # Homelab Kubernetes Cluster
 
-#### My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/).
+#### My homelab running K3S on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/)
 
 </div>
 
@@ -40,4 +40,4 @@ ansible-playbook -i ansible/inventory ansible/playbook.yml --user=<YOUR-USER> --
 
 ## Dependencies
 
-See [this link](https://github.com/ThomasCardin/homelab/issues/1).
+See [this link](https://github.com/ThomasCardin/homelab/issues/1)
