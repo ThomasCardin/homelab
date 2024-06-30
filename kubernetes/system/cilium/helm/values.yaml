@@ -724,7 +724,7 @@ ingressController:
   loadbalancerMode: shared
   # -- Enforce https for host having matching TLS host in Ingress.
   # Incoming traffic to http listener will return 308 http error code with respective location in header.
-  enforceHttps: true
+  enforceHttps: false
   # -- Enable proxy protocol for all Ingress listeners. Note that _only_ Proxy protocol traffic will be accepted once this is enabled.
   enableProxyProtocol: false
   # -- IngressLBAnnotations are the annotation and label prefixes, which are used to filter annotations and/or labels to propagate from Ingress to the Load Balancer service
@@ -757,7 +757,7 @@ ingressController:
     labels: {}
     # -- Annotations to be added for the shared LB service
     annotations:
-      # io.cilium/lb-ipam-ips: 192.168.2.103
+      io.cilium/lb-ipam-ips: 192.168.2.103
     # -- Service type for the shared LB service
     type: LoadBalancer
     # @schema
