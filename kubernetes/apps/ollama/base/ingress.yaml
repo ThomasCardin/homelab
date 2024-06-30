@@ -4,9 +4,10 @@ metadata:
   name: ingress-external-ollama
   namespace: ollama
   annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: cilium
+  ingressClassName: nginx 
   rules:
   - host: ollama.ninebasetwo.net
     http:
