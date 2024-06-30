@@ -5,7 +5,6 @@ metadata:
   namespace: ollama
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    ingress.cilium.io/lb-l7: "enabled"
 spec:
   ingressClassName: cilium
   rules:

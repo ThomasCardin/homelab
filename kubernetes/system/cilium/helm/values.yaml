@@ -1907,7 +1907,9 @@ loadBalancer:
     # -- List of ports from service to be automatically redirected to above backend.
     # Any service exposing one of these ports will be automatically redirected.
     # Fine-grained control can be achieved by using the service annotation.
-    ports: []
+    ports:
+      - 80
+      - 443
     # -- Default LB algorithm
     # The default LB algorithm to be used for services, which can be overridden by the
     # service annotation (e.g. service.cilium.io/lb-l7-algorithm)

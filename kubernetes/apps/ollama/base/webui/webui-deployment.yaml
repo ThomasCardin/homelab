@@ -36,6 +36,8 @@ kind: Service
 metadata:
   name: open-webui-service
   namespace: ollama
+  annotations:
+    service.cilium.io/lb-l7: enabled
 spec:
   type: ClusterIP
   selector:
