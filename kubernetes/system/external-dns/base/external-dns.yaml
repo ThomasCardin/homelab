@@ -61,7 +61,7 @@ spec:
       containers:
       - name: external-dns
         imagePullPolicy: Always
-        image: registry.k8s.io/external-dns/external-dns:v0.14.2
+        image: registry.k8s.io/external-dns/external-dns:v0.14.0
         args:
         - --source=ingress
         - --domain-filter=ninebasetwo.net
