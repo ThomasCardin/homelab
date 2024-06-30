@@ -18,11 +18,14 @@ metadata:
   namespace: external-dns
 rules:
 - apiGroups: [""]
-  resources: ["namespaces"]
+  resources: ["services","endpoints","pods"]
   verbs: ["get","watch","list"]
-- apiGroups: ["gateway.networking.k8s.io"]
-  resources: ["gateways","httproutes","tlsroutes","tcproutes","udproutes"] 
+- apiGroups: ["extensions","networking.k8s.io"]
+  resources: ["ingresses"]
   verbs: ["get","watch","list"]
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
