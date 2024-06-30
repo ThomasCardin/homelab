@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-external-ollama
+  namespace: ollama
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: ollama.ninebasetwo.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: open-webui-service
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - ollama.ninebasetwo.net
+    secretName: ollama-tls
