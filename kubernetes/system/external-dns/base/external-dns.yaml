@@ -21,8 +21,8 @@ spec:
         - --domain-filter=ninebasetwo.net # (optional) limit to only example.com domains; change to match the zone created above.
         - --provider=cloudflare
         - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
-      env:
-      - name: CF_API_KEY
-        value: "ce2277909a5917bc9655fbe1b84180efedceb" # this is supposed to be a secret
-      - name: CF_API_EMAIL
-        value: "tomcardin@outlook.com"
+        env:
+        - name: CF_API_KEY
+          value: "ce2277909a5917bc9655fbe1b84180efedceb" # this is supposed to be a secret
+        - name: CF_API_EMAIL
+          value: "tomcardin@outlook.com"
