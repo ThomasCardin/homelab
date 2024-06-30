@@ -11,7 +11,7 @@ resources:
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
-  - ../../system/external-dns
+  # - ../../system/external-dns
   - ../../system/rook-ceph
   - ../../system/monitoring
   - ../../system/ingress-nginx
