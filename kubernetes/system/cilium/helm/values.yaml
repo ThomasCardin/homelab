@@ -1786,7 +1786,7 @@ l2NeighDiscovery:
   # -- Override the agent's default neighbor resolution refresh period.
   refreshPeriod: "30s"
 # -- Enable Layer 7 network policy.
-l7Proxy: false
+l7Proxy: true
 # -- Enable Local Redirect Policy.
 localRedirectPolicy: false
 # To include or exclude matched resources from cilium identity evaluation
