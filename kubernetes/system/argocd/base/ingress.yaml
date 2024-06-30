@@ -4,9 +4,10 @@ metadata:
   name: ingress-external-argocd
   namespace: argocd
   annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: cilium
+  ingressClassName: nginx 
   rules:
   - host: argocd.ninebasetwo.net
     http:

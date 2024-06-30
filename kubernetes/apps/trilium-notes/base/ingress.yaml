@@ -1,25 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-external-ceph
-  namespace: rook-ceph
+  name: ingress-external-trilium-notes
+  namespace: trilium-notes
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx 
   rules:
-  - host: ceph.ninebasetwo.net
+  - host: trilium.ninebasetwo.net
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: rook-ceph-mgr-dashboard
+            name: trilium-svc
             port:
-              number: 8443
+              number: 8080
   tls:
   - hosts:
-    - ceph.ninebasetwo.net
-    secretName: argocd-tls
+    - trilium.ninebasetwo.net
+    secretName: trilium-tls

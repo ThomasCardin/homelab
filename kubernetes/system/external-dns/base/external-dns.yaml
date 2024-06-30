@@ -59,10 +59,7 @@ spec:
       - name: external-dns
         image: registry.k8s.io/external-dns/external-dns:v0.14.0
         args:
-        - --source=gateway-httproute
-        - --source=gateway-tlsroute
-        - --source=gateway-tcproute
-        - --source=gateway-udproute
+        - --source=ingress
 
         - --domain-filter=ninebasetwo.net
         - --provider=cloudflare
