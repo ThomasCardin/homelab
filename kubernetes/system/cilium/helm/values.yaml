@@ -713,7 +713,7 @@ envoyConfig:
 ingressController:
   # -- Enable cilium ingress controller
   # This will automatically set enable-envoy-config as well.
-  enabled: true
+  enabled: false
   # -- Set cilium ingress controller to be the default ingress controller
   # This will let cilium ingress controller route entries without ingress class set
   default: true
@@ -1786,7 +1786,7 @@ l2NeighDiscovery:
   # -- Override the agent's default neighbor resolution refresh period.
   refreshPeriod: "30s"
 # -- Enable Layer 7 network policy.
-l7Proxy: true
+l7Proxy: false
 # -- Enable Local Redirect Policy.
 localRedirectPolicy: false
 # To include or exclude matched resources from cilium identity evaluation
@@ -1903,13 +1903,11 @@ loadBalancer:
     # Applicable values:
     #   - envoy: Enable L7 load balancing via envoy proxy. This will automatically set enable-envoy-config as well.
     #   - disabled: Disable L7 load balancing by way of service annotation.
-    backend: envoy
+    backend: disabled
     # -- List of ports from service to be automatically redirected to above backend.
     # Any service exposing one of these ports will be automatically redirected.
     # Fine-grained control can be achieved by using the service annotation.
-    ports:
-      - 80
-      - 443
+    ports: []
     # -- Default LB algorithm
     # The default LB algorithm to be used for services, which can be overridden by the
     # service annotation (e.g. service.cilium.io/lb-l7-algorithm)
