@@ -65,7 +65,6 @@ spec:
         args:
         - --source=ingress
 
-        - --policy=sync
         - --domain-filter=ninebasetwo.net
         - --provider=cloudflare
         - --cloudflare-proxied
