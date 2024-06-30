@@ -757,19 +757,19 @@ ingressController:
     labels: {}
     # -- Annotations to be added for the shared LB service
     annotations:
-      io.cilium/lb-ipam-ips: 192.168.2.103
+      # io.cilium/lb-ipam-ips: 192.168.2.103
     # -- Service type for the shared LB service
     type: LoadBalancer
     # @schema
     # type: [null, integer]
     # @schema
     # -- Configure a specific nodePort for insecure HTTP traffic on the shared LB service
-    insecureNodePort: ~
+    insecureNodePort: 31066
     # @schema
     # type: [null, integer]
     # @schema
     # -- Configure a specific nodePort for secure HTTPS traffic on the shared LB service
-    secureNodePort: ~
+    secureNodePort: 31554
     # @schema
     # type: [null, string]
     # @schema
@@ -785,7 +785,7 @@ ingressController:
     # @schema
     # -- Configure if node port allocation is required for LB service
     # ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-nodeport-allocation
-    allocateLoadBalancerNodePorts: ~
+    allocateLoadBalancerNodePorts: true
   # Host Network related configuration
   hostNetwork:
     # -- Configure whether the Envoy listeners should be exposed on the host network.
