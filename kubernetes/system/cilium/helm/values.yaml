@@ -799,10 +799,8 @@ ingressController:
     nodes:
       # -- Specify the labels of the nodes where the Ingress listeners should be exposed
       #
-      # matchLabels:
-      #   kubernetes.io/os: linux
-      #   kubernetes.io/hostname: kind-worker
-      matchLabels: {}
+      matchLabels:
+        kubernetes.io/hostname: controlplane
 gatewayAPI:
   # -- Enable support for Gateway API in cilium
   # This will automatically set enable-envoy-config as well.
