@@ -5,5 +5,5 @@ resources:
  - cluster/cluster.yaml
  - cluster/rook-ceph-default-sa.yaml
  - blocks/hdd-ceph-block.yaml
- - httproutes.yaml
+ - ingress.yaml
  - cephfs/hdd-ceph-cephfs.yaml
