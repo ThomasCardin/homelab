@@ -3,7 +3,7 @@ resource "cloudflare_record" "cname_argocd" {
   value   = var.dns
   name    = "argocd"
   type    = "CNAME"
-  ttl     = 3600
+  ttl     = 1
   proxied = true
 }
 
@@ -12,7 +12,7 @@ resource "cloudflare_record" "cname_trilium" {
   value   = var.dns
   name    = "trilium"
   type    = "CNAME"
-  ttl     = 3600
+  ttl     = 1
   proxied = true
 }
 
@@ -21,7 +21,7 @@ resource "cloudflare_record" "cname_ollama" {
   value   = var.dns
   name    = "ollama"
   type    = "CNAME"
-  ttl     = 3600
+  ttl     = 1
   proxied = true
 }
 
@@ -30,6 +30,6 @@ resource "cloudflare_record" "cname_ceph" {
   value   = var.dns
   name    = "ceph"
   type    = "CNAME"
-  ttl     = 3600
+  ttl     = 1
   proxied = true
 }
