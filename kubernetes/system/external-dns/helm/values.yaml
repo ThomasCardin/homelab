@@ -287,7 +287,7 @@ provider:
 
 # -- Extra arguments to provide to _ExternalDNS_.
 extraArgs:
-  - --cloudflare-proxied
+  # - --cloudflare-proxied
   - --domain-filter=ninebasetwo.net
 
 secretConfiguration:
