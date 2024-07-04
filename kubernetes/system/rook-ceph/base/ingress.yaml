@@ -6,6 +6,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: ninebasetwo.net
+    external-dns.alpha.kubernetes.io/target: ceph.ninebasetwo.net
 spec:
   ingressClassName: nginx 
   rules:
