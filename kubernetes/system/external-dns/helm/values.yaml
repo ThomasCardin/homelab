@@ -111,7 +111,11 @@ securityContext:
     drop: ["ALL"]
 
 # -- [Environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) for the `external-dns` container.
-env: []
+env:
+  - name: CF_API_KEY
+    value: "ce2277909a5917bc9655fbe1b84180efedceb"
+  - name: CF_API_EMAIL
+    value: "tomcardin@outlook.com"
 
 # -- [Liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) configuration for the `external-dns` container.
 # @default -- See _values.yaml_
@@ -238,15 +242,9 @@ provider:
       # -- Image pull policy for the `webhook` container.
       pullPolicy: IfNotPresent
     # -- [Environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) for the `webhook` container.
-    env:
-      - name: CF_API_KEY
-        value: "ce2277909a5917bc9655fbe1b84180efedceb"
-      - name: CF_API_EMAIL
-        value: "tomcardin@outlook.com"
+    env: []
     # -- Extra arguments to provide for the `webhook` container.
-    args:
-      - --cloudflare-proxied
-      - --domain-filter=ninebasetwo.net
+    args: []
     # -- Extra [volume mounts](https://kubernetes.io/docs/concepts/storage/volumes/) for the `webhook` container.
     extraVolumeMounts: []
     # -- [Resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for the `webhook` container.
@@ -288,7 +286,9 @@ provider:
       relabelings: []
 
 # -- Extra arguments to provide to _ExternalDNS_.
-extraArgs: []
+extraArgs:
+  - --cloudflare-proxied
+  - --domain-filter=ninebasetwo.net
 
 secretConfiguration:
   # -- If `true`, create a `Secret` to store sensitive provider configuration (**DEPRECATED**).
