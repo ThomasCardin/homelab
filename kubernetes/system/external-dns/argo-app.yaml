@@ -3,19 +3,26 @@ kind: Application
 metadata:
   name: external-dns
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+      - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   destination:
-    server: https://kubernetes.default.svc
     namespace: external-dns
-  source:
-    repoURL: https://github.com/ThomasCardin/homelab.git
-    path: kubernetes/system/external-dns/base
-    targetRevision: HEAD
+    server: https://kubernetes.default.svc
+  sources:
+    - chart: external-dns
+      helm:
+        releaseName: external-dns
+        valueFiles:
+          - $values/kubernetes/system/external-dns/helm/values.yaml
+      repoURL: https://kubernetes-sigs.github.io/external-dns/
+      targetRevision: 1.14.5
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     automated:
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
