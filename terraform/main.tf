@@ -33,3 +33,12 @@ resource "cloudflare_record" "cname_ceph" {
   ttl     = 1
   proxied = true
 }
+
+resource "cloudflare_record" "cname_ceph" {
+  zone_id = var.cloudflare_zone_id
+  value   = var.dns
+  name    = "grafana"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}
