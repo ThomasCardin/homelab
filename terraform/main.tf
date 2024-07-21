@@ -34,7 +34,7 @@ resource "cloudflare_record" "cname_ceph" {
   proxied = true
 }
 
-resource "cloudflare_record" "cname_ceph" {
+resource "cloudflare_record" "cname_grafana" {
   zone_id = var.cloudflare_zone_id
   value   = var.dns
   name    = "grafana"
