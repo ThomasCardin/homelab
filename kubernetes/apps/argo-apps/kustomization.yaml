@@ -6,6 +6,7 @@ resources:
   - ../ddns/
   - ../trilium-notes/
   - ../ollama/
+  - ../jobscrapper/
 
   # System applications
   - ../../system/cert-manager
