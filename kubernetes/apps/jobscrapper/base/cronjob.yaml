@@ -21,4 +21,3 @@ spec:
                 - name: JOBS_SCRAPPER_COUNTRY
                   value: "Canada"
           restartPolicy: OnFailure
-          imagePullPolicy: Always
