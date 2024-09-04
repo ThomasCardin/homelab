@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: jobscrapper-cronjob
 spec:
-  schedule: "0 * * * *"  # 40 23 * * *
+  schedule: "40 23 * * *"
   jobTemplate:
     spec:
       template:
