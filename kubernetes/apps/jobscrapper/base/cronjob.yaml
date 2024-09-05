@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: jobscrapper-cronjob
 spec:
-  schedule: "40 23 * * *"
+  schedule: "0 5 * * *" # Run every day at 5:00 AM
   jobTemplate:
     spec:
       template:
@@ -15,7 +15,7 @@ spec:
                 - name: DISCORD_WEBHOOK_URL
                   value: "https://discord.com/api/webhooks/1280607467704815617/B343SiZxAsWSe0KZc6JJnphbuxau1PrO3V0mXAwmlx7L4BxjN9836PTIruZC4hDfgjfn"
                 - name: JOBS_SCRAPPER_LIST
-                  value: "golang,sre,system performance"
+                  value: "golang,sre,system performance engineer"
                 - name: JOBS_SCRAPPER_LOCATION
                   value: "Montreal, QC, CA"
                 - name: JOBS_SCRAPPER_COUNTRY
