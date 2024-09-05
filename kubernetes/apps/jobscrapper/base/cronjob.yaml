@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             - name: jobscrapper
-              image: ghcr.io/thomascardin/jobscrapper:v1.0.2
+              image: ghcr.io/thomascardin/jobscrapper:v1.0.3
               env:
                 - name: DISCORD_WEBHOOK_URL
                   value: "https://discord.com/api/webhooks/1280607467704815617/B343SiZxAsWSe0KZc6JJnphbuxau1PrO3V0mXAwmlx7L4BxjN9836PTIruZC4hDfgjfn"
