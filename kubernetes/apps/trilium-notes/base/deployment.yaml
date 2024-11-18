@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trilium-notes
+  namespace: trilium-notes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trilium-notes
+  template:
+    metadata:
+      labels:
+        app: trilium-notes
+    spec:
+      initContainers:
+      - name: fix-permissions # default user of trilium notes is 1000
+        image: busybox:latest
+        command: ["sh", "-c", "chown -R 1000:1000 /srv/trilium-data && chmod -R 755 /srv/trilium-data"]
+        volumeMounts:
+        - name: trilium-data
+          mountPath: /srv/trilium-data
+      containers:
+      - name: trilium
+        image: zadam/trilium:latest@sha256:93cb2cd4a6709858c154bab7cba0a7d397969685f507daecb6bbdc409d81304b
+        env:
+        - name: TRILIUM_PORT
+          value: "8080"
+        - name: TRILIUM_DATA_DIR
+          value: "/srv/trilium-data"
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: trilium-data
+          mountPath: /srv/trilium-data
+      volumes:
+      - name: trilium-data
+        persistentVolumeClaim:
+          claimName: trilium-notes-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trilium-svc
+spec:
+  selector:
+    app: trilium-notes
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: trilium-notes-pv-claim
+  labels:
+    app: trilium-notes
+spec:
+  storageClassName: hdd-ceph-block
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # User applications
+  - ../ddns/
+  - ../trilium-notes/
+  - ../ollama/
+  - ../jobscrapper/
+
+  # System applications
+  - ../../system/cert-manager
+  - ../../system/cilium
+  - ../../system/argocd
+  - ../../system/rook-ceph
+  - ../../system/monitoring
+  - ../../system/ingress-nginx
+  - ../../system/sealed-secrets
+  - ../../system/oauth2-proxy
+
+patches:
+- patch: |-
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: not-used
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      syncPolicy:
+        automated:
+          selfHeal: true
+  target:
+    kind: Application

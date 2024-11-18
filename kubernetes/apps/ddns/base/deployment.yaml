@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddns-deployment
+  namespace: ddns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ddns
+  template:
+    metadata:
+      labels:
+        app: ddns
+    spec:
+      containers:
+      - name: ddns
+        image: ghcr.io/thomascardin/ddns:1.0.1@sha256:088893f3bf25c66e5d20e17ac6c4e49706528db8c9b6f3a8581605586a344ad8
+        env:
+          - name: NOIP_HOSTNAME
+            valueFrom:
+              secretKeyRef:
+                name: ddns-secrets
+                key: NOIP_HOSTNAME 
+          - name: CLOUDFLARE_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: ddns-secrets
+                key: CLOUDFLARE_EMAIL 
+          - name: CLOUDFLARE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ddns-secrets
+                key: CLOUDFLARE_API_KEY 
+          - name: CLOUDFLARE_A_RECORD_NAME
+            valueFrom:
+              secretKeyRef:
+                name: ddns-secrets
+                key: CLOUDFLARE_A_RECORD_NAME 
+          - name: CLOUDFLARE_ZONE_ID
+            valueFrom:
+              secretKeyRef:
+                name: ddns-secrets
+                key: CLOUDFLARE_ZONE_ID 

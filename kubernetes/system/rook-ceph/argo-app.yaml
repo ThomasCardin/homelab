@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+      - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: rook-ceph
+    server: https://kubernetes.default.svc
+  sources:
+    - chart: rook-ceph
+      helm:
+        releaseName: rook-release
+        valueFiles:
+          - $values/kubernetes/system/rook-ceph/helm/values.yaml
+      repoURL: https://charts.rook.io/release
+      targetRevision: 1.13.7
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab
+      path: kubernetes/system/rook-ceph/base
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -1,0 +1,39 @@
+---
+- name: Setup k3s workers
+  hosts: worker
+  become: true
+
+  tasks:
+    - name: Include variables (variables.yml)
+      ansible.builtin.include_vars: ../../variables.yml
+
+    - name: Update the apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install iptables
+      ansible.builtin.apt:
+        name: iptables
+        state: present
+
+    - name: Install k3s
+      ansible.builtin.get_url:
+        url: https://get.k3s.io
+        dest: /tmp/k3s_install_script.sh
+        mode: "0755"
+
+    - name: Set environment variable for k3s installation
+      ansible.builtin.shell:
+        cmd: >
+          export INSTALL_K3S_EXEC=agent
+      register: k3s_env_output
+      changed_when: k3s_env_output.rc != 0
+
+    - name: Run k3s installation script
+      ansible.builtin.shell:
+        cmd: >
+          /tmp/k3s_install_script.sh agent
+          --server https://192.168.2.203:6443
+          --token {{ k3s_token }}
+      register: k3s_install_output
+      changed_when: k3s_install_output.rc != 0

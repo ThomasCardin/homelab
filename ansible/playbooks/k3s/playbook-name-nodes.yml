@@ -1,0 +1,63 @@
+---
+- name: Setup k3s workers
+  hosts: controlplane
+  become: true
+
+  tasks:
+     # not best pratice for a k8s controlplane node
+    - name: Label kubernetes controlplane node
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes controlplane kubernetes.io/role=worker
+      register: kubectl_label_controlplane_output
+      changed_when: kubectl_label_controlplane_output.rc != 0
+
+    - name: Label kubernetes worker1 node
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes worker1 kubernetes.io/role=worker
+      register: kubectl_label_worker_1_output
+      changed_when: kubectl_label_worker_1_output.rc != 0
+
+    - name: Label kubernetes worker2 node
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes worker2 kubernetes.io/role=worker
+      register: kubectl_label_worker_2_output
+      changed_when: kubectl_label_worker_2_output.rc != 0
+
+    - name: Label kubernetes worker3 node
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes worker3 kubernetes.io/role=worker
+      register: kubectl_label_worker_3_output
+      changed_when: kubectl_label_worker_3_output.rc != 0
+
+    # not best pratice for a k8s controlplane node
+    - name: Set kubernetes controlplane nodes type
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes controlplane node-type=worker
+      register: kubectl_controlplane_node_type
+      changed_when: kubectl_controlplane_node_type.rc != 0
+
+    - name: Set kubernetes worker1 nodes type
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes worker1 node-type=worker
+      register: kubectl_worker1_node_type
+      changed_when: kubectl_worker1_node_type.rc != 0
+
+    - name: Set kubernetes worker2 nodes type
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes worker2 node-type=worker
+      register: kubectl_worker2_node_type
+      changed_when: kubectl_worker2_node_type.rc != 0
+
+    - name: Set kubernetes worker3 nodes type
+      ansible.builtin.command:
+        cmd: >
+          kubectl label nodes worker3 node-type=worker
+      register: kubectl_worker3_node_type
+      changed_when: kubectl_worker3_node_type.rc != 0
