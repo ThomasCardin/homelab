@@ -55,7 +55,6 @@ config:
     proxy_prefix = "/oauth2"
 
     github_org = "ninebasetwo-net"
-    github_users = [ "ThomasCardin" ]
   # Custom configuration file: oauth2_proxy.cfg
   # configFile: |-
   #   pass_basic_auth = false
