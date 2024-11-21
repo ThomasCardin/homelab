@@ -6,7 +6,7 @@ resource "cloudflare_access_policy" "policy" {
   decision = "allow"
 
   include {
-    group = var.group_list
+    group = ["dc009146-1f84-4d2c-bbd4-670ee9d65d5d"]
   }
 }
 
