@@ -12,8 +12,3 @@ variable "cloudflare_zone_id" {
   description = "The zone ID for Cloudflare"
   type        = string
 }
-
-variable "policies" {
-  description = "zero trust access application policies"
-  type        = list(string)
-}
