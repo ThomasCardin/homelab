@@ -11,5 +11,4 @@ module "zero-trust-app" {
   cloudflare_zone_id = var.cloudflare_zone_id
 
   names      = ["ollama", "argocd", "ceph", "grafana", "oauth2"]
-  group_list = var.group_list
 }
