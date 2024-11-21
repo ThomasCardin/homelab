@@ -9,7 +9,7 @@ module "cname-records" {
 module "zero-trust-app" {
   source             = "./modules/zero_trust_application"
   cloudflare_zone_id = var.cloudflare_zone_id
-  cloudflare_api_key = var.cloudflare_api_key
+  cloudflare_token   = var.cloudflare_token
 
-  names      = ["ollama", "argocd", "ceph", "grafana", "oauth2"]
+  names = ["ollama", "argocd", "ceph", "grafana"]
 }

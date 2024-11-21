@@ -8,7 +8,7 @@ variable "cloudflare_zone_id" {
   type        = string
 }
 
-variable "cloudflare_api_key" {
-  description = "The API key for Cloudflare"
+variable "cloudflare_token" {
+  description = "cloudflare token"
   type        = string
 }

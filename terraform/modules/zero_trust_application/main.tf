@@ -1,7 +1,7 @@
-resource "cloudflare_access_policy" "github-app-policy" {
-  zone_id  = var.cloudflare_zone_id
-  name     = "github-auth"
-  decision = "allow"
+resource "3" "github-app-policy" {
+  account_id = var.cloudflare_token
+  name       = "github-auth"
+  decision   = "allow"
 
   include {
     group = ["dc009146-1f84-4d2c-bbd4-670ee9d65d5d"]
