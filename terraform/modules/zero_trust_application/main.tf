@@ -1,4 +1,4 @@
-resource "3" "github-app-policy" {
+resource "cloudflare_access_policy" "github-app-policy" {
   account_id = var.cloudflare_token
   name       = "github-auth"
   decision   = "allow"
