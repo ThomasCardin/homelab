@@ -1,12 +1,14 @@
 resource "cloudflare_zero_trust_access_application" "app" {
-  zone_id                   = "0da42c8d2132a9ddaf714f9e7c920711"
-  name                      = "staging application"
-  domain                    = "staging.example.com"
-  type                      = var.type
-  session_duration          = "24h"
-  auto_redirect_to_identity = false
+  for_each = { for idx, name in var.names : idx => name }
+
+  zone_id                    = var.cloudflare_zone_id
+  name                       = each.value
+  domain                     = "${each.value}.ninebasetwo.net"
+  type                       = "self_hosted"
+  session_duration           = "24h"
+  auto_redirect_to_identity  = false
+  http_only_cookie_attribute = true
   policies = [
-    cloudflare_zero_trust_access_policy.example_1.id,
-    cloudflare_zero_trust_access_policy.example_2.id
+    "fb055de1-7853-4cd1-847c-1404d43b70cb"
   ]
 }

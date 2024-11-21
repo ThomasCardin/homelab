@@ -1,5 +1,9 @@
-variable "type" {
-  description = "type of the zero trust access application"
+variable "names" {
+  description = "names of all zero trust access applications"
+  type        = list(string)
+}
+
+variable "cloudflare_zone_id" {
+  description = "The zone ID for Cloudflare"
   type        = string
-  default     = "self_hosted"
 }
