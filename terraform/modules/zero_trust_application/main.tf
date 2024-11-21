@@ -13,7 +13,6 @@ resource "cloudflare_zero_trust_access_application" "app" {
   for_each   = { for idx, name in var.names : idx => name }
 
   account_id = var.cloudflare_api_key
-  zone_id    = var.cloudflare_zone_id
 
   name                       = each.value
   domain                     = "${each.value}.ninebasetwo.net"
