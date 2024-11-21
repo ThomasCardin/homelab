@@ -1,53 +1,29 @@
-resource "cloudflare_record" "cname_argocd" {
-  zone_id = var.cloudflare_zone_id
-  value   = var.dns
-  name    = "argocd"
-  type    = "CNAME"
-  ttl     = 1
-  proxied = true
+module "argocd-record" {
+  source = "../modules/records"
+  name = "argocd"
 }
 
-resource "cloudflare_record" "cname_trilium" {
-  zone_id = var.cloudflare_zone_id
-  value   = var.dns
-  name    = "trilium"
-  type    = "CNAME"
-  ttl     = 1
-  proxied = true
+module "argocd-record" {
+  source = "../modules/records"
+  name = "trilium"
 }
 
-resource "cloudflare_record" "cname_ollama" {
-  zone_id = var.cloudflare_zone_id
-  value   = var.dns
-  name    = "ollama"
-  type    = "CNAME"
-  ttl     = 1
-  proxied = true
+module "argocd-record" {
+  source = "../modules/records"
+  name = "ollama"
 }
 
-resource "cloudflare_record" "cname_ceph" {
-  zone_id = var.cloudflare_zone_id
-  value   = var.dns
-  name    = "ceph"
-  type    = "CNAME"
-  ttl     = 1
-  proxied = true
+module "argocd-record" {
+  source = "../modules/records"
+  name = "ceph"
 }
 
-resource "cloudflare_record" "cname_grafana" {
-  zone_id = var.cloudflare_zone_id
-  value   = var.dns
-  name    = "grafana"
-  type    = "CNAME"
-  ttl     = 1
-  proxied = true
+module "argocd-record" {
+  source = "../modules/records"
+  name = "grafana"
 }
 
-resource "cloudflare_record" "cname_oauth2" {
-  zone_id = var.cloudflare_zone_id
-  value   = var.dns
-  name    = "oauth2"
-  type    = "CNAME"
-  ttl     = 1
-  proxied = true
+module "argocd-record" {
+  source = "../modules/records"
+  name = "oauth2"
 }
