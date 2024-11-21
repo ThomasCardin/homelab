@@ -1,41 +1,7 @@
-module "argocd-record" {
-  source = "./modules/records"
+module "cname-records" {
+  source             = "./modules/records"
   cloudflare_zone_id = var.cloudflare_zone_id
 
-  name = "argocd"
-}
-
-module "argocd-record" {
-  source = "./modules/records"
-  cloudflare_zone_id = var.cloudflare_zone_id
-
-  name = "trilium"
-}
-
-module "argocd-record" {
-  source = "./modules/records"
-  cloudflare_zone_id = var.cloudflare_zone_id
-
-  name = "ollama"
-}
-
-module "argocd-record" {
-  source = "./modules/records"
-  cloudflare_zone_id = var.cloudflare_zone_id
-
-  name = "ceph"
-}
-
-module "argocd-record" {
-  source = "./modules/records"
-  cloudflare_zone_id = var.cloudflare_zone_id
-
-  name = "grafana"
-}
-
-module "argocd-record" {
-  source = "./modules/records"
-  cloudflare_zone_id = var.cloudflare_zone_id
-
-  name = "oauth2"
+  names = ["argocd", "trilium", "ollama", "ceph", "grafana", "oauth2"]
+  type  = "CNAME"
 }

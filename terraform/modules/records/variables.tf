@@ -9,9 +9,9 @@ variable "dns" {
   default = "ninebasetwo.net"
 }
 
-variable "name" {
-  description = "name of record"
-  type = string
+variable "names" {
+  description = "names of record"
+  type = list(string)
 }
 
 variable "type" {
