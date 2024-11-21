@@ -9,7 +9,6 @@ module "cname-records" {
 module "zero-trust-app" {
   source             = "./modules/zero_trust_application"
   cloudflare_zone_id = var.cloudflare_zone_id
-  cloudflare_token   = var.cloudflare_token
 
   names = ["ollama", "argocd", "ceph", "grafana"]
 }

@@ -7,8 +7,3 @@ variable "cloudflare_zone_id" {
   description = "The zone ID for Cloudflare"
   type        = string
 }
-
-variable "cloudflare_token" {
-  description = "cloudflare token"
-  type        = string
-}
