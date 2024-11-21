@@ -1,8 +1,6 @@
-resource "cloudflare_access_policy" "policy" {
-  for_each = { for idx, name in var.names : idx => name }
-
+resource "cloudflare_access_policy" "github-app-policy" {
   zone_id  = var.cloudflare_zone_id
-  name     = "${each.value}-github-auth"
+  name     = "github-auth"
   decision = "allow"
 
   include {
@@ -11,9 +9,12 @@ resource "cloudflare_access_policy" "policy" {
 }
 
 resource "cloudflare_zero_trust_access_application" "app" {
-  for_each = { for idx, name in var.names : idx => name }
+  depends_on = [cloudflare_access_policy.github-app-policy]
+  for_each   = { for idx, name in var.names : idx => name }
 
-  zone_id                    = var.cloudflare_zone_id
+  account_id = var.cloudflare_api_key
+  zone_id    = var.cloudflare_zone_id
+
   name                       = each.value
   domain                     = "${each.value}.ninebasetwo.net"
   type                       = "self_hosted"
