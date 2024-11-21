@@ -10,5 +10,5 @@ module "zero-trust-app" {
   source             = "./modules/zero_trust_application"
   cloudflare_zone_id = var.cloudflare_zone_id
 
-  names = ["ollama", "argocd", "ceph", "grafana"]
+  names = ["ollama", "argocd", "ceph", "grafana", "trilium"]
 }
