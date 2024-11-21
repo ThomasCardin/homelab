@@ -5,7 +5,7 @@ resource "cloudflare_access_policy" "policy" {
   name     = "${each.value}-github-auth"
   decision = "allow"
 
-  include = {
+  include {
     group = var.group_list
   }
 }
