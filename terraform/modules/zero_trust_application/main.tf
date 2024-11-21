@@ -4,7 +4,10 @@ resource "cloudflare_access_policy" "policy" {
   zone_id  = var.cloudflare_zone_id
   name     = "${each.value}-github-auth"
   decision = "allow"
-  group    = var.group_list
+
+  include = {
+    group = var.group_list
+  }
 }
 
 resource "cloudflare_zero_trust_access_application" "app" {
