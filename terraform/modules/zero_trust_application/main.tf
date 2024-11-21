@@ -22,6 +22,6 @@ resource "cloudflare_zero_trust_access_application" "app" {
   auto_redirect_to_identity  = false
   http_only_cookie_attribute = true
   policies = [
-    cloudflare_access_policy.policy[each.key].id
+    cloudflare_access_policy.github-app-policy.id
   ]
 }
