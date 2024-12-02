@@ -7,7 +7,6 @@ resources:
   - ../trilium-notes/
   - ../ollama/
   - ../jobscrapper/
-  - ../satisfactory-server/
 
   # System applications
   - ../../system/cert-manager
