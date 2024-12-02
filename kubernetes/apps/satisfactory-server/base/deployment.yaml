@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: satisfactory
-          image: ghcr.io/thomascardin/satisfactory-server:latest@sha256:3ef38813b20eaec0a49809f3891aa4b9d98e02e5743f2e751c21d7890029036a
+          image: ghcr.io/thomascardin/satisfactory-server:latest
           env:
             - name: DEBUG
               value: "false"
