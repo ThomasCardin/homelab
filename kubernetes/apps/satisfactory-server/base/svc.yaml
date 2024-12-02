@@ -7,8 +7,6 @@ metadata:
     app: satisfactory
 spec:
   type: ClusterIP
-  externalTrafficPolicy: Cluster
-  internalTrafficPolicy: Cluster
   ports:
     - name: "game"
       port: 7777
