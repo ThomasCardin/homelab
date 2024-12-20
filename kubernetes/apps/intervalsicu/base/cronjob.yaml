@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: intervalsicu-cronjob
+spec:
+  schedule: "0 7 * * *" # Run every day at 7:00 AM
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: jobscrapper
+              image: ghcr.io/thomascardin/intervalsicu:v1.0.0
+              env:
+                - name: INTERVALS_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: intervalsicu-secrets
+                      key: INTERVALS_API_KEY 
+                - name: INTERVALS_USER_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: intervalsicu-secrets
+                      key: INTERVALS_USER_ID 
+                - name: GOTIFY_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: intervalsicu-secrets
+                      key: GOTIFY_TOKEN 
+                - name: GOTIFY_URL
+                  value: "https://gotify.ninebasetwo.net/"
+                - name: TIME_ZONE
+                  value: "America/Toronto"
+          restartPolicy: OnFailure
