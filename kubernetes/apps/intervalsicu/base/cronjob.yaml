@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             - name: jobscrapper
-              image: ghcr.io/thomascardin/intervalsicu:v1.0.3
+              image: ghcr.io/thomascardin/intervalsicu:v1.0.4
               env:
                 - name: INTERVALS_API_KEY
                   valueFrom:
