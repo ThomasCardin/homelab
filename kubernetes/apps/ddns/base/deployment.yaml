@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ddns
-        image: ghcr.io/thomascardin/ddns:v1.0.4
+        image: ghcr.io/thomascardin/ddns:v1.0.5
         env:
           - name: NOIP_HOSTNAME
             valueFrom:
