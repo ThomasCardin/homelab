@@ -9,7 +9,7 @@ resources:
   - ../jobscrapper/
   - ../intervalsicu/
   - ../gotify/
-  - ../actual/
+  - ../actual-budget/
 
   # System applications
   - ../../system/cert-manager
