@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-external-actual-budget
+  namespace: actual-budget
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/auth-url: "https://oauth2.ninebasetwo.net/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.ninebasetwo.net/oauth2/start?rd=$scheme://$host$request_uri"
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: actual.ninebasetwo.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: actual-budget-svc
+            port:
+              number: 5006
+  tls:
+  - hosts:
+    - actual.ninebasetwo.net
+    secretName: actual-budget-tls

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual-budget
+  namespace: actual-budget
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actual-budget
+  template:
+    metadata:
+      labels:
+        app: actual-budget
+    spec:
+      containers:
+      - name: actual-server
+        image: actualbudget/actual-server:latest
+        ports:
+        - containerPort: 5006
+        volumeMounts:
+        - name: actual-data
+          mountPath: /data
+        # Si vous avez des variables d'environnement spécifiques
+        # env:
+        # - name: VARIABLE_NAME
+        #   value: "value"
+      volumes:
+      - name: actual-data
+        persistentVolumeClaim:
+          claimName: actual-budget-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: actual-budget-svc
+  namespace: actual-budget
+spec:
+  selector:
+    app: actual-budget
+  ports:
+    - protocol: TCP
+      port: 5006
+      targetPort: 5006
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: actual-budget-pv-claim
+  namespace: actual-budget
+  labels:
+    app: actual-budget
+spec:
+  storageClassName: hdd-ceph-block 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
