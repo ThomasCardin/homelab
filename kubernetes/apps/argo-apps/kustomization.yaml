@@ -20,6 +20,7 @@ resources:
   - ../../system/ingress-nginx
   - ../../system/sealed-secrets
   - ../../system/oauth2-proxy
+  - ../../system/atlantis
 
 patches:
 - patch: |-
