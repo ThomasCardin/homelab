@@ -584,7 +584,7 @@ bpf:
   # @schema
   # -- (bool) Enable native IP masquerade support in eBPF
   # @default -- `false`
-  masquerade: true # HERE
+  masquerade: false # HERE
   # @schema
   # type: [null, boolean]
   # @schema
