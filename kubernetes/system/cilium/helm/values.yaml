@@ -837,7 +837,7 @@ ingressController: # HERE
   # Supported values: shared, dedicated
   # For granular control, use the following annotations on the ingress resource:
   # "ingress.cilium.io/loadbalancer-mode: dedicated" (or "shared").
-  loadbalancerMode: shared # HERE
+  loadbalancerMode: dedicated # HERE
   # -- Enforce https for host having matching TLS host in Ingress.
   # Incoming traffic to http listener will return 308 http error code with respective location in header.
   enforceHttps: false # HERE
@@ -874,7 +874,7 @@ ingressController: # HERE
     # -- Annotations to be added for the shared LB service
     annotations: {}
     # -- Service type for the shared LB service
-    type: ClusterIP
+    type: ClusterIP # https://github.com/cilium/cilium/issues/34028
     # @schema
     # type: [null, integer]
     # @schema
