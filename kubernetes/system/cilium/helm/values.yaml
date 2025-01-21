@@ -906,9 +906,9 @@ ingressController: # HERE
     # ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#external-traffic-policy
     externalTrafficPolicy: Cluster
   # Host Network related configuration
-  hostNetwork:
+  hostNetwork: 
     # -- Configure whether the Envoy listeners should be exposed on the host network.
-    enabled: false
+    enabled: true # HERE
     # -- Configure a specific port on the host network that gets used for the shared listener.
     sharedListenerPort: 8080
     # Specify the nodes where the Ingress listeners should be exposed
