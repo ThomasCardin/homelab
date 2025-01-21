@@ -837,7 +837,7 @@ ingressController: # HERE
   # Supported values: shared, dedicated
   # For granular control, use the following annotations on the ingress resource:
   # "ingress.cilium.io/loadbalancer-mode: dedicated" (or "shared").
-  loadbalancerMode: dedicated # HERE
+  loadbalancerMode: shared # HERE
   # -- Enforce https for host having matching TLS host in Ingress.
   # Incoming traffic to http listener will return 308 http error code with respective location in header.
   enforceHttps: false # HERE
@@ -904,7 +904,7 @@ ingressController: # HERE
     # -- Control how traffic from external sources is routed to the LoadBalancer Kubernetes Service for Cilium Ingress in shared mode.
     # Valid values are "Cluster" and "Local".
     # ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#external-traffic-policy
-    externalTrafficPolicy: ~ # https://github.com/cilium/cilium/issues/34028
+    externalTrafficPolicy: "~" # https://github.com/cilium/cilium/issues/34028
   # Host Network related configuration
   hostNetwork: 
     # -- Configure whether the Envoy listeners should be exposed on the host network.
