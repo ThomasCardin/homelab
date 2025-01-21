@@ -522,7 +522,7 @@ bpf:
   # the kernel supports it. The latter has the implication that it will also
   # bypass netfilter in the host namespace.
   # @default -- `false`
-  hostLegacyRouting: ~
+  hostLegacyRouting: true
   # @schema
   # type: [null, boolean]
   # @schema
