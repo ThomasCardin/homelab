@@ -765,12 +765,12 @@ ingressController:
     # type: [null, integer]
     # @schema
     # -- Configure a specific nodePort for insecure HTTP traffic on the shared LB service
-    insecureNodePort: 31066
+    insecureNodePort: ~
     # @schema
     # type: [null, integer]
     # @schema
     # -- Configure a specific nodePort for secure HTTPS traffic on the shared LB service
-    secureNodePort: 31554
+    secureNodePort: ~
     # @schema
     # type: [null, string]
     # @schema
@@ -786,7 +786,9 @@ ingressController:
     # @schema
     # -- Configure if node port allocation is required for LB service
     # ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-nodeport-allocation
-    allocateLoadBalancerNodePorts: true
+    allocateLoadBalancerNodePorts: ~
+
+    externalTrafficPolicy: Cluster
   # Host Network related configuration
   hostNetwork:
     # -- Configure whether the Envoy listeners should be exposed on the host network.
