@@ -584,7 +584,7 @@ bpf:
   # @schema
   # -- (bool) Enable native IP masquerade support in eBPF
   # @default -- `false`
-  masquerade: false # HERE
+  masquerade: true # HERE
   # @schema
   # type: [null, boolean]
   # @schema
@@ -2123,9 +2123,9 @@ loadBalancer:
 # -- Configure N-S k8s service loadbalancing
 nodePort:
   # -- Enable the Cilium NodePort service implementation.
-  enabled: false
+  enabled: true
   # -- Port range to use for NodePort services.
-  # range: "30000,32767"
+  range: "30000,32767"
 
   # @schema
   # type: [null, string, array]
