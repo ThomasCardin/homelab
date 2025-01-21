@@ -19,7 +19,7 @@ spec:
         valueFiles:
         - $values/kubernetes/system/cilium/helm/values.yaml
       repoURL: https://helm.cilium.io/
-      targetRevision: 1.15.6
+      targetRevision: 1.16.5
     - repoURL: https://github.com/ThomasCardin/homelab
       targetRevision: HEAD
       ref: values
