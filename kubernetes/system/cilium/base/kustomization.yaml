@@ -3,5 +3,7 @@ kind: Kustomization
 
 resources:
   - gateways/gateways.yaml
-  - networking/htpc-pool.yaml
-  - networking/htpc-l2-policy.yaml
+  - networking/htpc/htpc-pool.yaml
+  - networking/htpc/htpc-l2-policy.yaml
+  - networking/ingress/default-ip-pool.yaml
+  - networking/ingress/default-l2-policy.yaml
