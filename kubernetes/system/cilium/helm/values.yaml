@@ -757,7 +757,7 @@ ingressController:
     # -- Labels to be added for the shared LB service
     labels: {}
     # -- Annotations to be added for the shared LB service
-    annotations:
+    annotations: {}
       # io.cilium/lb-ipam-ips: 192.168.2.103
     # -- Service type for the shared LB service
     type: LoadBalancer
@@ -791,7 +791,7 @@ ingressController:
   # Host Network related configuration
   hostNetwork:
     # -- Configure whether the Envoy listeners should be exposed on the host network.
-    enabled: true
+    enabled: false
     # -- Configure a specific port on the host network that gets used for the shared HTTP listener.
     # This is used for HTTP and HTTPS.
     sharedHTTPPort: 80
