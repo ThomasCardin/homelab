@@ -866,45 +866,45 @@ ingressController: # HERE
     sync: true
   # -- Load-balancer service in shared mode.
   # This is a single load-balancer service for all Ingress resources.
-  service:
-    # -- Service name
-    name: cilium-ingress
-    # -- Labels to be added for the shared LB service
-    labels: {}
-    # -- Annotations to be added for the shared LB service
-    annotations: {}
-    # -- Service type for the shared LB service
-    type: LoadBalancer
-    # @schema
-    # type: [null, integer]
-    # @schema
-    # -- Configure a specific nodePort for insecure HTTP traffic on the shared LB service
-    insecureNodePort: ~
-    # @schema
-    # type: [null, integer]
-    # @schema
-    # -- Configure a specific nodePort for secure HTTPS traffic on the shared LB service
-    secureNodePort: ~
-    # @schema
-    # type: [null, string]
-    # @schema
-    # -- Configure a specific loadBalancerClass on the shared LB service (requires Kubernetes 1.24+)
-    loadBalancerClass: ~
-    # @schema
-    # type: [null, string]
-    # @schema
-    # -- Configure a specific loadBalancerIP on the shared LB service
-    loadBalancerIP: ~
-    # @schema
-    # type: [null, boolean]
-    # @schema
-    # -- Configure if node port allocation is required for LB service
-    # ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-nodeport-allocation
-    allocateLoadBalancerNodePorts: ~
-    # -- Control how traffic from external sources is routed to the LoadBalancer Kubernetes Service for Cilium Ingress in shared mode.
-    # Valid values are "Cluster" and "Local".
-    # ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#external-traffic-policy
-    externalTrafficPolicy: Cluster
+  # service:
+  #   # -- Service name
+  #   name: cilium-ingress
+  #   # -- Labels to be added for the shared LB service
+  #   labels: {}
+  #   # -- Annotations to be added for the shared LB service
+  #   annotations: {}
+  #   # -- Service type for the shared LB service
+  #   type: LoadBalancer
+  #   # @schema
+  #   # type: [null, integer]
+  #   # @schema
+  #   # -- Configure a specific nodePort for insecure HTTP traffic on the shared LB service
+  #   insecureNodePort: ~
+  #   # @schema
+  #   # type: [null, integer]
+  #   # @schema
+  #   # -- Configure a specific nodePort for secure HTTPS traffic on the shared LB service
+  #   secureNodePort: ~
+  #   # @schema
+  #   # type: [null, string]
+  #   # @schema
+  #   # -- Configure a specific loadBalancerClass on the shared LB service (requires Kubernetes 1.24+)
+  #   loadBalancerClass: ~
+  #   # @schema
+  #   # type: [null, string]
+  #   # @schema
+  #   # -- Configure a specific loadBalancerIP on the shared LB service
+  #   loadBalancerIP: ~
+  #   # @schema
+  #   # type: [null, boolean]
+  #   # @schema
+  #   # -- Configure if node port allocation is required for LB service
+  #   # ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-nodeport-allocation
+  #   allocateLoadBalancerNodePorts: ~
+  #   # -- Control how traffic from external sources is routed to the LoadBalancer Kubernetes Service for Cilium Ingress in shared mode.
+  #   # Valid values are "Cluster" and "Local".
+  #   # ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#external-traffic-policy
+  #   externalTrafficPolicy: Cluster
   # Host Network related configuration
   hostNetwork: 
     # -- Configure whether the Envoy listeners should be exposed on the host network.
