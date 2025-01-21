@@ -152,11 +152,11 @@ image:
   # type: [null, string]
   # @schema
   override: ~
-  repository: "quay.io/cilium/cilium-ci"
+  repository: "quay.io/cilium/cilium"
   tag: "v1.16.5"
-  pullPolicy: "Always"
+  pullPolicy: "IfNotPresent"
   # cilium-digest
-  digest: ""
+  digest: "sha256:758ca0793f5995bb938a2fa219dcce63dc0b3fa7fc4ce5cc851125281fb7361d"
   useDigest: false
 # -- Affinity for cilium-agent.
 affinity:
