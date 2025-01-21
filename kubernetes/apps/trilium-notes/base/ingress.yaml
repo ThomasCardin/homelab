@@ -25,3 +25,21 @@ spec:
   - hosts:
     - trilium.ninebasetwo.net
     secretName: trilium-tls
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: trilium-notes-internal-ingress
+spec:
+  ingressClassName: cilium 
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: trilium-svc
+            port:
+              number: 8080
