@@ -904,7 +904,7 @@ ingressController: # HERE
     # -- Control how traffic from external sources is routed to the LoadBalancer Kubernetes Service for Cilium Ingress in shared mode.
     # Valid values are "Cluster" and "Local".
     # ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#external-traffic-policy
-    externalTrafficPolicy: Cluster
+    externalTrafficPolicy: Local
   # Host Network related configuration
   hostNetwork:
     # -- Configure whether the Envoy listeners should be exposed on the host network.
