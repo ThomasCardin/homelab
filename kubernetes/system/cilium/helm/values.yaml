@@ -1974,7 +1974,7 @@ readinessProbe:
 # -- Configure the kube-proxy replacement in Cilium BPF datapath
 # Valid options are "true" or "false".
 # ref: https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/
-#kubeProxyReplacement: "false"
+kubeProxyReplacement: "true" # HERE
 
 # -- healthz server bind address for the kube-proxy replacement.
 # To enable set the value to '0.0.0.0:10256' for all ipv4
@@ -1987,7 +1987,7 @@ l2NeighDiscovery:
   # -- Override the agent's default neighbor resolution refresh period.
   refreshPeriod: "30s"
 # -- Enable Layer 7 network policy.
-l7Proxy: true
+l7Proxy: true # HERE
 # -- Enable Local Redirect Policy.
 localRedirectPolicy: false
 # To include or exclude matched resources from cilium identity evaluation
@@ -2123,7 +2123,7 @@ loadBalancer:
 # -- Configure N-S k8s service loadbalancing
 nodePort:
   # -- Enable the Cilium NodePort service implementation.
-  enabled: true
+  enabled: true # HERE
   # -- Port range to use for NodePort services.
   range: "30000,32767"
 
