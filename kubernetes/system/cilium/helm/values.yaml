@@ -787,8 +787,7 @@ ingressController:
     # -- Configure if node port allocation is required for LB service
     # ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-nodeport-allocation
     allocateLoadBalancerNodePorts: ~
-
-    externalTrafficPolicy: Cluster
+    #externalTrafficPolicy: Cluster
   # Host Network related configuration
   hostNetwork:
     # -- Configure whether the Envoy listeners should be exposed on the host network.
