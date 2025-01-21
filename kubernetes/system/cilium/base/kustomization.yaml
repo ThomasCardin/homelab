@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
   - gateways/gateways.yaml
-  - networking/ip-pool.yaml
-  - networking/l2announcement.yaml
+  - networking/htpc-pool.yaml
+  - networking/htpc-l2-policy.yaml
