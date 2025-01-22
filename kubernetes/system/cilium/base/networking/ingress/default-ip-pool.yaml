@@ -3,7 +3,7 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: "cluster-pool"
 spec:
-  allowFirstLastIPs: Yes
+  allowFirstLastIPs: No
   blocks:
-    - start: "192.168.2.100"
-      stop: "192.168.2.130"
+    - start: "192.168.2.1"
+      stop: "192.168.2.50"
