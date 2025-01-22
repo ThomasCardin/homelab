@@ -168,7 +168,7 @@ configs:
 
     # -- Enable exec feature in Argo UI
     ## Ref: https://argo-cd.readthedocs.io/en/latest/operator-manual/rbac/#exec-resource
-    exec.enabled: false
+    exec.enabled: true
 
     # -- Enable local admin user
     ## Ref: https://argo-cd.readthedocs.io/en/latest/faq/#how-to-disable-admin-user
@@ -289,6 +289,7 @@ configs:
     # @default -- `''` (See [values.yaml])
     policy.csv: |
        g, ninebasetwo-net:admin, role:admin
+       p, role:myrole, exec, create, */*, allow
        
     # Policy rules are in the form:
     #  p, subject, resource, action, object, effect
@@ -308,6 +309,12 @@ configs:
 
     # -- Matcher function for Casbin, `glob` for glob matcher and `regex` for regex matcher.
     policy.matchMode: "glob"
+
+    clusterRole:
+      rules:
+        - apiGroups: [""]
+          resources: ["pods/exec"]
+          verbs: ["create"]
 
   # GnuPG public keys for commit verification
   ## Ref: https://argo-cd.readthedocs.io/en/stable/user-guide/gpg-verification/
