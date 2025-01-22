@@ -874,7 +874,7 @@ ingressController: # HERE
     # -- Annotations to be added for the shared LB service
     annotations: {}
     # -- Service type for the shared LB service
-    type: ClusterIP # https://github.com/cilium/cilium/issues/34028
+    type: LoadBalancer # https://github.com/cilium/cilium/issues/34028
     # @schema
     # type: [null, integer]
     # @schema
@@ -904,11 +904,11 @@ ingressController: # HERE
     # -- Control how traffic from external sources is routed to the LoadBalancer Kubernetes Service for Cilium Ingress in shared mode.
     # Valid values are "Cluster" and "Local".
     # ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#external-traffic-policy
-    externalTrafficPolicy: "~" # https://github.com/cilium/cilium/issues/34028
+    externalTrafficPolicy: Cluster # https://github.com/cilium/cilium/issues/34028
   # Host Network related configuration
   hostNetwork: 
     # -- Configure whether the Envoy listeners should be exposed on the host network.
-    enabled: true # HERE
+    enabled: false # HERE
     # -- Configure a specific port on the host network that gets used for the shared listener.
     sharedListenerPort: 8080
     # Specify the nodes where the Ingress listeners should be exposed
