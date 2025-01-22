@@ -289,7 +289,7 @@ configs:
     # @default -- `''` (See [values.yaml])
     policy.csv: |
        g, ninebasetwo-net:admin, role:admin
-       p, role:myrole, exec, create, */*, allow
+       p, role:admin, exec, create, */*, allow
        
     # Policy rules are in the form:
     #  p, subject, resource, action, object, effect
