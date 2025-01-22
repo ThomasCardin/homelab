@@ -2,5 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "argocd": {
+    "fileMatch": ["^.+/argo-app\\.yaml$"]
+  },
+  "automerge": true,
+  "username": "updatER",
+  "gitAuthor": "tomcardin@outlook.com"
 }
