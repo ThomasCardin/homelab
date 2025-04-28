@@ -1,0 +1,252 @@
+---
+grafana:
+  # -- Deploy Grafana if enabled. See [upstream readme](https://github.com/grafana/helm-charts/tree/main/charts/grafana#configuration) for full values reference.
+  enabled: true
+  grafana.ini: # todo, configure keycloak login
+    auth.anonymous:
+      enabled: true
+      org_name: "Main Org."
+      org_role: Admin
+    auth:
+      disable_login_form: true
+      auto_assign_org_id: 1
+    server:
+      root_url: https://grafana.ninebasetwo.net
+  plugins:
+    - marcusolsson-treemap-panel
+    - digrich-bubblechart-panel
+    - grafana-clock-panel
+  # -- Grafana data sources config. Connects to all three by default
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      # -- Datasources linked to the Grafana instance. Override if you disable any components.
+      datasources:
+        # https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-loki-data-source
+        - name: Loki
+          uid: loki
+          type: loki
+          url: http://{{ .Release.Name }}-loki-gateway
+          isDefault: false
+        # https://grafana.com/docs/grafana/latest/datasources/prometheus/#provision-the-data-source
+        - name: Mimir
+          uid: prom
+          type: prometheus
+          url: http://{{ .Release.Name }}-mimir-nginx/prometheus
+          isDefault: true
+        # https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/#provision-the-data-source
+        - name: Tempo
+          uid: tempo
+          type: tempo
+          url: http://{{ .Release.Name }}-tempo-query-frontend:3100
+          isDefault: false
+          jsonData:
+            tracesToLogsV2:
+              datasourceUid: loki
+            lokiSearch:
+              datasourceUid: loki
+            tracesToMetrics:
+              datasourceUid: prom
+            serviceMap:
+              datasourceUid: prom
+  persistence:
+    type: pvc
+    enabled: true
+    storageClassName: hdd-ceph-block
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    pathType: Prefix
+    path: /
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/auth-url: "https://oauth2.ninebasetwo.net/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.ninebasetwo.net/oauth2/start?rd=$scheme://$host$request_uri"
+    hosts:
+      - grafana.ninebasetwo.net
+    tls:
+    - hosts:
+        - grafana.ninebasetwo.net
+      secretName: grafana-tls
+    
+loki:
+  # -- Deploy Loki if enabled. See [upstream readme](https://github.com/grafana/helm-charts/tree/main/charts/loki-distributed#values) for full values reference.
+  enabled: true
+  compactor:
+    enabled: true
+    persistence:
+      enabled: true
+      storageClass: hdd-ceph-block
+      size: 50Gi
+      claims:
+        - name: data
+          size: 50Gi
+          storageClass: hdd-ceph-block
+  indexGateway:
+    enabled: true
+    persistence:
+      enabled: true
+      storageClass: hdd-ceph-block
+      size: 50Gi
+  ingester:
+    persistence:
+      enabled: true
+      claims:
+        - name: data
+          size: 50Gi
+          storageClass: hdd-ceph-block
+  querier:
+    persistence:
+      enabled: true
+      storageClass: hdd-ceph-block
+      size: 50Gi
+  ruler:
+    enabled: true
+    persistence:
+      enabled: true
+      storageClass: hdd-ceph-block
+      size: 50Gi
+    extraVolumes:
+      - name: loki-rules
+        emptyDir: {}
+    extraVolumeMounts:
+      - name: loki-rules
+        mountPath: /etc/loki/rules
+        readOnly: false
+
+# -- Mimir chart values. Resources are set to a minimum by default.
+mimir:
+  # -- Deploy Mimir if enabled. See [upstream values.yaml](https://github.com/grafana/mimir/blob/main/operations/helm/charts/mimir-distributed/values.yaml) for full values reference.
+  enabled: true
+  alertmanager:
+    persistentVolume:
+      storageClass: hdd-ceph-block
+    resources:
+      requests:
+        cpu: 20m
+  compactor:
+    persistentVolume:
+      storageClass: hdd-ceph-block
+      size: 1Ti
+    resources:
+      requests:
+        cpu: 20m
+  distributor:
+    resources:
+      requests:
+        cpu: 20m
+  ingester:
+    replicas: 2
+    persistentVolume:
+      storageClass: hdd-ceph-block
+      size: 500Gi
+    zoneAwareReplication:
+      enabled: false
+    resources:
+      requests:
+        cpu: 20m
+  overrides_exporter:
+    resources:
+      requests:
+        cpu: 20m
+  querier:
+    replicas: 1
+    resources:
+      requests:
+        cpu: 20m
+  query_frontend:
+    resources:
+      requests:
+        cpu: 20m
+  query_scheduler:
+    replicas: 1
+    resources:
+      requests:
+        cpu: 20m
+  ruler:
+    resources:
+      requests:
+        cpu: 20m
+  store_gateway:
+    persistentVolume:
+      storageClass: hdd-ceph-block
+      size: 50Gi
+    zoneAwareReplication:
+      enabled: false
+    resources:
+      requests:
+        cpu: 20m
+  minio:
+    enabled: true
+  rollout_operator:
+    resources:
+      requests:
+        cpu: 20m
+
+tempo:
+  # -- Deploy Tempo if enabled.  See [upstream readme](https://github.com/grafana/helm-charts/blob/main/charts/tempo-distributed/README.md#values) for full values reference.
+  enabled: true
+  ingester:
+    replicas: 1
+    # https://github.com/grafana/loki/issues/8899
+    config:
+      replication_factor: 1
+    persistence:
+      enabled: true
+      storageClass: hdd-ceph-block
+      size: 50Gi
+  traces:
+    otlp:
+      http:
+        enabled: true
+      grpc:
+        # -- Enable Tempo to ingest Open Telemetry GRPC traces
+        enabled: true
+  compactor:
+    config:
+      compaction:
+        block_retention: 1440h # 2 months
+
+grafana-oncall:
+  # -- Deploy Grafana OnCall if enabled. See [upstream values.yaml](https://github.com/grafana/oncall/blob/dev/helm/oncall/values.yaml) for full values reference.
+  enabled: false
+  base_url: https://grafana-oncall.inspection.alpha.canada.ca
+  ingress:
+    enabled: false
+  ingress-nginx:
+    enabled: false
+  cert-manager:
+    enabled: false
+  database:
+    type: postgresql
+  mariadb:
+    enabled: false
+  grafana:
+    enabled: false
+  redis:
+    enabled: true
+  rabbitmq:
+    enabled: true
+  externalPostgresql: # TODO
+    host:
+    port:
+    db_name:
+    user:
+    password:
+    # Use an existing secret for the database password
+    existingSecret:
+    # The key in the secret containing the database password
+    passwordKey:
+    # Extra options (see example below)
+    # Reference: https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS
+    options:
+    # options: >-
+    #   sslmode=verify-full
+    #   sslrootcert=/mnt/postgres-tls/ca.crt
+    #   sslcert=/mnt/postgres-tls/client.crt
+    #   sslkey=/mnt/postgres-tls/client.key

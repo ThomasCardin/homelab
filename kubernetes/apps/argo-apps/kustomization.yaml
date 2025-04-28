@@ -15,6 +15,10 @@ resources:
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
+  - ../../system/monitoring/grafana-lgtm
+  - ../../system/monitoring/grafana-alloy
+  - ../../system/monitoring/k8s-state-metrics
+  - ../../system/monitoring/metrics-server
   - ../../system/rook-ceph
   - ../../system/ingress-nginx
   - ../../system/sealed-secrets
