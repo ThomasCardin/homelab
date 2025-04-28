@@ -15,7 +15,7 @@ spec:
       helm:
         releaseName: metrics-server
         valueFiles:
-          - $values/monitoring/metrics-server/helm/values.yaml
+          - $values/kubernetes/system/monitoring/metrics-server/helm/values.yaml
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values

@@ -15,7 +15,7 @@ spec:
       helm:
         releaseName: alloy
         valueFiles:
-          - $values/monitoring/grafana-alloy/helm/values.yaml
+          - $values/kubernetes/system/monitoring/grafana-alloy/helm/values.yaml
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values

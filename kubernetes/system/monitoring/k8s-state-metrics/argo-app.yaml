@@ -15,7 +15,7 @@ spec:
       helm:
         releaseName: kube-state-metrics
         valueFiles:
-          - $values/monitoring/k8s-state-metrics/helm/values.yaml
+          - $values/kubernetes/system/monitoring/k8s-state-metrics/helm/values.yaml
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
