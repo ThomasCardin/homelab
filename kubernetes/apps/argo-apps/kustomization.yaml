@@ -16,7 +16,6 @@ resources:
   - ../../system/cilium
   - ../../system/argocd
   - ../../system/rook-ceph
-  - ../../system/monitoring
   - ../../system/ingress-nginx
   - ../../system/sealed-secrets
   - ../../system/oauth2-proxy
