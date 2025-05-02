@@ -19,3 +19,6 @@ spec:
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab
+      path: kubernetes/system/monitoring/grafana-lgtm/base
+      targetRevision: HEAD
