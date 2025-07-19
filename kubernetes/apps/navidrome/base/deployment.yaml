@@ -56,7 +56,6 @@ spec:
               mountPath: /data
             - name: music
               mountPath: /music
-              readOnly: true
       volumes:
         - name: data
           persistentVolumeClaim:
