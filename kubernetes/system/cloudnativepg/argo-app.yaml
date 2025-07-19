@@ -19,9 +19,6 @@ spec:
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
-    - repoURL: https://github.com/ThomasCardin/homelab.git
-      path: kubernetes/system/cloudnativepg/base
-      targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
