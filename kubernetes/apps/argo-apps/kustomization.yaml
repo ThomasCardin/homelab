@@ -11,6 +11,7 @@ resources:
   - ../gotify/
   - ../actual-budget/
   - ../immich/
+  - ../navidrome/
 
   # System applications
   - ../../system/cert-manager

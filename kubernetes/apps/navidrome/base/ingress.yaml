@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-external-navidrome
+  namespace: navidrome
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: navidrome.ninebasetwo.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: navidrome-svc
+            port:
+              number: 80
+  tls:
+    - hosts:
+      - navidrome.ninebasetwo.net
+      secretName: navidrome-tls
