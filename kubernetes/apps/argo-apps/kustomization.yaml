@@ -10,7 +10,7 @@ resources:
   - ../intervalsicu/
   - ../gotify/
   - ../actual-budget/
-  - ../immish/
+  - ../immich/
 
   # System applications
   - ../../system/cert-manager
