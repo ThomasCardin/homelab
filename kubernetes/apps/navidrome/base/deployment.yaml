@@ -19,7 +19,7 @@ metadata:
 spec:
   storageClassName: hdd-ceph-block 
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 200Gi
