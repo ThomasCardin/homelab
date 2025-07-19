@@ -5,8 +5,6 @@ metadata:
   namespace: navidrome
 spec:
   storageClassName: hdd-ceph-block 
-  accessModes:
-    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
@@ -18,8 +16,6 @@ metadata:
   name: navidrome-music
 spec:
   storageClassName: hdd-ceph-block 
-  accessModes:
-    - ReadOnlyMany
   resources:
     requests:
       storage: 200Gi
