@@ -24,6 +24,7 @@ resources:
   - ../../system/sealed-secrets
   - ../../system/oauth2-proxy
   - ../../system/atlantis
+  - ../../system/cloudnativepg
 
 patches:
 - patch: |-
