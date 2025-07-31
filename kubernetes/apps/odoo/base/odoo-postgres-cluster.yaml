@@ -1,0 +1,24 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: odoo-postgres
+spec:
+  imageName: postgres:16
+  instances: 1
+
+  managed:
+    roles:
+      - name: odoo
+        superuser: true
+        login: true
+
+  bootstrap:
+    initdb:
+      database: odoo
+      owner: odoo
+      secret:
+        name: odoo-postgres-user
+
+  storage:
+    size: 20Gi
+    storageClass: hdd-ceph-block
