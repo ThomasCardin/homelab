@@ -12,6 +12,7 @@ resources:
   - ../actual-budget/
   - ../immich/
   - ../navidrome/
+  - ../odoo/
 
   # System applications
   - ../../system/cert-manager
