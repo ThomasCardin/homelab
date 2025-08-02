@@ -2,11 +2,11 @@
 # https://artifacthub.io/packages/helm/bitnami/odoo
 
 # Configuration de base avec secrets
-auth:
-  existingSecret: odoo-credentials
-  usernameKey: username
-  passwordKey: password
-  emailKey: email
+existingSecret: odoo-credentials
+allowEmptyPassword: true
+
+# Configuration des credentials via secrets existants
+odooEmail: admin@ninebasetwo.net
 
 # Configuration PostgreSQL externe (CloudNativePG)
 postgresql:
@@ -25,7 +25,8 @@ persistence:
   enabled: true
   size: 10Gi
   storageClass: hdd-ceph-block
-  accessMode: ReadWriteOnce
+  accessModes:
+    - ReadWriteOnce
 
 # Configuration Ingress
 ingress:
@@ -50,10 +51,20 @@ resources:
 # Configuration du service
 service:
   type: ClusterIP
-  port: 8069
+  ports:
+    http: 8069
 
 # Configuration de sécurité
-securityContext:
+podSecurityContext:
   enabled: true
   fsGroup: 1001
+
+containerSecurityContext:
+  enabled: true
   runAsUser: 1001
+  runAsGroup: 1001
+  runAsNonRoot: true
+
+# Volume permissions
+volumePermissions:
+  enabled: true

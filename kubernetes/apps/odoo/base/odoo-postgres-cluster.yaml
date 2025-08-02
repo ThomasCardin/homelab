@@ -6,6 +6,12 @@ spec:
   imageName: postgres:16
   instances: 1
 
+  # SecurityContext pour résoudre le problème user ID 26
+  securityContext:
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+
   managed:
     roles:
       - name: odoo
