@@ -4,15 +4,21 @@
 odooEmail: admin@ninebasetwo.net
 existingSecret: odoo-credentials
 
-# Variables d'environnement pour PostgreSQL
-extraEnvVarsSecret: postgresql-secret
+# Variables d'environnement pour la connexion PostgreSQL
+extraEnvVars:
+  - name: ODOO_DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: postgresql-secret
+        key: postgres-password
 
 # PostgreSQL intégré avec secret
 postgresql:
   enabled: true
   auth:
-    username: odoo
-    database: odoo
+    username: bn_odoo
+    password: ""
+    database: bitnami_odoo
     existingSecret: postgresql-secret
     secretKeys:
       adminPasswordKey: postgres-password
