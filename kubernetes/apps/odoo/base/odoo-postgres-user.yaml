@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: odoo-postgres-user
+  namespace: odoo
+spec:
+  encryptedData:
+    password: AgAsLZk9Ia4LduuGOjR8nGbRo9BbYEoZ11yl67ln23Yes9ZkMWI1E5VBC1v3meNO6udxad0w6gJJvc3Lq7rtfP2/W3pzKJs+/Ih30j0dD3rpfA3b9llNNl0ofJk1f6uMzYBYuEtii322xjcXz10ibmr9Q+Kf/iRluoxGgIn2zvmHz+sn2LW8LcDQGggUBBTwbiNL4vzDAaZvptUntFhME2tFBplxZmihCV7+vHTnl8kPUdP/44bV1w+LICUvTmpN7luziu9QjFLKziMvKhQMZCY4aDeWuGqzgD1nD0P2a2V8deNKrxIO+gSkvBz6kwJU1IwvkVMiPEnf24+Q48QBckoYvPrilg1Rt7XhUeW7xzTWsgF25AnpeQuLW2k1Moudr9c4nUzo+HjUO8p9w7i2CsRQ0Qawl5sQralOwD3l6L3ksJT84I05SCYjUddYuNkCCuja0f77+gIkro69SlMYXW+koCZEYixbV3HvPf8ptA633yzaZ3ZthB4zndHvpP7Awe3XtegERfiV8zdEBwJk1QGpV/phcTYiN7EjAx6HD+5AZhBUPe2//9Chl6S8FSRoJiSlBdFJ+gsmW/bNhtV+d5pQu7avbsPYaJN4FcvmToXv+iSe9nE4hIcMbkoI0J3KGVsiHzD9hJ9nBIDOklkpPlY2fjB0APUWZVgKdL7nuiX5vl23FJmoaQti5HgWThtfWKNfkINhVfx7WA==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: odoo-postgres-user
+      namespace: odoo
+    type: Opaque
