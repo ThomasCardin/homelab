@@ -1,34 +1,26 @@
-# Configuration pour le chart Bitnami Odoo
-# https://artifacthub.io/packages/helm/bitnami/odoo
+# Configuration simple pour Odoo avec PostgreSQL intégré
 
-# Configuration de base avec secrets
-existingSecret: odoo-credentials
-allowEmptyPassword: true
-
-# Configuration des credentials via secrets existants
+# Configuration Odoo avec secrets
 odooEmail: admin@ninebasetwo.net
+existingSecret: odoo-credentials
 
-# Configuration PostgreSQL externe (CloudNativePG)
+# PostgreSQL intégré avec secret
 postgresql:
-  enabled: false  # Désactiver PostgreSQL intégré
+  enabled: true
+  auth:
+    username: odoo
+    database: odoo
+    existingSecret: postgresql-secret
+    secretKeys:
+      adminPasswordKey: postgres-password
 
-externalDatabase:
-  host: odoo-postgres-rw.odoo.svc.cluster.local
-  port: 5432
-  user: odoo
-  database: odoo
-  existingSecret: odoo-postgres-user
-  existingSecretPasswordKey: password
-
-# Configuration du stockage
+# Stockage
 persistence:
   enabled: true
   size: 10Gi
   storageClass: hdd-ceph-block
-  accessModes:
-    - ReadWriteOnce
 
-# Configuration Ingress
+# Ingress
 ingress:
   enabled: true
   ingressClassName: nginx
@@ -36,10 +28,9 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
   tls: true
 
-# Configuration des ressources
+# Ressources
 resources:
   requests:
     memory: 512Mi
@@ -47,24 +38,3 @@ resources:
   limits:
     memory: 2Gi
     cpu: 1000m
-
-# Configuration du service
-service:
-  type: ClusterIP
-  ports:
-    http: 8069
-
-# Configuration de sécurité
-podSecurityContext:
-  enabled: true
-  fsGroup: 1001
-
-containerSecurityContext:
-  enabled: true
-  runAsUser: 1001
-  runAsGroup: 1001
-  runAsNonRoot: true
-
-# Volume permissions
-volumePermissions:
-  enabled: true
