@@ -13,6 +13,7 @@ postgresql:
     existingSecret: postgresql-secret
     secretKeys:
       adminPasswordKey: postgres-password
+      userPasswordKey: postgres-password
 
 # Stockage
 persistence:
