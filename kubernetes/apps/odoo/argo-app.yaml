@@ -11,12 +11,11 @@ spec:
     server: https://kubernetes.default.svc
     namespace: odoo
   sources:
-    - chart: odoo
       helm:
         releaseName: odoo
         valueFiles:
           - $values/kubernetes/apps/odoo/helm/values.yaml
-      repoURL: oci://registry-1.docker.io/bitnamicharts
+      repoURL: oci://registry-1.docker.io/bitnamicharts/odoo
       targetRevision: 28.2.6
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
