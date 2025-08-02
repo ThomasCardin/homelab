@@ -17,7 +17,7 @@ spec:
         valueFiles:
           - $values/kubernetes/apps/odoo/helm/values.yaml
       repoURL: https://charts.bitnami.com/bitnami
-      targetRevision: 28.2.7
+      targetRevision: 28.2.5
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
