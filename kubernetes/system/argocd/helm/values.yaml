@@ -481,7 +481,7 @@ configs:
       url: oci://registry-1.docker.io/bitnamicharts
       name: bitnami-oci
       type: helm
-      enableOCI: true
+      enableOCI: "true"
     # istio-helm-repo:
     #   url: https://storage.googleapis.com/istio-prerelease/daily-build/master-latest-daily/charts
     #   name: istio.io
