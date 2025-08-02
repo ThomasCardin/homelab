@@ -16,7 +16,7 @@ spec:
         releaseName: odoo
         valueFiles:
           - $values/kubernetes/apps/odoo/helm/values.yaml
-      repoURL: oci://registry-1.docker.io/bitnamicharts
+      repoURL: registry-1.docker.io/bitnamicharts
       targetRevision: 28.2.7
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
