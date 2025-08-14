@@ -1,9 +1,14 @@
 existingSecret: "litmus-admin-secret"
 
 adminConfig:
+  VERSION: "3.19.0"
+  SKIP_SSL_VERIFY: "false"
   ADMIN_USERNAME: ""  # From existingSecret
   ADMIN_PASSWORD: ""  # From existingSecret
   DB_SERVER: ""  # MongoDB URI from existingSecret
+  DBUSER: ""  # From existingSecret (for compatibility)
+  DBPASSWORD: ""  # From existingSecret (for compatibility)
+  DB_PORT: "27017"
 
 ingress:
   enabled: true
