@@ -5,8 +5,8 @@ adminConfig:
   ADMIN_PASSWORD: ""  # From existingSecret
   DB_SERVER: "mongodb-service.litmus.svc.cluster.local"
   DB_PORT: "27017"
-  DBUSER: ""  # From existingSecret
-  DBPASSWORD: ""  # From existingSecret
+  DB_USER: ""  # From existingSecret
+  DB_PASSWORD: ""  # From existingSecret
 
 ingress:
   enabled: true

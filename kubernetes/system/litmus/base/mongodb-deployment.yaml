@@ -25,12 +25,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: litmus-admin-secret
-              key: DBUSER
+              key: DB_USER
         - name: MONGO_INITDB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: litmus-admin-secret
-              key: DBPASSWORD
+              key: DB_PASSWORD
         volumeMounts:
         - name: mongodb-data
           mountPath: /data/db
