@@ -1,38 +1,30 @@
-existingSecret: "litmus-admin-secret"
+# Configuration des secrets
+existingSecret: "litmus-secrets"
 
-adminConfig:
-  VERSION: "3.19.0"
-  SKIP_SSL_VERIFY: "false"
-  DB_SERVER: "mongodb://mongodb-0.mongodb-service.litmus.svc.cluster.local:27017/litmusdb?replicaSet=rs0"
-  DB_PORT: "27017"
-  DB_USER: ""  # From existingSecret
-  DB_PASSWORD: ""  # From existingSecret
-  ADMIN_USERNAME: ""  # From existingSecret
-  ADMIN_PASSWORD: ""  # From existingSecret
-
-ingress:
-  enabled: true
-  name: litmus-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-  ingressClassName: nginx
-  host:
-    name: litmus.ninebasetwo.net
-    frontend:
-      path: /
-      pathType: Prefix
-  tls:
-    - secretName: litmus-tls
-      hosts:
-        - litmus.ninebasetwo.net
-
-# MongoDB disabled - using external MongoDB 
+# Configuration pour ARM64 - utilise une image MongoDB compatible
 mongodb:
-  enabled: false
+  image:
+    registry: ghcr.io/zcube
+    repository: bitnami-compat/mongodb
+    tag: "6.0.5"
+  auth:
+    enabled: true
+    existingSecret: "litmus-secrets"
+  architecture: replicaset
+  replicaCount: 1
+  persistence:
+    enabled: true
+    size: 20Gi
+  volumePermissions:
+    enabled: true
+  metrics:
+    enabled: false
 
+# Configuration des services pour NodePort (comme dans la doc)
 portal:
   frontend:
+    service:
+      type: NodePort
     replicas: 1
     resources:
       requests:
@@ -51,6 +43,8 @@ portal:
         limits:
           memory: "712Mi"
           cpu: "550m"
+      genericEnv:
+        CHAOS_CENTER_UI_ENDPOINT: "https://litmus.ninebasetwo.net"
     authServer:
       replicas: 1
       resources:
@@ -60,3 +54,20 @@ portal:
         limits:
           memory: "712Mi"
           cpu: "550m"
+
+# Configuration Ingress avec cert-manager
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  ingressClassName: nginx
+  host:
+    name: litmus.ninebasetwo.net
+    frontend:
+      path: /
+      pathType: Prefix
+  tls:
+    - secretName: litmus-tls
+      hosts:
+        - litmus.ninebasetwo.net
