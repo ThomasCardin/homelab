@@ -3,10 +3,7 @@ existingSecret: "litmus-admin-secret"
 adminConfig:
   ADMIN_USERNAME: ""  # From existingSecret
   ADMIN_PASSWORD: ""  # From existingSecret
-  DB_SERVER: "mongodb-service.litmus.svc.cluster.local"
-  DB_PORT: "27017"
-  DB_USER: ""  # From existingSecret
-  DB_PASSWORD: ""  # From existingSecret
+  DB_SERVER: ""  # MongoDB URI from existingSecret
 
 ingress:
   enabled: true
