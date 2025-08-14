@@ -10,6 +10,8 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/auth-url: "https://oauth2.ninebasetwo.net/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.ninebasetwo.net/oauth2/start?rd=$scheme://$host$request_uri"
   ingressClassName: nginx
   host:
     name: litmus.ninebasetwo.net
@@ -32,6 +34,17 @@ mongodb:
     enabled: true
   volumePermissions:
     enabled: true
+  extraEnvVars:
+    - name: EXPERIMENTAL_DOCKER_DESKTOP_FORCE_QEMU
+      value: "1"
+  arbiter:
+    extraEnvVars:
+      - name: EXPERIMENTAL_DOCKER_DESKTOP_FORCE_QEMU
+        value: "1"
+  livenessProbe:
+    timeoutSeconds: 20
+  readinessProbe:
+    timeoutSeconds: 20
 
 portal:
   frontend:
