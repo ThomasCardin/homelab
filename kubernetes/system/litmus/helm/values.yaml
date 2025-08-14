@@ -1,7 +1,7 @@
-# Configuration des secrets
+# Secrets
 existingSecret: "litmus-secrets"
 
-# Configuration pour ARM64 - utilise une image MongoDB compatible
+# https://docs.litmuschaos.io/docs/getting-started/installation ARM image
 mongodb:
   image:
     registry: ghcr.io/zcube
@@ -24,11 +24,10 @@ mongodb:
   metrics:
     enabled: false
 
-# Configuration des services pour NodePort (comme dans la doc)
 portal:
   frontend:
     service:
-      type: NodePort
+      type: ClusterIP
     replicas: 1
     resources:
       requests:
@@ -59,7 +58,6 @@ portal:
           memory: "712Mi"
           cpu: "550m"
 
-# Configuration Ingress avec cert-manager
 ingress:
   enabled: true
   annotations:
