@@ -1,0 +1,64 @@
+existingSecret: "litmus-admin-secret"
+
+adminConfig:
+  ADMIN_USERNAME: ""
+  ADMIN_PASSWORD: ""
+
+ingress:
+  enabled: true
+  name: litmus-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  ingressClassName: nginx
+  host:
+    name: litmus.ninebasetwo.net
+    frontend:
+      path: /
+      pathType: Prefix
+  tls:
+    - secretName: litmus-tls
+      hosts:
+        - litmus.ninebasetwo.net
+
+mongodb:
+  enabled: true
+  auth:
+    enabled: true
+    existingSecret: "litmus-admin-secret"
+  architecture: replicaset
+  replicaCount: 3
+  persistence:
+    enabled: true
+  volumePermissions:
+    enabled: true
+
+portal:
+  frontend:
+    replicas: 1
+    resources:
+      requests:
+        memory: "150Mi"
+        cpu: "125m"
+      limits:
+        memory: "512Mi"
+        cpu: "550m"
+  server:
+    replicas: 1
+    graphqlServer:
+      resources:
+        requests:
+          memory: "250Mi"
+          cpu: "225m"
+        limits:
+          memory: "712Mi"
+          cpu: "550m"
+    authServer:
+      replicas: 1
+      resources:
+        requests:
+          memory: "250Mi"
+          cpu: "225m"
+        limits:
+          memory: "712Mi"
+          cpu: "550m"

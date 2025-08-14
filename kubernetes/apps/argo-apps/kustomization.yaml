@@ -28,6 +28,7 @@ resources:
   - ../../system/oauth2-proxy
   - ../../system/atlantis
   - ../../system/cloudnativepg
+  - ../../system/litmus
 
 patches:
 - patch: |-
