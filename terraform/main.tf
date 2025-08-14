@@ -35,5 +35,6 @@ module "zero-trust-app" {
     "actual",
     "alloy",
     "gobservability"
+    
   ]
 }
