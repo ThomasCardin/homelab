@@ -23,7 +23,7 @@ spec:
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
-    - repoURL: https://github.com/ThomasCardin/homelab
+    - repoURL: https://github.com/ThomasCardin/homelab.git
       path: kubernetes/system/litmus/base
       targetRevision: HEAD
   syncPolicy:
