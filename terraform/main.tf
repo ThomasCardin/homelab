@@ -34,7 +34,6 @@ module "zero-trust-app" {
     "trilium",
     "actual",
     "alloy",
-    "gobservability",
-    "litmus"
+    "gobservability"
   ]
 }
