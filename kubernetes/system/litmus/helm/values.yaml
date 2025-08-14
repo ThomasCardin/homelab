@@ -3,14 +3,12 @@ existingSecret: "litmus-admin-secret"
 adminConfig:
   VERSION: "3.19.0"
   SKIP_SSL_VERIFY: "false"
-  ADMIN_USERNAME: ""  # From existingSecret
-  ADMIN_PASSWORD: ""  # From existingSecret
-  DB_SERVER: ""  # MongoDB URI from existingSecret
-  DB_PORT: ""
+  DB_SERVER: "mongodb://mongodb-0.mongodb-service.litmus.svc.cluster.local:27017/litmusdb?replicaSet=rs0"
+  DB_PORT: "27017"
   DB_USER: ""  # From existingSecret
   DB_PASSWORD: ""  # From existingSecret
-  DBPASSWORD: ""
-  DBUSER: ""
+  ADMIN_USERNAME: ""  # From existingSecret
+  ADMIN_PASSWORD: ""  # From existingSecret
 
 ingress:
   enabled: true
@@ -29,7 +27,7 @@ ingress:
       hosts:
         - litmus.ninebasetwo.net
 
-# see base/mongodb-deployment.yaml
+# MongoDB disabled - using external MongoDB 
 mongodb:
   enabled: false
 
