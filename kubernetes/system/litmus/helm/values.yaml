@@ -6,9 +6,11 @@ adminConfig:
   ADMIN_USERNAME: ""  # From existingSecret
   ADMIN_PASSWORD: ""  # From existingSecret
   DB_SERVER: ""  # MongoDB URI from existingSecret
-  DBUSER: ""  # From existingSecret (for compatibility)
-  DBPASSWORD: ""  # From existingSecret (for compatibility)
-  DB_PORT: "27017"
+  DB_PORT: ""
+  DB_USER: ""  # From existingSecret
+  DB_PASSWORD: ""  # From existingSecret
+  DBPASSWORD: ""
+  DBUSER: ""
 
 ingress:
   enabled: true
