@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: litmus
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+      - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: litmus
+    server: https://kubernetes.default.svc
+  sources:
+    - chart: litmus
+      helm:
+        releaseName: litmus
+        valueFiles:
+          - $values/kubernetes/system/litmus/helm/values.yaml
+      repoURL: https://litmuschaos.github.io/litmus-helm/
+      targetRevision: 3.19.0
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab
+      path: kubernetes/system/litmus/base
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
