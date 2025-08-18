@@ -1,0 +1,140 @@
+---
+- name: Install Performance Monitoring Tools
+  hosts: "{{ target_hosts | default('all') }}"
+  become: yes
+  gather_facts: yes
+  
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Install all performance monitoring tools
+      apt:
+        name:
+          # System Monitoring
+          - htop
+          - atop
+          - iotop
+          - sysstat
+          - dstat
+          - glances
+          - nmon
+          - lm-sensors
+          # CPU Performance
+          - stress
+          - stress-ng
+          - cpufrequtils
+          - powertop
+          # Memory Performance
+          - memtester
+          - smem
+          # Disk Performance
+          - hdparm
+          - smartmontools
+          - fio
+          - bonnie++
+          - ncdu
+          # Network Performance
+          - iperf3
+          - netperf
+          - nload
+          - iftop
+          - nethogs
+          - bmon
+          - speedtest-cli
+          - mtr
+          - tcpdump
+          - nmap
+          - netcat
+          # Profiling and Tracing
+          - strace
+          - ltrace
+          - linux-tools-generic
+          - linux-tools-common
+          - bpfcc-tools
+          - bpftrace
+          - systemtap
+          - perf-tools-unstable
+          # System Information
+          - lshw
+          - hwinfo
+          - inxi
+          - neofetch
+          - pciutils
+          - usbutils
+          - dmidecode
+        state: present
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Enable sysstat data collection
+      lineinfile:
+        path: /etc/default/sysstat
+        regexp: '^ENABLED='
+        line: 'ENABLED="true"'
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Start and enable sysstat service
+      systemd:
+        name: sysstat
+        state: started
+        enabled: yes
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Detect sensors
+      command: sensors-detect --auto
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Install kernel headers for BPF tools
+      apt:
+        name:
+          - linux-headers-{{ ansible_kernel }}
+        state: present
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Clone FlameGraph repository
+      git:
+        repo: https://github.com/brendangregg/FlameGraph.git
+        dest: /opt/flamegraph
+        version: master
+      ignore_errors: yes
+
+    - name: Clone bcc repository for additional BPF tools
+      git:
+        repo: https://github.com/iovisor/bcc.git
+        dest: /opt/bcc
+        version: master
+      ignore_errors: yes
+
+    - name: Create symlinks for FlameGraph tools
+      file:
+        src: "/opt/flamegraph/{{ item }}"
+        dest: "/usr/local/bin/{{ item }}"
+        state: link
+      loop:
+        - flamegraph.pl
+        - stackcollapse-perf.pl
+        - stackcollapse.pl
+        - difffolded.pl
+      ignore_errors: yes
+
+    - name: Install additional BPF dependencies
+      apt:
+        name:
+          - python3-bpfcc
+          - libbpfcc
+          - libbpfcc-dev
+          - libelf-dev
+          - llvm
+          - clang
+        state: present
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
