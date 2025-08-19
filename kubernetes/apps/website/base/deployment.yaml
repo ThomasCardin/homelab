@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: website
-        image: ghcr.io/thomascardin/website:v2.0.0
+        image: ghcr.io/thomascardin/website:v3.0.0
         ports:
         - containerPort: 80
         resources:
