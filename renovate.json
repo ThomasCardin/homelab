@@ -1,12 +1,38 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
+  "repositoryCache": "disabled",
+  "enabledManagers": ["argocd"],
   "argocd": {
-    "fileMatch": ["^.+/argo-app\\.yaml$"]
+    "fileMatch": [
+      "^kubernetes/apps/.*/argo-app\\.yaml$",
+      "^kubernetes/system/.*/argo-app\\.yaml$"
+    ]
   },
-  "automerge": true,
-  "username": "updatER",
-  "gitAuthor": "tomcardin@outlook.com"
+  "separateMinorPatch": false,
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 10,
+  "packageRules": [
+    {
+      "matchManagers": ["argocd"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "commitMessage": "patch(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
+      "enabled": true
+    },
+    {
+      "matchManagers": ["argocd"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": false,
+      "commitMessage": "minor(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
+      "enabled": true
+    },
+    {
+      "matchManagers": ["argocd"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "commitMessage": "major(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
+      "enabled": true
+    }
+  ]
 }
