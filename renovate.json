@@ -2,11 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "repositoryCache": "disabled",
-  "enabledManagers": ["argocd"],
+  "enabledManagers": ["argocd", "kubernetes", "dockerfile", "docker-compose"],
   "argocd": {
     "fileMatch": [
       "^kubernetes/apps/.*/argo-app\\.yaml$",
       "^kubernetes/system/.*/argo-app\\.yaml$"
+    ]
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "^kubernetes/.*\\.ya?ml$"
     ]
   },
   "separateMinorPatch": false,
@@ -32,6 +37,30 @@
       "matchUpdateTypes": ["major"],
       "automerge": false,
       "commitMessage": "major(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
+      "enabled": true
+    },
+    {
+      "matchManagers": ["kubernetes", "dockerfile", "docker-compose"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "commitMessage": "patch(docker): update {{depName}} from {{currentVersion}} to {{newVersion}}",
+      "enabled": true
+    },
+    {
+      "matchManagers": ["kubernetes", "dockerfile", "docker-compose"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": false,
+      "commitMessage": "minor(docker): update {{depName}} from {{currentVersion}} to {{newVersion}}",
+      "enabled": true
+    },
+    {
+      "matchManagers": ["kubernetes", "dockerfile", "docker-compose"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "commitMessage": "major(docker): update {{depName}} from {{currentVersion}} to {{newVersion}}",
       "enabled": true
     }
   ]
