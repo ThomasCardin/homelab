@@ -22,6 +22,24 @@ spec:
                 operator: In
                 values:
                 - worker1
+      initContainers:
+        - name: init-config
+          image: busybox:latest
+          command: ['sh', '-c']
+          args:
+            - |
+              mkdir -p /factorio/config
+              cp /config-ro/server-settings.json /factorio/config/server-settings.json
+              cp /config-ro/map-gen-settings.json /factorio/config/map-gen-settings.json
+              chown -R 845:845 /factorio/config
+              chmod -R 755 /factorio/config
+              chmod 644 /factorio/config/*.json
+          volumeMounts:
+            - name: config
+              mountPath: /config-ro
+              readOnly: true
+            - name: data
+              mountPath: /factorio
       containers:
         - name: factorio
           image: factoriotools/factorio:stable
@@ -46,12 +64,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /factorio
-            - name: config
-              mountPath: /factorio/config/server-settings.json
-              subPath: server-settings.json
-            - name: config
-              mountPath: /factorio/config/map-gen-settings.json
-              subPath: map-gen-settings.json
           resources:
             requests:
               memory: "2Gi"
