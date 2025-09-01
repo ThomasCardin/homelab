@@ -42,7 +42,7 @@ spec:
               mountPath: /factorio
       containers:
         - name: factorio
-          image: factoriotools/factorio:1.1
+          image: factoriotools/factorio:stable
           ports:
             - containerPort: 34197
               protocol: UDP
@@ -58,6 +58,8 @@ spec:
             - name: LOAD_LATEST_SAVE
               value: "true"
             - name: UPDATE_MODS_ON_START
+              value: "false"
+            - name: DLC_SPACE_AGE
               value: "false"
             - name: PRESET
               value: "rich-resources"
