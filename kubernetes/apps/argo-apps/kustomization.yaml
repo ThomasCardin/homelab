@@ -14,6 +14,7 @@ resources:
   - ../navidrome/
   - ../odoo/
   - ../website/
+  - ../factorio/
 
   # System applications
   - ../../system/cert-manager

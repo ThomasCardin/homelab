@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factorio
+  namespace: factorio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: factorio
+  template:
+    metadata:
+      labels:
+        app: factorio
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - worker1
+      containers:
+        - name: factorio
+          image: factoriotools/factorio:stable
+          ports:
+            - containerPort: 34197
+              protocol: UDP
+              name: game
+            - containerPort: 27015
+              protocol: TCP
+              name: rcon
+          env:
+            - name: SAVE_NAME
+              value: "homelab"
+            - name: GENERATE_NEW_SAVE
+              value: "true"
+            - name: LOAD_LATEST_SAVE
+              value: "true"
+            - name: UPDATE_MODS_ON_START
+              value: "true"
+            - name: PRESET
+              value: "rich-resources"
+          volumeMounts:
+            - name: data
+              mountPath: /factorio
+            - name: config
+              mountPath: /factorio/config/server-settings.json
+              subPath: server-settings.json
+            - name: config
+              mountPath: /factorio/config/map-gen-settings.json
+              subPath: map-gen-settings.json
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: factorio-data
+        - name: config
+          configMap:
+            name: factorio-config
