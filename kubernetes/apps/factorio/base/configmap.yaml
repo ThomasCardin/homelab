@@ -4,13 +4,15 @@ metadata:
   name: factorio-config
   namespace: factorio
 data:
+  server-whitelist.json: |
+    ["jesuislepireaupire", "jesuismoi123"]
   map-gen-settings.json: |
     {
       "seed": 987654321
     }
   server-settings.json: |
     {
-      "name": "Factorio Server",
+      "name": "TC-LDP Server",
       "description": "A Factorio server running on Kubernetes",
       "tags": ["kubernetes", "homelab"],
       "max_players": 20,
@@ -18,6 +20,7 @@ data:
         "public": false,
         "lan": true
       },
+      "admins": ["jesuislepireaupire"],
       "require_user_verification": false,
       "max_upload_in_kilobytes_per_second": 0,
       "max_upload_slots": 5,

@@ -31,6 +31,7 @@ spec:
               mkdir -p /factorio/config
               cp /config-ro/server-settings.json /factorio/config/server-settings.json
               cp /config-ro/map-gen-settings.json /factorio/config/map-gen-settings.json
+              cp /config-ro/server-whitelist.json /factorio/config/server-whitelist.json
               chown -R 845:845 /factorio/config
               chmod -R 755 /factorio/config
               chmod 644 /factorio/config/*.json
