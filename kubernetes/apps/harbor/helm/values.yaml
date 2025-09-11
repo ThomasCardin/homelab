@@ -1,0 +1,67 @@
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    certSource: auto
+    auto:
+      commonName: "harbor.ninebasetwo.net"
+  ingress:
+    hosts:
+      core: harbor.ninebasetwo.net
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+
+externalURL: https://harbor.ninebasetwo.net
+
+existingSecretAdminPassword: "harbor-admin-secret"
+existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
+
+database:
+  type: external
+  external:
+    host: "harbor-postgres-rw.harbor.svc.cluster.local"
+    port: "5432"
+    username: "harbor"
+    coreDatabase: "harbor"
+    existingSecret: "harbor-database-secret"
+
+redis:
+  type: internal
+
+persistence:
+  enabled: true
+  resourcePolicy: "keep"
+  persistentVolumeClaim:
+    registry:
+      storageClass: "hdd-ceph-block"
+      size: 50Gi
+    jobservice:
+      jobLog:
+        storageClass: "hdd-ceph-block"
+        size: 1Gi
+    trivy:
+      storageClass: "hdd-ceph-block"
+      size: 5Gi
+
+trivy:
+  enabled: true
+
+core:
+  replicas: 1
+  existingSecret: "harbor-core-secret"
+  
+jobservice:
+  replicas: 1
+  existingSecret: "harbor-jobservice-secret"
+
+registry:
+  replicas: 1
+  existingSecret: "harbor-registry-secret"
+
+portal:
+  replicas: 1

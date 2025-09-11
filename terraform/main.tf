@@ -18,7 +18,8 @@ module "cname-records" {
     "navidrome",
     "odoo",
     "gobservability",
-    "litmus"
+    "litmus",
+    "harbor"
   ]
 }
 
@@ -34,7 +35,7 @@ module "zero-trust-app" {
     "trilium",
     "actual",
     "alloy",
-    "gobservability"
-    
+    "gobservability",
+    "harbor"
   ]
 }
