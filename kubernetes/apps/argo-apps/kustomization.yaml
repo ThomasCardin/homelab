@@ -15,7 +15,7 @@ resources:
   # - ../odoo/
   - ../website/
   - ../factorio/
-  - ../harbor/
+  # - ../harbor/
 
   # System applications
   - ../../system/cert-manager
