@@ -1,0 +1,33 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: harbor-postgres
+  namespace: harbor
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  instances: 1
+
+  postgresql:
+    parameters:
+      timezone: "America/Montreal"
+    shared_preload_libraries: []
+
+  managed:
+    roles:
+      - name: harbor
+        superuser: false
+        login: true
+        createdb: true
+
+  bootstrap:
+    initdb:
+      database: harbor
+      owner: harbor
+      secret:
+        name: harbor-database-secret
+      postInitSQL:
+        - SET timezone = 'America/Montreal';
+
+  storage:
+    size: 10Gi
+    storageClass: hdd-ceph-block
