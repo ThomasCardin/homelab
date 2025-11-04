@@ -43,7 +43,7 @@ spec:
               mountPath: /factorio
       containers:
         - name: factorio
-          image: factoriotools/factorio:2.0.71
+          image: factoriotools/factorio:2.0.72
           ports:
             - containerPort: 34197
               protocol: UDP
