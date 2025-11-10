@@ -22,7 +22,7 @@ spec:
           mountPath: /srv/trilium-data
       containers:
       - name: trilium
-        image: ghcr.io/triliumnext/notes:v0.95.0
+        image: ghcr.io/triliumnext/trilium:main
         env:
         - name: TRILIUM_PORT
           value: "8080"
