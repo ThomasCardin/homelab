@@ -17,7 +17,7 @@ spec:
         valueFiles:
           - $values/kubernetes/apps/harbor/helm/values.yaml
       repoURL: https://helm.goharbor.io
-      targetRevision: 1.15.1
+      targetRevision: 1.18.0
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
