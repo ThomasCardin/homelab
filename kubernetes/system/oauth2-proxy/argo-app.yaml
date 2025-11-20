@@ -19,7 +19,7 @@ spec:
         valueFiles:
           - $values/kubernetes/system/oauth2-proxy/helm/values.yaml
       repoURL: https://oauth2-proxy.github.io/manifests
-      targetRevision: 8.2.0
+      targetRevision: 8.5.1
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
