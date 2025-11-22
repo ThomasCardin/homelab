@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: atlantis
-          image: ghcr.io/runatlantis/atlantis:v0.32.0
+          image: ghcr.io/runatlantis/atlantis:v0.37.1
           env:
             - name: ATLANTIS_REPO_ALLOWLIST
               value: github.com/ThomasCardin/homelab
