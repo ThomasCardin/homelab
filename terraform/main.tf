@@ -9,7 +9,6 @@ module "cname-records" {
     "ollama",
     "ceph",
     "grafana",
-    "oauth2",
     "gotify",
     "actual",
     "atlantis",

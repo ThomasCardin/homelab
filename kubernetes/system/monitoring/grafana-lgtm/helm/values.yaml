@@ -65,8 +65,6 @@ grafana:
     path: /
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
-      nginx.ingress.kubernetes.io/auth-url: "https://oauth2.ninebasetwo.net/oauth2/auth"
-      nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.ninebasetwo.net/oauth2/start?rd=$scheme://$host$request_uri"
     hosts:
       - grafana.ninebasetwo.net
     tls:

@@ -8,8 +8,6 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "500"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "500"
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/auth-url: "https://oauth2.ninebasetwo.net/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://oauth2.ninebasetwo.net/oauth2/start?rd=$scheme://$host$request_uri"
 spec:
   ingressClassName: nginx 
   rules:

@@ -28,7 +28,6 @@ resources:
   - ../../system/rook-ceph
   - ../../system/ingress-nginx
   - ../../system/sealed-secrets
-  - ../../system/oauth2-proxy
   - ../../system/atlantis
   - ../../system/cloudnativepg
   - ../../system/litmus
