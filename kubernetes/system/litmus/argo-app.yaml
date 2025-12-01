@@ -19,7 +19,7 @@ spec:
         valueFiles:
           - $values/kubernetes/system/litmus/helm/values.yaml
       repoURL: https://litmuschaos.github.io/litmus-helm/
-      targetRevision: 3.20.0
+      targetRevision: 3.23.0
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
