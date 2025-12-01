@@ -17,7 +17,7 @@ spec:
         valueFiles:
           - $values/kubernetes/apps/immich/helm/values.yaml
       repoURL: https://immich-app.github.io/immich-charts
-      targetRevision: 0.9.3
+      targetRevision: 0.10.3
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
