@@ -18,7 +18,7 @@ env:
         name: immich-postgres-user
         key: password
   IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
-  REDIS_HOSTNAME: '{{ printf "%s-redis-master" .Release.Name }}'
+  REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
 
 image:
   tag: v1.119.0
@@ -40,11 +40,15 @@ immich:
 
 # Dependencies
 
-redis:
+valkey:
   enabled: true
-  architecture: standalone
-  auth:
-    enabled: false
+  persistence:
+    data:
+      enabled: true
+      size: 1Gi
+      type: persistentVolumeClaim
+      accessMode: ReadWriteOnce
+      storageClass: hdd-ceph-block
 
 # Immich components
 
