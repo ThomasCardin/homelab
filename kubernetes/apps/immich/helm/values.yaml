@@ -9,7 +9,7 @@ controllers:
     containers:
       main:
         image:
-          tag: v1.132.3
+          tag: v1.137.0
         envFrom:
           - secretRef:
               name: immich-postgres-user
@@ -71,7 +71,6 @@ server:
         nginx.ingress.kubernetes.io/proxy-body-size: "0"
         nginx.ingress.kubernetes.io/ssl-redirect: "true"
         cert-manager.io/cluster-issuer: letsencrypt-prod
-      ingressClassName: nginx
       hosts:
         - host: immich.ninebasetwo.net
           paths:
