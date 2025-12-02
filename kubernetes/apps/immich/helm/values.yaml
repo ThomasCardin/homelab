@@ -40,9 +40,6 @@ immich:
 
 # Dependencies
 
-postgresql:
-  enabled: false
-
 redis:
   enabled: true
   architecture: standalone
