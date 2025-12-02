@@ -9,7 +9,7 @@ controllers:
     containers:
       main:
         image:
-          tag: v1.132.3
+          tag: v1.137.0
         envFrom:
           - secretRef:
               name: immich-postgres-user
