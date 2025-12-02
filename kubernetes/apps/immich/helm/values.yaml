@@ -1,27 +1,29 @@
 ## This chart relies on the common library chart from bjw-s
-## You can find it at https://github.com/bjw-s-labs/helm-charts/tree/923ef40a39520979c98f354ea23963ee54f54433/charts/library/common
+## You can find it at https://github.com/bjw-s-labs/helm-charts/tree/common-4.3.0/charts/library/common
 ## Refer there for more detail about the supported values
 
 # These entries are shared between all the Immich components
 
-envFrom:
-  - secretRef:
-      name: immich-postgres-user
-
-env:
-  DB_HOSTNAME: immich-postgres-rw.immich.svc 
-  DB_USERNAME: immich
-  DB_DATABASE_NAME: immich
-  DB_PASSWORD:
-    valueFrom:
-      secretKeyRef:
-        name: immich-postgres-user
-        key: password
-  IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
-  REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
-
-image:
-  tag: v1.119.0
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          tag: v1.119.0
+        envFrom:
+          - secretRef:
+              name: immich-postgres-user
+        env:
+          DB_HOSTNAME: immich-postgres-rw.immich.svc
+          DB_USERNAME: immich
+          DB_DATABASE_NAME: immich
+          DB_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: immich-postgres-user
+                key: password
+          REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
+          IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
 
 immich:
   metrics:
@@ -54,9 +56,13 @@ valkey:
 
 server:
   enabled: true
-  image:
-    repository: ghcr.io/immich-app/immich-server
-    pullPolicy: IfNotPresent
+  controllers:
+    main:
+      containers:
+        main:
+          image:
+            repository: ghcr.io/immich-app/immich-server
+            pullPolicy: IfNotPresent
   ingress:
     main:
       enabled: true
@@ -70,6 +76,8 @@ server:
           paths:
             - path: "/"
               pathType: Prefix
+              service:
+                identifier: main
       tls:
         - hosts:
             - immich.ninebasetwo.net
@@ -77,16 +85,21 @@ server:
 
 machine-learning:
   enabled: true
-  image:
-    repository: ghcr.io/immich-app/immich-machine-learning
-    pullPolicy: IfNotPresent
-  env:
-    TRANSFORMERS_CACHE: /cache
+  controllers:
+    main:
+      containers:
+        main:
+          image:
+            repository: ghcr.io/immich-app/immich-machine-learning
+            pullPolicy: IfNotPresent
+          env:
+            TRANSFORMERS_CACHE: /cache
+            HF_XET_CACHE: /cache/huggingface-xet
+            MPLCONFIGDIR: /cache/matplotlib-config
   persistence:
     cache:
       enabled: true
       size: 10Gi
-      # Optional: Set this to pvc to avoid downloading the ML models every start.
       type: emptyDir
       accessMode: ReadWriteMany
       storageClass: hdd-ceph-block
