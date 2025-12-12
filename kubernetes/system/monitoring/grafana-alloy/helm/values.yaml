@@ -24,6 +24,9 @@ alloy:
       }
       
       prometheus.scrape "k8s_state_metrics" {
+        clustering {
+          enabled = true
+        }
         scrape_interval = "15s"
         targets = [
           { __address__ = "kube-state-metrics.monitoring.svc.cluster.local:8080" },
