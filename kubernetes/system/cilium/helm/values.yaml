@@ -204,7 +204,7 @@ ipv6:
 # @schema@
 # type: [string, boolean]
 # @schema@
-kubeProxyReplacement: "true"
+kubeProxyReplacement: "false"
 
 # -- Enable L2 neighbor discovery in the agent
 l2NeighDiscovery:
