@@ -4,7 +4,7 @@ metadata:
   name: immich-route
 spec:
   parentRefs:
-    - name: apps-gateway
+    - name: default-gateway
       namespace: default
   hostnames:
     - immich.ninebasetwo.net

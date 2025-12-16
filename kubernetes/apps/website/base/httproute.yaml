@@ -4,7 +4,7 @@ metadata:
   name: website-route
 spec:
   parentRefs:
-    - name: apps-gateway
+    - name: default-gateway
       namespace: default
   hostnames:
     - ninebasetwo.net

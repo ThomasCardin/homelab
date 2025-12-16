@@ -4,7 +4,7 @@ metadata:
   name: atlantis-route
 spec:
   parentRefs:
-    - name: system-gateway
+    - name: default-gateway
       namespace: default
   hostnames:
     - atlantis.ninebasetwo.net

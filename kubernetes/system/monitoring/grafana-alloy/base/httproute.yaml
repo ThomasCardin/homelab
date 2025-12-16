@@ -4,7 +4,7 @@ metadata:
   name: alloy-route
 spec:
   parentRefs:
-    - name: system-gateway
+    - name: default-gateway
       namespace: default
   hostnames:
     - alloy.ninebasetwo.net

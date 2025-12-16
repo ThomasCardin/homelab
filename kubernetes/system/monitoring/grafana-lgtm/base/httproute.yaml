@@ -4,7 +4,7 @@ metadata:
   name: grafana-route
 spec:
   parentRefs:
-    - name: system-gateway
+    - name: default-gateway
       namespace: default
   hostnames:
     - grafana.ninebasetwo.net

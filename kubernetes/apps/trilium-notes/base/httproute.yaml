@@ -4,7 +4,7 @@ metadata:
   name: trilium-route
 spec:
   parentRefs:
-    - name: apps-gateway
+    - name: default-gateway
       namespace: default
   hostnames:
     - trilium.ninebasetwo.net
