@@ -15,7 +15,6 @@ resources:
   - ../factorio/
 
   # System applications
-  - ../../system/system-upgrade
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
