@@ -4,10 +4,9 @@ metadata:
   name: ingress-external-trilium-notes
   namespace: trilium-notes
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: nginx 
+  ingressClassName: cilium 
   rules:
   - host: trilium.ninebasetwo.net
     http:
