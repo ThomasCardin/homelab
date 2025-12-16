@@ -1,0 +1,43 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: apps-gateway
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: website
+      hostname: ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: apps-tls
+            kind: Secret
+    - name: trilium
+      hostname: trilium.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: apps-tls
+            kind: Secret
+    - name: actual
+      hostname: actual.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: apps-tls
+            kind: Secret
+    - name: immich
+      hostname: immich.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: apps-tls
+            kind: Secret

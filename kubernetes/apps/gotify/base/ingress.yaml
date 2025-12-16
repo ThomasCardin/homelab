@@ -3,13 +3,13 @@ kind: Ingress
 metadata:
   name: ingress-external-gotify
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    lbipam.cilium.io/ips: 192.168.2.7
+    ingress.cilium.io/loadbalancer-mode: dedicated
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: nginx 
+  ingressClassName: cilium 
   rules:
-  - host: gotify.ninebasetwo.net
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
@@ -18,7 +18,3 @@ spec:
             name: gotify-svc
             port:
               number: 80
-  tls:
-  - hosts:
-    - gotify.ninebasetwo.net
-    secretName: gotify-tls

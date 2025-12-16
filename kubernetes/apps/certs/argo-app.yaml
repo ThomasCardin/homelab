@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps-certs
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    repoURL: https://github.com/ThomasCardin/homelab.git
+    path: kubernetes/apps/certs/base
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true

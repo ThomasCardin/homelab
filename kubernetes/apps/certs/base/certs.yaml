@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: apps-tls
+spec:
+  secretName: apps-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+      - ninebasetwo.net
+  commonName: ninebasetwo.net
+  dnsNames:
+    - ninebasetwo.net
+    - trilium.ninebasetwo.net
+    - actual.ninebasetwo.net
+    - immich.ninebasetwo.net
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+    group: cert-manager.io
