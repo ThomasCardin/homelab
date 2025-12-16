@@ -5,17 +5,13 @@ resources:
   # User applications
   - ../ddns/
   - ../trilium-notes/
-  # - ../ollama/
   - ../jobscrapper/
   - ../intervalsicu/
   - ../gotify/
   - ../actual-budget/
   - ../immich/
-  - ../navidrome/
-  # - ../odoo/
   - ../website/
   - ../factorio/
-  # - ../harbor/
 
   # System applications
   - ../../system/cert-manager
