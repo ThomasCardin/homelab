@@ -9,6 +9,9 @@ spec:
       hostname: ninebasetwo.net
       port: 443
       protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
       tls:
         mode: Terminate
         certificateRefs:
@@ -18,6 +21,9 @@ spec:
       hostname: trilium.ninebasetwo.net
       port: 443
       protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
       tls:
         mode: Terminate
         certificateRefs:
@@ -27,6 +33,9 @@ spec:
       hostname: actual.ninebasetwo.net
       port: 443
       protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
       tls:
         mode: Terminate
         certificateRefs:
@@ -36,6 +45,9 @@ spec:
       hostname: immich.ninebasetwo.net
       port: 443
       protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
       tls:
         mode: Terminate
         certificateRefs:
