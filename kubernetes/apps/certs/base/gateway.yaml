@@ -65,6 +65,18 @@ spec:
         certificateRefs:
           - name: default-gateway-tls
             kind: Secret
+    - name: jellyfin
+      hostname: jellyfin.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
+            kind: Secret
     - name: alloy
       hostname: alloy.ninebasetwo.net
       port: 443

@@ -20,6 +20,7 @@ spec:
     - grafana.ninebasetwo.net
     - ceph.ninebasetwo.net
     - atlantis.ninebasetwo.net
+    - jellyfin.ninebasetwo.net
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
