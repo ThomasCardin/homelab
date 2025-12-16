@@ -186,7 +186,6 @@ hubble:
     enabled: true
     # -- Roll out Hubble-ui pods automatically when configmap is updated.
     rollOutPods: true
-          enabled: true
     # -- The number of replicas of Hubble UI to deploy.
     replicas: 1
 
