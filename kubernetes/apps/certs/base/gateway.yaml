@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  name: apps-gateway
+  name: default-gateway
 spec:
   gatewayClassName: cilium
   listeners:
@@ -15,7 +15,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: apps-tls
+          - name: default-gateway-tls
             kind: Secret
     - name: trilium
       hostname: trilium.ninebasetwo.net
@@ -27,7 +27,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: apps-tls
+          - name: default-gateway-tls
             kind: Secret
     - name: actual
       hostname: actual.ninebasetwo.net
@@ -39,7 +39,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: apps-tls
+          - name: default-gateway-tls
             kind: Secret
     - name: immich
       hostname: immich.ninebasetwo.net
@@ -51,5 +51,65 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: apps-tls
+          - name: default-gateway-tls
+            kind: Secret
+    - name: argocd
+      hostname: argocd.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
+            kind: Secret
+    - name: alloy
+      hostname: alloy.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
+            kind: Secret
+    - name: grafana
+      hostname: grafana.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
+            kind: Secret
+    - name: ceph
+      hostname: ceph.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
+            kind: Secret
+    - name: atlantis
+      hostname: atlantis.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
             kind: Secret

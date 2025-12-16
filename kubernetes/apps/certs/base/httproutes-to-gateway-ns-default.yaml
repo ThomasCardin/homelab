@@ -16,7 +16,19 @@
       - group: gateway.networking.k8s.io
         kind: HTTPRoute
         namespace: website
+      - group: gateway.networking.k8s.io
+        kind: HTTPRoute
+        namespace: monitoring
+      - group: gateway.networking.k8s.io
+        kind: HTTPRoute
+        namespace: argocd
+      - group: gateway.networking.k8s.io
+        kind: HTTPRoute
+        namespace: atlantis
+      - group: gateway.networking.k8s.io
+        kind: HTTPRoute
+        namespace: website
     to:
       - group: gateway.networking.k8s.io
         kind: Gateway
-        name: apps-gateway
+        name: default-gateway
