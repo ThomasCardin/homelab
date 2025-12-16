@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
  - cluster/cluster.yaml
  - blocks/hdd-ceph-block.yaml
- - ingress.yaml
+ - httproute.yaml
  - cephfs/hdd-ceph-cephfs.yaml

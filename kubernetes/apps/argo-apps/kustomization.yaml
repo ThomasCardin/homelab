@@ -15,6 +15,7 @@ resources:
   - ../factorio/
 
   # System applications
+  - ../../system/certs/
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
@@ -23,11 +24,9 @@ resources:
   - ../../system/monitoring/k8s-state-metrics
   - ../../system/monitoring/metrics-server
   - ../../system/rook-ceph
-  - ../../system/ingress-nginx
   - ../../system/sealed-secrets
   - ../../system/atlantis
   - ../../system/cloudnativepg
-  - ../../system/litmus
 
 patches:
 - patch: |-

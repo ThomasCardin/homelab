@@ -59,7 +59,7 @@ grafana:
     finalizers:
       - kubernetes.io/pvc-protection
   ingress:
-    enabled: true
+    enabled: false
     ingressClassName: nginx
     pathType: Prefix
     path: /
