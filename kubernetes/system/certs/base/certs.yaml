@@ -9,7 +9,7 @@ spec:
   subject:
     organizations:
       - ninebasetwo.net
-  commonName: ninebasetwo.net
+  commonName: argocd.ninebasetwo.net
   dnsNames:
     - argocd.ninebasetwo.net
     - alloy.ninebasetwo.net
