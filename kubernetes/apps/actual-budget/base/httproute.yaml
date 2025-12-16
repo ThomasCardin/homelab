@@ -5,6 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: apps-gateway
+      namespace: default
   hostnames:
     - actual.ninebasetwo.net
   rules:
