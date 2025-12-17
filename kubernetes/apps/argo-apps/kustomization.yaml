@@ -22,7 +22,7 @@ resources:
   #- ../../system/monitoring/grafana-alloy
   #- ../../system/monitoring/k8s-state-metrics
   #- ../../system/monitoring/metrics-server
-  #- ../../system/rook-ceph
+  - ../../system/rook-ceph
   - ../../system/sealed-secrets
   #- ../../system/atlantis
   #- ../../system/cloudnativepg
