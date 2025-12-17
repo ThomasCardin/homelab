@@ -2,7 +2,7 @@
 # This file is based on install/kubernetes/cilium/*values.yaml.tmpl.
 
 # -- (string) Kubernetes service host - use "auto" for automatic lookup from the cluster-info ConfigMap
-k8sServiceHost: "192.168.2.203"
+k8sServiceHost: "192.168.2.180"
 # @schema
 # type: [string, integer]
 # @schema
