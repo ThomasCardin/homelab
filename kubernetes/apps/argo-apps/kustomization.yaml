@@ -11,7 +11,7 @@ resources:
   #- ../gotify/
   #- ../actual-budget/
   #- ../immich/
-  #- ../website/
+  - ../website/
   #- ../factorio/
 
   # System applications
