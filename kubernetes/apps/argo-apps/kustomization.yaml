@@ -18,6 +18,7 @@ resources:
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
+  - ../../system/nginx
   #- ../../system/monitoring/grafana-lgtm
   #- ../../system/monitoring/grafana-alloy
   #- ../../system/monitoring/k8s-state-metrics
