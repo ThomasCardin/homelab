@@ -6,9 +6,9 @@ resources:
   - ../certs/
   - ../ddns/
   - ../trilium-notes/
-  #- ../jobscrapper/
-  #- ../intervalsicu/
-  #- ../gotify/
+  - ../jobscrapper/
+  - ../intervalsicu/
+  - ../gotify/
   #- ../actual-budget/
   #- ../immich/
   - ../website/
