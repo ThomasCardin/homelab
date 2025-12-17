@@ -16,21 +16,21 @@
     {
       "matchManagers": ["argocd"],
       "matchUpdateTypes": ["patch"],
-      "automerge": true,
+      "automerge": false,
       "commitMessage": "patch(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
       "enabled": true
     },
     {
       "matchManagers": ["argocd"],
       "matchUpdateTypes": ["minor"],
-      "automerge": true,
+      "automerge": false,
       "commitMessage": "minor(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
       "enabled": true
     },
     {
       "matchManagers": ["argocd"],
       "matchUpdateTypes": ["major"],
-      "automerge": true,
+      "automerge": false,
       "commitMessage": "major(helm): update {{depName}} from {{currentVersion}} to {{newVersion}}",
       "enabled": true
     }
