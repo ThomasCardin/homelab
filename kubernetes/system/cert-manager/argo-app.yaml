@@ -20,5 +20,5 @@ spec:
       targetRevision: HEAD
       ref: values
     - repoURL: https://github.com/ThomasCardin/homelab.git
-      path: kubernetes/system/cert-manager
+      path: kubernetes/system/cert-manager/base
       targetRevision: HEAD
