@@ -5,7 +5,7 @@ resources:
   # User applications
   - ../certs/
   - ../ddns/
-  #- ../trilium-notes/
+  - ../trilium-notes/
   #- ../jobscrapper/
   #- ../intervalsicu/
   #- ../gotify/
