@@ -222,6 +222,12 @@ controller:
   # So prometheus.exporter.process can see host PID
   hostPID: true
 
+  # Tolerations to allow Alloy to run on control-plane nodes
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
+
 serviceMonitor:
   enabled: false
   # -- Additional labels for the service monitor.
