@@ -18,11 +18,11 @@ resources:
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
-  # - ../../system/nginx
-  #- ../../system/monitoring/grafana-lgtm
-  #- ../../system/monitoring/grafana-alloy
-  #- ../../system/monitoring/k8s-state-metrics
-  #- ../../system/monitoring/metrics-server
+  #- ../../system/nginx
+  - ../../system/monitoring/grafana-lgtm
+  - ../../system/monitoring/grafana-alloy
+  - ../../system/monitoring/k8s-state-metrics
+  - ../../system/monitoring/metrics-server
   - ../../system/rook-ceph
   - ../../system/sealed-secrets
   #- ../../system/atlantis
