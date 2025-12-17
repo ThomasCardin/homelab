@@ -35,10 +35,10 @@ approveSignerNames:
 - clusterissuers.cert-manager.io/*
 
 # https://github.com/cert-manager/cert-manager/issues/5515
-extraArgs:
-  - --enable-certificate-owner-ref=true
-  - --dns01-recursive-nameservers-only
-  - --dns01-recursive-nameservers=kube-dns.kube-system.svc.cluster.local:53
+# extraArgs:
+#   - --enable-certificate-owner-ref=true
+#   - --dns01-recursive-nameservers-only
+#   - --dns01-recursive-nameservers=kube-dns.kube-system.svc.cluster.local:53
 
 prometheus:
   # Enable Prometheus monitoring for the cert-manager controller and webhook.
