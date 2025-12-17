@@ -3,5 +3,8 @@ kind: CiliumL2AnnouncementPolicy
 metadata:
   name: l2ippool-configuration
 spec:
+  interfaces:
+    - ^eth0$
+    - ^en.*
   externalIPs: true
   loadBalancerIPs: true
