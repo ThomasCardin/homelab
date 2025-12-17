@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   # User applications
-  #- ../certs/
+  - ../certs/
   - ../ddns/
   #- ../trilium-notes/
   #- ../jobscrapper/
