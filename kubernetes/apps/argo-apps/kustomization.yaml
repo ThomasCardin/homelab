@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   # User applications
-  # - ../certs/
+  - ../certs/
   - ../ddns/
   - ../trilium-notes/
   - ../jobscrapper/
@@ -18,7 +18,7 @@ resources:
   - ../../system/cert-manager
   - ../../system/cilium
   - ../../system/argocd
-  - ../../system/nginx
+  # - ../../system/nginx
   #- ../../system/monitoring/grafana-lgtm
   #- ../../system/monitoring/grafana-alloy
   #- ../../system/monitoring/k8s-state-metrics
