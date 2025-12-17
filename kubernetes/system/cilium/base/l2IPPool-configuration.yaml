@@ -4,7 +4,7 @@ metadata:
   name: l2ippool-configuration
 spec:
   interfaces:
-    - ^eth0$
+    - ^eth[0-9]+
     - ^en.*
   externalIPs: true
   loadBalancerIPs: true
