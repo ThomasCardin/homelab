@@ -97,7 +97,7 @@ deployNodeAgent: true
 nodeAgent:
   podVolumePath: /var/lib/kubelet/pods
   pluginVolumePath: /var/lib/kubelet/plugins
-  resources: {}
+  resources:
     requests:
       cpu: 500m
       memory: 512Mi
