@@ -27,6 +27,7 @@ resources:
   - ../../system/sealed-secrets
   #- ../../system/atlantis
   - ../../system/cloudnativepg
+  - ../../system/velero
 
 patches:
 - patch: |-
