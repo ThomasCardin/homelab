@@ -10,7 +10,7 @@ resources:
   #- ../intervalsicu/
   #- ../gotify/
   #- ../actual-budget/
-  #- ../immich/
+  - ../immich/
   - ../website/
   #- ../factorio/
 
