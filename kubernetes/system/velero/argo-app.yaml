@@ -17,7 +17,7 @@ spec:
         valueFiles:
           - $values/kubernetes/system/velero/helm/values.yaml
       repoURL: https://vmware-tanzu.github.io/helm-charts
-      targetRevision: 11.2.0
+      targetRevision: 11.3.1
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
