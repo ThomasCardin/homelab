@@ -184,6 +184,9 @@ mimir:
         cpu: 20m
   minio:
     enabled: true
+    persistence:
+      storageClass: hdd-ceph-block
+      size: 100Gi
   rollout_operator:
     resources:
       requests:
