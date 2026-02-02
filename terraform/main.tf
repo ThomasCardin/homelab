@@ -38,14 +38,14 @@ module "zero-trust-app" {
   ]
 }
 
-# module "zero-trust-2fa" {
-#   source             = "./modules/zero_trust_application_2fa"
-#   cloudflare_zone_id = var.cloudflare_zone_id
-
-#   names = [
-#     "trilium"
-#   ]
-# }
+module "zero-trust-2fa" {
+  source             = "./modules/zero_trust_application_2fa"
+  cloudflare_zone_id = var.cloudflare_zone_id
+  
+  names = [
+    "trilium"
+  ]
+}
 
 module "s3_velero_bucket" {
   source = "./modules/aws-s3-bucket"

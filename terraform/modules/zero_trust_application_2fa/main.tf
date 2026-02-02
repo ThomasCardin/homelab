@@ -1,5 +1,5 @@
 resource "cloudflare_zero_trust_access_application" "app" {
-  for_each                   = { for idx, name in var.names : idx => name }
+  for_each                   = toset(var.names)
   zone_id                    = var.cloudflare_zone_id
   name                       = each.value
   domain                     = "${each.value}.ninebasetwo.net"
