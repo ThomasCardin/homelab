@@ -9,14 +9,14 @@ resource "cloudflare_zero_trust_access_application" "app" {
   http_only_cookie_attribute = true
 }
 
-resource "cloudflare_access_policy" "github_app_policy" {
+resource "cloudflare_access_policy" "app_policy" {
   for_each       = cloudflare_zero_trust_access_application.app
   zone_id        = var.cloudflare_zone_id
-  name           = "${each.key}-github-auth"
+  name           = "${each.key}-2fa-auth"
   application_id = each.value.id
   precedence     = 1
   decision       = "allow"
   include {
-    group = ["dc009146-1f84-4d2c-bbd4-670ee9d65d5d"]
+    group = ["e6a245c2-6fc7-4967-a86e-bf38ce283459"]
   }
 }

@@ -1,5 +1,5 @@
 variable "names" {
-  description = "names of all zero trust access applications"
+  description = "names of all zero trust access applications with 2FA"
   type        = list(string)
 }
 
