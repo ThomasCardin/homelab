@@ -19,7 +19,7 @@ spec:
         valueFiles:
           - $values/kubernetes/system/rook-ceph/helm/values.yaml
       repoURL: https://charts.rook.io/release
-      targetRevision: v1.18.8
+      targetRevision: v1.19.1
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
