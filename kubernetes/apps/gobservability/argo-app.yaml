@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gobservability
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gobservability
+  source:
+    repoURL: https://github.com/ThomasCardin/homelab.git
+    path: kubernetes/apps/gobservability/base
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true

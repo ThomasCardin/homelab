@@ -125,3 +125,15 @@ spec:
         certificateRefs:
           - name: default-gateway-tls
             kind: Secret
+    - name: gobservability
+      hostname: gobservability.ninebasetwo.net
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: default-gateway-tls
+            kind: Secret

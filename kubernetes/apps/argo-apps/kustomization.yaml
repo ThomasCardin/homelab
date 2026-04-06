@@ -12,6 +12,7 @@ resources:
   #- ../actual-budget/
   - ../immich/
   - ../website/
+  - ../gobservability/
   #- ../factorio/
 
   # System applications
