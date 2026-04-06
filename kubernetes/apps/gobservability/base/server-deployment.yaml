@@ -15,9 +15,6 @@ spec:
       labels:
         app: gobservability-server
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
-
       containers:
       - name: server
         image: ghcr.io/thomascardin/gobservability-server:latest
