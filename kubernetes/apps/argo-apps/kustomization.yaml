@@ -13,6 +13,7 @@ resources:
   - ../immich/
   - ../website/
   - ../gobservability/
+  - ../adguard/
   #- ../factorio/
 
   # System applications

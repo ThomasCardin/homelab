@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard-home
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: adguard-home
+  template:
+    metadata:
+      labels:
+        app: adguard-home
+    spec:
+      containers:
+        - name: adguard-home
+          image: adguard/adguardhome:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dns-tcp
+              containerPort: 53
+              protocol: TCP
+            - name: dns-udp
+              containerPort: 53
+              protocol: UDP
+            - name: setup
+              containerPort: 3000
+              protocol: TCP
+            - name: web
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /opt/adguardhome/conf
+            - name: work
+              mountPath: /opt/adguardhome/work
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: adguard-conf
+        - name: work
+          persistentVolumeClaim:
+            claimName: adguard-work
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-dns
+spec:
+  type: LoadBalancer
+  selector:
+    app: adguard-home
+  ports:
+    - name: dns-tcp
+      port: 53
+      targetPort: dns-tcp
+      protocol: TCP
+    - name: dns-udp
+      port: 53
+      targetPort: dns-udp
+      protocol: UDP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-admin
+spec:
+  type: ClusterIP
+  selector:
+    app: adguard-home
+  ports:
+    - name: setup
+      port: 3000
+      targetPort: setup
+      protocol: TCP
+    - name: web
+      port: 80
+      targetPort: web
+      protocol: TCP
