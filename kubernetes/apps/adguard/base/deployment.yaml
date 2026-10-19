@@ -79,3 +79,23 @@ spec:
       port: 80
       targetPort: web
       protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-internal-adguard-home
+  annotations:
+    lbipam.cilium.io/ips: 192.168.2.13
+    ingress.cilium.io/loadbalancer-mode: dedicated
+spec:
+  ingressClassName: cilium
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: adguard-home-admin
+                port:
+                  number: 80
