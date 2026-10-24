@@ -6,7 +6,7 @@ resources:
   - ../certs/
   - ../ddns/
   # - ../trilium-notes/
-  # - ../immich/
+  - ../immich/
   - ../website/
   - ../gobservability/
   - ../adguard/
