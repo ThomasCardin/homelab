@@ -21,6 +21,7 @@ resources:
   # - ../../system/monitoring/metrics-server
   - ../../system/rook-ceph
   - ../../system/vault
+  - ../../system/external-secrets
   # - ../../system/cloudnativepg
   # - ../../system/velero
 

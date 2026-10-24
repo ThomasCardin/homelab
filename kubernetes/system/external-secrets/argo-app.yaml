@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-secrets
+  namespace: argocd
+  annotations:
+    # Deploy after Vault, the ClusterSecretStore reads from it
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+      - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: external-secrets
+    server: https://kubernetes.default.svc
+  sources:
+    - chart: external-secrets
+      helm:
+        # The release name drives the ServiceAccount name (external-secrets),
+        # it must match bound_service_account_names in the Vault kubernetes auth role
+        releaseName: external-secrets
+        valueFiles:
+          - $values/kubernetes/system/external-secrets/helm/values.yaml
+      repoURL: https://charts.external-secrets.io
+      targetRevision: 2.14.0
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      path: kubernetes/system/external-secrets/base
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+    # The ClusterSecretStore is applied in the same sync as the CRDs that define it
+    - SkipDryRunOnMissingResource=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 20s
+        factor: 2
+        maxDuration: 3m

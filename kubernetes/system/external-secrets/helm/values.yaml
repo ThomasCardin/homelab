@@ -1,0 +1,8 @@
+# External Secrets Operator helm chart values.
+# Defaults are fine for a homelab, only the CRDs installation is set explicitly.
+
+# -- Install the CRDs with the chart
+installCRDs: true
+
+# -- Single replica is enough, ESO is not on the data path of the applications
+replicaCount: 1
