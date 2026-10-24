@@ -4,10 +4,10 @@ kind: Kustomization
 resources:
   # User applications
   - ../certs/
-  # - ../ddns/
+  - ../ddns/
   # - ../trilium-notes/
   # - ../immich/
-  # - ../website/
+  - ../website/
   # - ../gobservability/
   # - ../adguard/
 
