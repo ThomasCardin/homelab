@@ -1,0 +1,61 @@
+# Vault helm chart values (hashicorp/vault).
+# Single replica with integrated Raft storage on a Ceph RBD volume.
+# TLS is terminated by the Cilium Gateway (cert-manager), so the listener is plain HTTP inside the cluster.
+
+global:
+  enabled: true
+  # Gateway terminates TLS, Vault listens in plain HTTP on the pod network
+  tlsDisable: true
+
+# Secrets are consumed through External Secrets Operator, the sidecar injector is not needed
+injector:
+  enabled: false
+
+server:
+  # A sealed or uninitialized Vault must still be considered Ready,
+  # otherwise ArgoCD keeps the app Progressing until the manual init/unseal is done
+  readinessProbe:
+    enabled: true
+    path: "/v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204"
+
+  dataStorage:
+    enabled: true
+    size: 10Gi
+    storageClass: hdd-ceph-block
+
+  # Audit logs are not persisted separately
+  auditStorage:
+    enabled: false
+
+  ha:
+    enabled: true
+    # One replica is enough for a homelab. Raft allows scaling out later
+    replicas: 1
+    raft:
+      enabled: true
+      setNodeId: true
+      config: |
+        ui = true
+
+        listener "tcp" {
+          tls_disable     = 1
+          address         = "[::]:8200"
+          cluster_address = "[::]:8201"
+        }
+
+        storage "raft" {
+          path = "/vault/data"
+        }
+
+        service_registration "kubernetes" {}
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+
+ui:
+  enabled: true
+  serviceType: ClusterIP

@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+  annotations:
+    # Deploy after Rook-Ceph (needs the hdd-ceph-block StorageClass for its Raft PVC)
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+      - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: vault
+    server: https://kubernetes.default.svc
+  sources:
+    - chart: vault
+      helm:
+        releaseName: vault
+        valueFiles:
+          - $values/kubernetes/system/vault/helm/values.yaml
+      repoURL: https://helm.releases.hashicorp.com
+      targetRevision: 0.34.1
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      path: kubernetes/system/vault/base
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
