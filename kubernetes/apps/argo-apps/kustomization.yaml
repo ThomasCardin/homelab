@@ -8,8 +8,8 @@ resources:
   # - ../trilium-notes/
   # - ../immich/
   - ../website/
-  # - ../gobservability/
-  # - ../adguard/
+  - ../gobservability/
+  - ../adguard/
 
   # System applications
   - ../../system/cert-manager
@@ -23,7 +23,7 @@ resources:
   - ../../system/vault
   - ../../system/external-secrets
   - ../../system/cloudnativepg
-  # - ../../system/velero
+  - ../../system/velero
 
 patches:
 - patch: |-

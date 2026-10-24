@@ -21,6 +21,19 @@ spec:
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/ThomasCardin/homelab.git
+      path: kubernetes/system/velero/base
+      targetRevision: HEAD
   syncPolicy:
     automated:
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    # The ExternalSecret is applied once the External Secrets CRDs exist
+    - SkipDryRunOnMissingResource=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 20s
+        factor: 2
+        maxDuration: 3m
