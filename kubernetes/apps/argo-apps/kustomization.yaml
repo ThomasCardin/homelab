@@ -20,7 +20,7 @@ resources:
   # - ../../system/monitoring/k8s-state-metrics
   # - ../../system/monitoring/metrics-server
   - ../../system/rook-ceph
-  # - ../../system/vault
+  - ../../system/vault
   # - ../../system/cloudnativepg
   # - ../../system/velero
 
