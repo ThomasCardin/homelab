@@ -6,19 +6,12 @@ module "cname-records" {
   names = [
     "argocd",
     "trilium",
-    "ollama",
     "ceph",
     "grafana",
-    "gotify",
-    "actual",
-    "atlantis",
     "alloy",
     "immich",
-    "navidrome",
-    "odoo",
     "gobservability",
-    "litmus",
-    "harbor"
+    "vault"
   ]
 }
 
@@ -27,22 +20,13 @@ module "zero-trust-app" {
   cloudflare_zone_id = var.cloudflare_zone_id
 
   names = [
-    "ollama",
     "argocd",
     "ceph",
     "grafana",
-    "actual",
     "alloy",
     "gobservability",
-    "harbor"
-  ]
-}
-
-module "zero-trust-2fa" {
-  source             = "./modules/zero_trust_application_2fa"
-  cloudflare_zone_id = var.cloudflare_zone_id
-  
-  names = [
+    "vault",
+    "immich",
     "trilium"
   ]
 }

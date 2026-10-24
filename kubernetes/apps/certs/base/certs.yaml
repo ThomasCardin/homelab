@@ -13,13 +13,11 @@ spec:
   dnsNames:
     - ninebasetwo.net
     - trilium.ninebasetwo.net
-    - actual.ninebasetwo.net
     - immich.ninebasetwo.net
     - argocd.ninebasetwo.net
     - alloy.ninebasetwo.net
     - grafana.ninebasetwo.net
     - ceph.ninebasetwo.net
-    - atlantis.ninebasetwo.net
     - jellyfin.ninebasetwo.net
     - gobservability.ninebasetwo.net
     - vault.ninebasetwo.net
