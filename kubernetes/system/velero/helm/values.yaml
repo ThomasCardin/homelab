@@ -31,7 +31,9 @@ metrics:
   enabled: true
 
 # This job upgrades the CRDs.
-upgradeCRDs: true
+# Disabled: the kubectl image it uses (bitnamilegacy/kubectl) does not exist for this cluster version.
+# The CRDs are installed from the chart `crds/` directory by Argo CD.
+upgradeCRDs: false
 
 # This job is meant primarily for cleaning up CRDs on CI systems.
 # Using this on production systems, especially those that have multiple releases of Velero, will be destructive.

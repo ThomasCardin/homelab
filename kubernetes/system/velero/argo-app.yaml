@@ -29,6 +29,8 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    # Velero CRDs are large
+    - ServerSideApply=true
     # The ExternalSecret is applied once the External Secrets CRDs exist
     - SkipDryRunOnMissingResource=true
     retry:
