@@ -9,7 +9,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: adguard-home
+    namespace: adguard
   source:
     repoURL: https://github.com/ThomasCardin/homelab.git
     path: kubernetes/apps/adguard/base
