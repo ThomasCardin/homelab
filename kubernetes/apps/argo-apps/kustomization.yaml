@@ -20,8 +20,8 @@ resources:
   # - ../../system/monitoring/k8s-state-metrics
   # - ../../system/monitoring/metrics-server
   - ../../system/rook-ceph
-  - ../../system/cloudnativepg
-  - ../../system/velero
+  # - ../../system/cloudnativepg
+  # - ../../system/velero
 
 patches:
 - patch: |-
