@@ -4,7 +4,8 @@ metadata:
   name: replicapool
   namespace: rook-ceph
 spec:
-  failureDomain: host
+  # All OSDs are on a single node, replicas are spread across disks instead of hosts
+  failureDomain: osd
   replicated:
     size: 2
   enableRBDStats: true

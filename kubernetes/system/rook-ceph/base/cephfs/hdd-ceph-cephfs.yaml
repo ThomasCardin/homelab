@@ -4,11 +4,14 @@ metadata:
   name: htpcfs
   namespace: rook-ceph
 spec:
+  # All OSDs are on a single node, replicas are spread across disks instead of hosts
   metadataPool:
+    failureDomain: osd
     replicated:
       size: 2
   dataPools:
     - name: replicated
+      failureDomain: osd
       replicated:
         size: 2
   preserveFilesystemOnDelete: true
