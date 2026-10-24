@@ -20,6 +20,14 @@ spec:
           - $values/kubernetes/system/rook-ceph/helm/values.yaml
       repoURL: https://charts.rook.io/release
       targetRevision: v1.21.0
+    # CSI drivers (RBD and CephFS) are deployed by a dedicated chart since Rook 1.20+
+    - chart: ceph-csi-drivers
+      helm:
+        releaseName: ceph-csi-drivers
+        valueFiles:
+          - $values/kubernetes/system/rook-ceph/helm/csi-drivers-values.yaml
+      repoURL: https://ceph.github.io/ceph-csi-operator
+      targetRevision: 1.1.0
     - repoURL: https://github.com/ThomasCardin/homelab.git
       targetRevision: HEAD
       ref: values
