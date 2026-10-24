@@ -22,7 +22,7 @@ resources:
   - ../../system/rook-ceph
   - ../../system/vault
   - ../../system/external-secrets
-  # - ../../system/cloudnativepg
+  - ../../system/cloudnativepg
   # - ../../system/velero
 
 patches:
