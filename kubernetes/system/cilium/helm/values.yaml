@@ -228,7 +228,22 @@ underlayProtocol: "ipv4"
 #   - native
 #   - tunnel (encapsulation)
 # @default -- `"tunnel"`
-routingMode: "tunnel"
+routingMode: "native"
+
+# -- Use pod CIDRs allocated by Kubernetes (kubeadm --pod-network-cidr) instead of Cilium's own cluster-pool.
+ipam:
+  mode: kubernetes
+
+# -- Install direct routes between nodes. Requires all nodes to share the same L2 network.
+autoDirectNodeRoutes: true
+
+# -- Pod CIDR that is routed natively without masquerading. Must match kubeadm --pod-network-cidr.
+ipv4NativeRoutingCIDR: 10.244.0.0/16
+
+# -- Masquerade pod traffic with eBPF instead of iptables.
+bpf:
+  masquerade: true
+
 # -- Configure VXLAN and Geneve tunnel port.
 # @default -- Port 8472 for VXLAN, Port 6081 for Geneve
 tunnelPort: 8472
